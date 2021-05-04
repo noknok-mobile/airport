@@ -15,7 +15,7 @@ function compileHtml() {
     return src('src/index.pug')
         .pipe(pug({
             pretty: true,
-            basedir: '/home/ully/Документы/dev/kras_aero/src/'
+            basedir: '/home/ully/Документы/dev/air_krd/src/'
 
         }))
         .pipe(dest('build/'));

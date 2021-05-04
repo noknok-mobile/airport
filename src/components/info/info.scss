@@ -6,7 +6,7 @@
     position: relative;
     &__content{
         padding-left: $column;
-        margin-top: 60px;
+        margin-top: calc(var(--column)*0.6);
     }
     &__footer{
         display: flex;
@@ -15,5 +15,6 @@
         position: absolute;
         bottom: 0;
         width: 100%;
+        z-index: $top-layout;
     }
 }

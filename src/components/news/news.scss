@@ -48,7 +48,8 @@
 .news-wrapper{
     margin-top: 42px;
     display: grid;
-    grid: 1fr / auto-flow 4*$column;
+    grid: 1fr / auto-flow ;
+    grid-auto-columns: calc(4*var(--column));
     gap: $column;
     overflow-x: hidden;
 }

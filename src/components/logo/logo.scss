@@ -1,7 +1,14 @@
-.logo {}
+.logo {
+    width: 100%;
+}
 
 .logo-wrapper {
-    position: fixed;
-    top: 40px;
-    left: 40px;
+    @media(max-width:$breakpoint-tablet) and (min-width:$breakpoint-phone){
+        position: relative;
+        max-width: 240px;
+        top: -8px;
+    }
+    @media(max-width:$breakpoint-phone){
+        max-width: 130px;
+    }
 }

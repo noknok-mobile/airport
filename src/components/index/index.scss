@@ -1,16 +1,39 @@
-.index{
-    &__title{
-        // @extend .text;
+.index {
+    --number: 36px;
+
+    @media(max-width: $breakpoint-tablet) {
+        --number: 26px;
     }
-    &__number{
-        font-size: 36px;
+    @media(max-width: $breakpoint-phone ) {
+        --number: 16px;
     }
-    &__unit{
+
+
+    &__title {
+        font-size: $text;
+    }
+
+    &__number {
+        font-size: var(--number);
+    }
+
+    &__unit {
         font-size: 12px;
+
+        @media(max-width:$breakpoint-tablet) {
+            font-size: $text;
+        }
     }
 }
-.index-wrapper{
+
+.index-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 90px);
+    @media(max-width:$breakpoint-phone) {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 90px);
+        grid-auto-flow: column;
+        overflow: hidden;
+    }
 }

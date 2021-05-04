@@ -20,7 +20,7 @@
 
     &__section {
         padding: $column;
-        padding-right: $column*2;
+        padding-right: calc(2*var(--column));
 
         &-more {
             position: absolute;
@@ -37,6 +37,10 @@
             padding: 0;
             overflow: hidden;
         }
+    }
+    @media(max-width:$breakpoint-tablet) {
+        display: block;
+        height: unset;
     }
 }
 

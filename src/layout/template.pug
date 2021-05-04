@@ -12,11 +12,13 @@ html(lang="en")
         link(rel="stylesheet" href="main.css")
         title= title
     body
-        .logo-wrapper
-            a(href="/") #[img.logo(src="/logo.svg")]
-        .lang
-            a.lang__item(href="/ru") RU 
-            a.lang__item(href="/en") ENG
+        header.header 
+            img.menu-burger(src="/burger.svg", alt="")
+            .logo-wrapper
+                a(href="/") #[img.logo(src="/logo.svg")]
+            .lang
+                a.lang__item(href="/ru") RU 
+                a.lang__item(href="/en") ENG
         .social
             a(href="#") 
                 svg.social__item #[use(xlink:href='icons.svg#fb')]

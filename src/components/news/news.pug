@@ -1,0 +1,10 @@
+mixin news(props)
+    .news 
+        .news__img-wrapper 
+            img.news__img(src= attributes.src)
+            .news__caption
+                p Автор: #[strong #{props.author}] 
+                p Фото: #[strong #{props.photographer}] 
+        .news__title= props.title
+        .news_desc= props.desc
+        a.news__button.button.js-more-show(href="#") Подробнее

@@ -1,0 +1,17 @@
+.button{
+    display: inline-block;
+    appearance: none;
+    border: 2px solid white;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+    text-transform: uppercase;
+    line-height: 28px;
+    font-size: 14px;
+    padding: 0 34px;
+    background: transparent;
+    color: inherit;
+}

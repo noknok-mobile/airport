@@ -1,0 +1,54 @@
+*, *::before, *::after{
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --color-inactive: #C6C6C6;
+}
+$inactive: var(--color-inactive);
+a{
+    text-decoration: none;
+    color: inherit;
+}
+html{
+    font-family: Geometria, sans-serif;
+    color: white;
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #011936;
+}
+@mixin widget{
+    display: flex;
+    justify-content: space-between;
+    color: $inactive;
+    &__item{
+        &:hover{
+            color: white;
+        } 
+    }
+}
+@mixin round($size){
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+} 
+.lang{
+    @include widget;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 82px;
+}
+.social{
+    @include widget;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 70px;
+    &__item{
+        
+        max-width: 18px;
+        max-height: 18px;
+    }
+}

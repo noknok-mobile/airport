@@ -1,0 +1,22 @@
+$column: 90px;
+
+@import './layout/template.scss';
+@import './components/*';
+
+#timer{
+    background-image: url('/3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.feedback{
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    &__group{
+        
+    }
+    &__wide{
+        grid-column: 1/3;
+    }
+}

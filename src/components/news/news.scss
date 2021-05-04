@@ -1,0 +1,73 @@
+.news{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    &__img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    &__img-wrapper{
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        position: relative;
+    }
+    &__caption{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding: 18px 16px;
+    }
+    &__button{
+        margin-top: 20px;
+        background-color: #009840;
+        border: none;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+    &:hover &__caption, &:hover &__button{
+        opacity: 1;
+    }
+    &__title{
+        margin-bottom: 10px;
+        margin-top: 34px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+}
+.news-wrapper{
+    margin-top: 42px;
+    display: grid;
+    grid: 1fr / auto-flow 4*$column;
+    gap: $column;
+    overflow-x: hidden;
+}
+.js-more{
+    transform: translateX(100%);
+    &_open {
+        transform: translateX(0);
+    }  
+}
+.js-more-close{
+    @include round(133px);
+    position: absolute;
+    top: 165px;
+    right: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: none;
+    appearance: none;
+    cursor: pointer;
+}

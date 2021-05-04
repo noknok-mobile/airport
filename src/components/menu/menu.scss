@@ -1,0 +1,48 @@
+.menu-wrapper{
+    position: fixed;
+    top: 50%;
+    right: 27px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+.menu{
+    // @include widget(true);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style-type: none;
+    padding: 0;
+    width: 76px;
+    // color: black;
+    &__item{
+        display: block;
+        background: $inactive;
+        color: #011936;
+        text-align: center;
+        line-height: 16px;
+        width: 100%;
+        border-radius: 20px;
+        font-size: 9px;
+        text-transform: uppercase;
+        position: relative;
+        &:hover{
+            background-color: white;
+        }
+        &::after{
+            $size:10px;
+            content: '';
+            width: $size;
+            height: $size;
+            border-radius: 50%;
+            display: block;
+            background-color: inherit;
+            position: absolute ;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -20px;
+        }
+        &_current{
+
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.index{
+    &__title{
+        // @extend .text;
+    }
+    &__number{
+        font-size: 36px;
+    }
+    &__unit{
+        font-size: 12px;
+    }
+}
+.index-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 90px);
+}

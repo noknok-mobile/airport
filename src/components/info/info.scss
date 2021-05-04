@@ -1,0 +1,19 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    &__content{
+        padding-left: $column;
+        margin-top: 60px;
+    }
+    &__footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}

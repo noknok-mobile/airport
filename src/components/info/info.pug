@@ -1,0 +1,10 @@
+mixin info(title, caption, button)
+    .info
+        .info__title.title!= title 
+        .info__content.text  
+            block
+        if(caption)
+            .info__footer 
+                .info__caption!= caption
+                .info__action
+                    a.button(href="#")= button

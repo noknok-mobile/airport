@@ -36,7 +36,7 @@ function assets() {
 }
 
 function styles() {
-    return src('src/main.scss')
+    return src('src/scss/main.scss')
         .pipe(bulkSass())
         .pipe(sass({
             outputStyle: "expanded",

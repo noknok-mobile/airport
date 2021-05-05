@@ -1,0 +1,15 @@
+@mixin widget{
+    display: flex;
+    justify-content: space-between;
+    color: $inactive;
+    &__item{
+        &:hover{
+            color: white;
+        } 
+    }
+}
+@mixin round($size){
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+} 

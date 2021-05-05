@@ -10,12 +10,14 @@ const browserSync = require("browser-sync").create();
 const sass = require('gulp-dart-sass');
 const bulkSass = require('gulp-sass-bulk-import');
 const svgSprite = require('gulp-svg-sprite');
+const postcss = require('gulp-postcss');
+const mqpacker = require('css-mquery-packer');
 
 function compileHtml() {
     return src('src/index.pug')
         .pipe(pug({
             pretty: true,
-            basedir: '/home/ully/Документы/dev/air_krd/src/'
+            basedir: '/mnt/c/Users/noknok/Documents/krd_air/airport_krd/src/'
 
         }))
         .pipe(dest('build/'));
@@ -36,12 +38,16 @@ function assets() {
 }
 
 function styles() {
+    const plugins = [
+        mqpacker()
+    ];
     return src('src/scss/main.scss')
         .pipe(bulkSass())
         .pipe(sass({
             outputStyle: "expanded",
             allowEmpty: true
         }).on('error', sass.logError))
+        .pipe(postcss(plugins))
         .pipe(dest('build/'));
 }
 

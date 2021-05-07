@@ -6,5 +6,5 @@ mixin news(props)
                 p Автор: #[strong #{props.author}] 
                 p Фото: #[strong #{props.photographer}] 
         .news__title= props.title
-        .news_desc= props.desc
+        .news__desc.text= props.desc
         a.news__button.button.js-more-show(href="#") Подробнее

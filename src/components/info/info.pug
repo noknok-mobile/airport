@@ -5,6 +5,6 @@ mixin info(title, caption, button)
             block
         if(caption)
             .info__footer 
-                .info__caption!= caption
+                .info__caption.text!= caption
                 .info__action
                     a.button(href="#")= button

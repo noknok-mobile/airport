@@ -11,6 +11,7 @@
 
     &__title {
         font-size: $text;
+        margin-bottom: 25px;
     }
 
     &__number {
@@ -30,6 +31,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 90px);
+    gap: 45px 70px;
     @media(max-width:$breakpoint-phone) {
         grid-template-columns: 100%;
         grid-template-rows: repeat(3, 90px);

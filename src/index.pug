@@ -22,7 +22,7 @@ block content
 
     .screen.screen_single.screen_center#timer
         .title До ввода объекта в эксплуатацию
-        .text по предварительной оценке экспертов (20 декабря 2023г.):
+        .timer__subtitle.text по предварительной оценке экспертов (20 декабря 2023г.):
         include /components/timer/timer
                 
     .screen.screen_split#indexes
@@ -56,10 +56,10 @@ block content
         .screen__section.screen__section_text 
             +info("Оставайтесь на связи")
                 p Мы готовы ответить на ваши вопросы и предложения по телефону:
-                a(href="tel:+"+phone)= phone
+                a(class="contacts-link" href="tel:+"+phone)= phone
                 |
                 | или на адрес электронной почты: 
-                a(href="mailto:"+mail)= mail
+                a(class="contacts-link" href="mailto:"+mail)= mail
                 |
                 | c 08:00 утра и до 20:00 вечера по Москве.
                 form.feedback(action="")

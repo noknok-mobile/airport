@@ -17,7 +17,7 @@ function compileHtml() {
     return src('src/index.pug')
         .pipe(pug({
             pretty: true,
-            basedir: '/mnt/c/Users/noknok/Documents/krd_air/airport_krd/src/'
+            basedir: './src/'
 
         }))
         .pipe(dest('build/'));
@@ -26,7 +26,8 @@ function compileHtml() {
 function server() {
     browserSync.init({
         server: {
-            baseDir: "./build/"
+            baseDir: "./build/",
+            ghostMode: false
         }
     });
     watch("build/").on('change', browserSync.reload);

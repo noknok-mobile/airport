@@ -15,4 +15,11 @@
     background: transparent;
     color: inherit;
     font-weight: 300;
+
+    &.contact_btn{
+    margin-top: -13px;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    }
 }

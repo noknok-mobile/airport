@@ -21,5 +21,15 @@
     width: 75%;
     display: flex;
     justify-content: center;
+   
+    &.contact_btn:hover {
+    background-color: #009840;
+    border: 2px solid #009840;
+    }
+    }
+    
+    &.download_button:hover{
+    background-color: #009840;
+    border: 2px solid #009840;
     }
 }

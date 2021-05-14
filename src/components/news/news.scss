@@ -76,3 +76,8 @@
     appearance: none;
     cursor: pointer;
 }
+#news{
+    .title{
+        cursor: url(/image12.svg), default;
+    }
+}

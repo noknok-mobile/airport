@@ -4,7 +4,10 @@
     grid-template-rows: repeat(3, 1fr);
     height: 100%;
     width: 100%;
+    cursor: url(/image13.svg), default;
     &__item{
         border: 1px solid $inactive;
+        height: 0px;
+        width: 0px;
     }
 }

@@ -2,10 +2,13 @@
     position: relative;
     height: 100vh;
     &_single {
-        padding: $column;
+        // padding: $column;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        video{
+            cursor: url(/image11.svg), default;
+        }
     }
 
     &_center {

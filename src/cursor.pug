@@ -1,0 +1,25 @@
+extends /layout/template
+block content
+    .cursor.cursor_fixed
+    .screen#screen1
+        .cursor.cursor_local 
+    .screen#screen2
+    style.
+        .cursor{
+            @include round(80px);
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%,-50%);
+            &_fixed{
+                position: fixed;
+                background-color: royalblue;
+            }
+        }
+        .screen{
+            border: 1px dashed white;
+        }  
+block script 
+    script
+        include cursor.js

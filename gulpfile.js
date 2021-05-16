@@ -14,10 +14,10 @@ const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
 
 function compileHtml() {
-    return src('src/index.pug')
+    return src('src/*.pug')
         .pipe(pug({
             pretty: true,
-            basedir: '/mnt/c/Users/noknok/Documents/krd_air/airport_krd/src/'
+            basedir: './src/'
 
         }))
         .pipe(dest('build/'));
@@ -33,7 +33,7 @@ function server() {
 }
 
 function assets() {
-    return src('assets/*')
+    return src('assets/**/*')
         .pipe(dest('build/'));
 }
 
@@ -52,7 +52,7 @@ function styles() {
 }
 
 function watcher() {
-    watch('src/**/*.pug', compileHtml);
+    watch(['src/**/*.pug','src/**/*.js'], compileHtml);
     watch('src/**/*.scss', styles);
 }
 

@@ -17,9 +17,9 @@
 .menu {
     display: flex;
     flex-direction: column;
-    list-style-type: none;
     padding: 0;
-
+    list-style-type: none;
+    font-weight: 300;
     &__item {
         display: flex;
         align-items: center;
@@ -44,21 +44,19 @@
             content: '';
             display: block;
             background-color: $inactive;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) scale(1);
-            right: -20px;
+            transform: scale(1);
+            transition: transform 0.2s ease-in-out;
+            margin-left: 20px;
         }
         &:hover &-label{
             background-color: white;
             opacity: 1;
             transform: translateY(0);
         }
-        &:hover &-dot{
+        &_current &-dot, &:hover &-dot{
             background-color: white;
-            transform: translateY(-50%) scale(1.2);
+            transform: scale(1.2);
         }
-        &_current {}
     }
 }
 @keyframes fade-tooltip {

@@ -18,3 +18,34 @@
         padding-top: 19px;
     }
 }
+.video-wrapper:fullscreen .js-video-close{
+    display: block;
+    height: 128px;
+    width: 128px;
+    border-radius: 100%;
+    background-color: rgb(0 0 0 / 0%);
+    border-color: white;
+    border-style: ridge;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.js-video-close::after{
+    position: absolute;
+    top: 49px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+.js-video-close::before{
+    position: absolute;
+    top: 49px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #fff;
+    transform: rotate(45deg);
+}   

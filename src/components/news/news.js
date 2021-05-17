@@ -6,4 +6,4 @@ for(let elem of document.querySelectorAll('.js-more-show')){
 }
 document.querySelector('.js-more-close').addEventListener('click', (e)=>{
     document.querySelector('.js-more').classList.remove('js-more_open');
-})
+});

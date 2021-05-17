@@ -10,8 +10,10 @@ block vars
     - const mail = "hello@new.aer.com"
 block content 
     .screen.screen_single#main 
-        video(controls="" muted="" height="100%")
-            source(src="/videoplayback.webm", type="video/webm") 
+        .video-wrapper
+            button.js-video-close 
+            video(muted="" height="100%")
+                source(src="/videoplayback.webm", type="video/webm") 
 
     .screen.screen_split#about
         .screen__section.screen__section_img 
@@ -75,3 +77,4 @@ block content
 block script
     script 
         include /components/news/news.js
+        include /index.js

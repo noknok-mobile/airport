@@ -1,5 +1,7 @@
 nav.menu-wrapper
     ul.menu
         each item in menu 
-            li.menu__item
-                a(href= item.href)= item.label 
+            li
+                a.menu__item(href= item.href)
+                    .menu__item-label= item.label
+                    .menu__item-dot

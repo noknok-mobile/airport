@@ -15,48 +15,52 @@
 }
 
 .menu {
-    // @include widget(true);
     display: flex;
     flex-direction: column;
-    gap: 12px;
     list-style-type: none;
     padding: 0;
-    width: 76px;
 
-    // color: black;
     &__item {
-        display: block;
-        background: $inactive;
-        color: #011936;
-        text-align: center;
-        line-height: 16px;
-        width: 100%;
-        border-radius: 20px;
-        font-size: 9px;
-        text-transform: uppercase;
+        display: flex;
+        align-items: center;
         position: relative;
-
-        &:hover {
-            background-color: white;
+        height: 2rem;
+        &-label{
+            width: 76px;
+            transform: translateY(100%);
+            background: $inactive;
+            color: #011936;
+            text-align: center;
+            line-height: 1rem;
+            border-radius: 20px;
+            font-size: 9px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.2s ease-in-out;
         }
-
-        &::after {
-            $size: 10px;
+        &-dot {
+            @include round(10px);
             content: '';
-            width: $size;
-            height: $size;
-            border-radius: 50%;
             display: block;
-            background-color: inherit;
+            background-color: $inactive;
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%) scale(1);
             right: -20px;
         }
-
+        &:hover &-label{
+            background-color: white;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &:hover &-dot{
+            background-color: white;
+            transform: translateY(-50%) scale(1.2);
+        }
         &_current {}
     }
 }
+
 .menu-burger{
     display: none;
     margin-right: $column;

@@ -36,7 +36,8 @@
             font-size: 9px;
             text-transform: uppercase;
             opacity: 0;
-            transition: transform 0.3s ease-out, opacity 0.2s ease-in-out;
+            transition: all .2s ease-in-out;
+            animation: fade-tooltip 1.5s .4s cubic-bezier(0, 0, 0.58, 1);
         }
         &-dot {
             @include round(10px);
@@ -60,7 +61,22 @@
         &_current {}
     }
 }
-
+@keyframes fade-tooltip {
+    0% {
+        opacity:0;
+    }
+    10% {
+        opacity:1;
+        transform:translateY(0.2rem);
+    }
+    90% {
+        opacity:1;
+        transform:translateY(0);
+    }
+    100% {
+        opacity:0;
+    }
+}
 .menu-burger{
     display: none;
     margin-right: $column;

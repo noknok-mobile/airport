@@ -6,6 +6,7 @@ html {
     --title: 62px;
     --subtitle: 24px;
     --text: 16px;
+    --small: 12px;
     --color-inactive: #C6C6C6;
     @media(max-width: $breakpoint-tablet) {
         --column: 30px;
@@ -25,5 +26,7 @@ $inactive: var(--color-inactive);
 $column: var(--column);
 $title: var(--title);
 $subtitle: var(--subtitle);
+$small: var(--small);
+$smallest: 9px;
 $text: var(--text);
 $top-layout:20; //z-index самого верхнего слоя

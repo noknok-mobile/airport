@@ -19,7 +19,7 @@
     }
 
     &__unit {
-        font-size: 12px;
+        font-size: $small;
 
         @media(max-width:$breakpoint-tablet) {
             font-size: $text;

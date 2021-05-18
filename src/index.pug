@@ -63,20 +63,24 @@ block content
         .screen__section.screen__section_text 
             +info("Оставайтесь на связи")
                 p Мы готовы ответить на ваши вопросы и предложения по телефону:
-                a(class="contacts-link" href="tel:+"+phone)= phone
+                a(class="link" href="tel:+"+phone)= phone
                 |
                 | или на адрес электронной почты: 
-                a(class="contacts-link" href="mailto:"+mail)= mail
+                a(class="link" href="mailto:"+mail)= mail
                 |
                 | c 08:00 утра и до 20:00 вечера по Москве.
-                form.feedback(action="")
+                form.form(action="")
                     input.input(name="name", type="text", placeholder="Ваше имя*")
                     input.input(name="phone", type="tel", placeholder="Номер телефона*")
                     input.input(name="work", type="text", placeholder="Название организации")
                     input.input(name="email", type="email", placeholder="Адрес электронной почты*")
-                    textarea.input.feedback__wide(name="message", rows="10" placeholder="Текст сообщения")
-                    .footnote * Поля обязательны для заполнения
-                    button.button.contact_btn Отправить
+                    .form__wide
+                        textarea.input.input_textarea(name="message", rows="10" placeholder="Текст сообщения")
+                        .form__footnote * Поля обязательны для заполнения
+                    .form__footer.form__wide
+                        button.button Отправить
+                        .form__message Номер телефона указан некорректно
+
                 .copyright © 2021. АО «Международный аэропорт «Краснодар»
 block script
     script 

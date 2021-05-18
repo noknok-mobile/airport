@@ -6,10 +6,17 @@
     background-color: #0A2D58;
     border: none;
     min-height: 50px;
-    padding-left: 19px;
+    padding: 12px 20px;
     color: inherit;
     border-radius: 6px;
     font-family: inherit;
     font-weight: inherit;
     font-size: $text;
+    width: 100%;
+    &_textarea{
+        resize: none;
+    }
+}
+::placeholder{
+    color: $inactive;
 }

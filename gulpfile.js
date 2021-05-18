@@ -20,21 +20,21 @@ function compileHtml() {
             basedir: './src/'
 
         }))
-        .pipe(dest('build/'));
+        .pipe(dest('docs/'));
 }
 
 function server() {
     browserSync.init({
         server: {
-            baseDir: "./build/"
+            baseDir: "./docs/"
         }
     });
-    watch("build/").on('change', browserSync.reload);
+    watch("docs/").on('change', browserSync.reload);
 }
 
 function assets() {
     return src('assets/**/*')
-        .pipe(dest('build/'));
+        .pipe(dest('docs/'));
 }
 
 function styles() {
@@ -48,7 +48,7 @@ function styles() {
             allowEmpty: true
         }).on('error', sass.logError))
         .pipe(postcss(plugins))
-        .pipe(dest('build/'));
+        .pipe(dest('docs/'));
 }
 
 function watcher() {
@@ -74,7 +74,7 @@ function svg() {
                 }
             },
         }))
-        .pipe(dest('build/'));
+        .pipe(dest('docs/'));
 }
 exports.server = parallel(server, watcher);
 exports.build = parallel(compileHtml, styles, assets);

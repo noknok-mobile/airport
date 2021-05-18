@@ -10,7 +10,7 @@
         content: attr(data-text);
         position: absolute;
         vertical-align: bottom;
-        font-size: 16px;
+        font-size: $text;
         bottom: -20px;
         left: 50%;
         transform: translateX(-50%);

@@ -5,7 +5,7 @@
         --number: 26px;
     }
     @media(max-width: $breakpoint-phone ) {
-        --number: 16px;
+        --number: $text;
     }
 
 

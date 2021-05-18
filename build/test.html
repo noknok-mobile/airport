@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Краснодарский аэропорт</title>
+  </head>
+  <body>
+    <header class="header"> <img class="menu-burger" src="burger.svg" alt="">
+      <div class="logo-wrapper"><a href="/"><img class="logo" src="logo.svg"></a></div>
+      <div class="lang"><a class="lang__item" href="/ru">RU </a><a class="lang__item" href="/en">ENG</a></div>
+    </header>
+    <div class="social"><a href="#"> 
+        <svg class="social__item">
+          <use xlink:href="icons.svg#fb"></use>
+        </svg></a><a href="#"> 
+        <svg class="social__item">
+          <use xlink:href="icons.svg#insta"></use>
+        </svg></a></div>
+    <nav class="menu-wrapper">
+      <ul class="menu">
+        <li><a class="menu__item" href="#main">
+            <div class="menu__item-label">Главная</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#about">
+            <div class="menu__item-label">О проекте</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#timer">
+            <div class="menu__item-label">Таймер</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#indexes">
+            <div class="menu__item-label">Показатели</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#gallery">
+            <div class="menu__item-label">Галерея</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#news">
+            <div class="menu__item-label">Новости</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#contacts">
+            <div class="menu__item-label">Контакты</div>
+            <div class="menu__item-dot"></div></a></li>
+      </ul>
+    </nav>
+    <div class="video-wrapper">
+      <video src="videoplayback.webm"></video>
+      <button class="js-video-close">X</button>
+    </div>
+    <style>
+      .js-video-close{
+          display: none;
+          position: absolute;
+          top:30px;
+          right:30px;
+      }
+      .video-wrapper:fullscreen .js-video-close{
+          display: block;
+      }   
+      
+    </style>
+    <script>
+      const videoWrapper = document.querySelector('.video-wrapper');
+      const video = document.querySelector('video');
+      video.onclick = function(){
+          if(!document.fullscreen){
+              videoWrapper.requestFullscreen();
+              video.controls = true;
+          }
+      } 
+      document.querySelector('.js-video-close').addEventListener('click', function(){
+          document.exitFullscreen();
+      })
+      document.addEventListener('fullscreenchange', function(e){
+          if(!document.fullscreen)
+              video.controls = false; 
+      })
+    </script>
+  </body>
+</html>

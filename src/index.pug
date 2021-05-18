@@ -17,11 +17,11 @@ block content
                 </svg>
 
             video.video(muted="" height="100%")
-                source(src="/videoplayback.webm", type="video/webm") 
+                source(src="videoplayback.webm", type="video/webm") 
 
     .screen.screen_split#about
         .screen__section.screen__section_img 
-            +sectionImg(src="/2.jpg")
+            +sectionImg(src="2.jpg")
         .screen__section.screen__section_text 
             +info('Будущее <br> уже наступило')
                 p Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.
@@ -34,7 +34,7 @@ block content
                 
     .screen.screen_split#indexes
         .screen__section.screen__section_img 
-            +sectionImg(src="/4.jpg")
+            +sectionImg(src="4.jpg")
         .screen__section.screen__section_text 
             +info('Новый <br>мультимодальный хаб <br>в цифрах')
                 .index-wrapper
@@ -45,21 +45,21 @@ block content
         .screen__section.screen__section_img
             include /components/gallery/gallery
         .screen__section.screen__section_img
-            +sectionImg(src="/5.jpg")
+            +sectionImg(src="5.jpg")
     
     .screen#news 
         .screen__section
             .title Новости #[br] в ногу со временем
             .news-wrapper 
                 - for(let i =0; i<7; i++)
-                    +news({author: "Витя", photographer: 'Володя', title:"Онлайн-конференция", desc:"Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв."})(src="/5.jpg")
+                    +news({author: "Витя", photographer: 'Володя', title:"Онлайн-конференция", desc:"Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв."})(src="5.jpg")
         .screen__section.screen__section-more.screen__section_text.js-more
             include /components/news/news-more
 
     
     .screen.screen_split#contacts 
         .screen__section.screen__section_img
-            +sectionImg(src="/map.jpg")
+            +sectionImg(src="map.jpg")
         .screen__section.screen__section_text 
             +info("Оставайтесь на связи")
                 p Мы готовы ответить на ваши вопросы и предложения по телефону:

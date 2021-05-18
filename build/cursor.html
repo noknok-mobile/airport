@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Краснодарский аэропорт</title>
+  </head>
+  <body>
+    <header class="header"> <img class="menu-burger" src="/burger.svg" alt="">
+      <div class="logo-wrapper"><a href="/"><img class="logo" src="/logo.svg"></a></div>
+      <div class="lang"><a class="lang__item" href="/ru">RU </a><a class="lang__item" href="/en">ENG</a></div>
+    </header>
+    <div class="social"><a href="#"> 
+        <svg class="social__item">
+          <use xlink:href="icons.svg#fb"></use>
+        </svg></a><a href="#"> 
+        <svg class="social__item">
+          <use xlink:href="icons.svg#insta"></use>
+        </svg></a></div>
+    <nav class="menu-wrapper">
+      <ul class="menu">
+        <li><a class="menu__item" href="#main">
+            <div class="menu__item-label">Главная</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#about">
+            <div class="menu__item-label">О проекте</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#timer">
+            <div class="menu__item-label">Таймер</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#indexes">
+            <div class="menu__item-label">Показатели</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#gallery">
+            <div class="menu__item-label">Галерея</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#news">
+            <div class="menu__item-label">Новости</div>
+            <div class="menu__item-dot"></div></a></li>
+        <li><a class="menu__item" href="#contacts">
+            <div class="menu__item-label">Контакты</div>
+            <div class="menu__item-dot"></div></a></li>
+      </ul>
+    </nav>
+    <div class="cursor cursor_fixed"></div>
+    <div class="screen" id="screen1">
+      <div class="cursor cursor_local"> </div>
+    </div>
+    <div class="screen" id="screen2"></div>
+    <style>
+      .cursor{
+          @include round(80px);
+          background-color: white;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translate(-50%,-50%);
+          &_fixed{
+              position: fixed;
+              background-color: royalblue;
+          }
+      }
+      .screen{
+          border: 1px dashed white;
+      }  
+    </style>
+    <script>let handleMouse = true;
+const cursor = document.querySelector('.cursor_local');
+const globalCursor = document.querySelector('.cursor_fixed');
+
+function mouseHandler(e){
+    console.log({
+        y: e.y, //alias for e.clientY
+        clientY: e.clientY,//относительно viewport . Идеально для курсора на всем сайте с position:fixed
+        layerY: e.layerY,//относительно текущего layer, non-standart, но в последних версиях всех браузеров поддерживается
+        pageY: e.pageY,//относительно document
+        screenY: e.screenY//относительно окна браузера!! это как относительно viewport, но со смещением ок 200px - высота строки поиска. В полноэкранном режиме относительно viewport
+    })
+}
+function globalCursorHandler(e){
+    globalCursor.style.top = `${e.clientY}px`;
+    globalCursor.style.left = `${e.clientX}px`;
+}
+function localCursorHandler(e){
+    // mouseHandler(e);
+    const elemDimensions = e.target.getBoundingClientRect();
+    cursor.style.top = `${e.pageY}px`;
+    cursor.style.left = `${e.pageX}px`;//перескакивет!!!!    
+    // let top = elemDimensions.top;
+    // let bottom = elemDimensions.bottom;
+    // if(e.pageY > top && e.pageY < bottom){
+    // }
+}
+document.body.addEventListener('mousemove', localCursorHandler);
+document.addEventListener('keydown', function(e){
+    if(e.code = "Space") {
+        e.preventDefault();
+        handleMouse = !handleMouse;
+        console.log(`handleMouse = ${handleMouse}`);
+        if(handleMouse) document. body.removeEventListener('mousemove', localCursorHandler);
+        else document.body.addEventListener('mousemove', localCursorHandler);
+    }
+})
+
+
+    </script>
+  </body>
+</html>

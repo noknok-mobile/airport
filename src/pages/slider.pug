@@ -1,0 +1,105 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css")
+
+        //- link(rel="stylesheet" href="main.css")
+        script(src="https://unpkg.com/swiper/swiper-bundle.min.js") 
+    body 
+        .swiper-container.slider-container
+            .swiper-wrapper.slider-wrapper
+                .swiper-slide.slide(data-hash="intro") 1
+                .swiper-slide.slide(data-hash="about") 2
+                .swiper-slide.slide(data-hash="timer") 3
+                .swiper-slide.slide(data-hash="news") 4
+                .swiper-slide.slide(data-hash="contacts") 5 
+            .swiper-pagination
+        .menu.noSwiping 
+            .menu-wrapper
+                .menu__item 1
+                .menu__item 2
+                .menu__item 3
+                .menu__item 4
+                .menu__item 5
+        style. 
+
+            html,
+            body {
+                position: relative;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .swiper-container {
+                width: 100%;
+                height: 100%;
+            }
+
+            .swiper-slide {
+                text-align: center;
+                font-size: 18px;
+                background: #fff;
+
+                /* Center slide text vertically */
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+
+            .swiper-slide img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        script.
+            const menu = new Swiper('.menu', {
+                    wrapperClass:'menu-wrapper',
+                    containerModifierClass:'menu-container-',
+                    slideActiveClass:'menu__item_active',
+                    slideClass:'menu__item',
+                    direction: 'vertical',
+                    watchOverflow: true,
+                    freeMode: true,
+                    width:40,
+                    vertical: true,
+                    slidesPerView: 'auto',
+            });
+            const swiper = new Swiper('.swiper-container', {
+                on:{
+                    reachEnd: function(e){
+                        console.log(e);
+                        //- swiper.slideTo(0, 200, false);
+                    }
+                },
+                direction: 'vertical',
+                slidesPerView: 1,
+                hashNavigation:true,
+                //- spaceBetween: 30,
+                mousewheel: true,
+                //- pagination: {
+                //-     el: '.swiper-pagination',
+                //-     clickable: true,
+                //- },
+            });
+            menu.controller.control = swiper;
+            swiper.controller.control = menu;
+
+            //- //использовать хеш
+            //- //нужна подсветка точек меню и вывод активного пункта
+            //- как это сделать?
+            //- а что если меню и слайдер сделать двумя связанными слайдерами

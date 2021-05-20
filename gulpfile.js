@@ -14,7 +14,7 @@ const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
 
 function compileHtml() {
-    return src('src/*.pug')
+    return src('src/pages/*.pug')
         .pipe(pug({
             pretty: true,
             basedir: './src/'
@@ -51,9 +51,16 @@ function styles() {
         .pipe(dest('build/'));
 }
 
+function scripts(){
+    return src('src/pages/*.js')
+    .pipe(dest('build/js'));
+}
+
 function watcher() {
     watch(['src/**/*.pug','src/**/*.js'], compileHtml);
     watch('src/**/*.scss', styles);
+    watch('src/pages/*.js', scripts);
+    
 }
 
 function svg() {
@@ -77,6 +84,6 @@ function svg() {
         .pipe(dest('build/'));
 }
 exports.server = parallel(server, watcher);
-exports.build = parallel(compileHtml, styles, assets);
+exports.build = parallel(compileHtml, styles, assets, scripts);
 exports.styles = series(styles);
 exports.svg = series(svg);

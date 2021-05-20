@@ -1,0 +1,41 @@
+
+extends /layout/template
+include /components/screen/screen__section_img
+include /components/info/info
+include /components/index/index
+include /components/news/news
+block vars 
+    - const indexes = [{title: "С 2023 года прогнозируется:", number: "6 500 000", unit:"пассажиров в год"}]
+    - const phone = "8 800 301 19 91"
+    - const mail = "hello@new.aer.com"
+block content 
+                
+    .screen.section.screen_split#indexes
+            +info('Новый <br>мультимодальный хаб <br>в цифрах')
+                .swiper-container
+                    .swiper-wrapper.index-wrapper
+                        - for (let x = 0; x < 6; x++)
+                            +index(indexes[0])(class="swiper-slide")
+    
+
+block script
+    //- script(src="/index.js")
+    style.
+        .info{
+            min-width:0;
+            min-height:0;
+        }
+    script(src="https://unpkg.com/swiper/swiper-bundle.min.js") 
+    script 
+        //- include /components/news/news.js
+        . 
+             var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                //- slidesPerColumn: 2,
+                //- spaceBetween: 30,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+

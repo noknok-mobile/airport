@@ -1,0 +1,97 @@
+#timer {
+    background-image: url('/3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 26px;
+
+    &__wide {
+        grid-column: 1/3;
+        position: relative;
+    }
+    &__footer{
+        margin-top: 10px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__footnote{
+        font-size: $smallest;
+        text-align: right;
+        position: absolute;
+        bottom: -25px;
+        right: 0;
+        color: $inactive;
+    }
+    &__message{
+        font-size: $small;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        animation: fade 0.2s ease-in-out reverse forwards 1;
+
+        &_active{
+            display: block;
+            animation: fade 0.2s ease-in-out forwards 1;
+        }
+        &::before{
+            content: url("data:image/svg+xml,%3Csvg width='13' height='13' viewBox='0 0 13 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 1L1 12M1 1L12 12' stroke='%23FF2C72' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            margin-right: 10px;
+        }
+    }
+}
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.js-video-close{
+    display: none;
+}
+.video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    &-wrapper{
+        max-height: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    &-wrapper:fullscreen .js-video-close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        appearance: none;
+        color: white;
+        @include round(128px);
+        background-color: transparent;
+        border: 2px solid currentColor;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        
+    }
+}
+
+.link{
+    font-weight: 400;
+}
+
+.copyright{
+    font-size: $small;
+    position: absolute;
+    bottom: -72px;
+}
+.fp-tableCell{
+    display: contents;
+}

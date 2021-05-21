@@ -1,6 +1,6 @@
 .title {
     font-size: $title;
-    font-weight: 200;
+    font-weight: 300;
 }
 .subtitle {
     font-size: $subtitle;
@@ -9,7 +9,6 @@
 .text {
     font-size: $text;
     font-weight: 300;
-    text-align: justify;
-    line-height: 150%;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }

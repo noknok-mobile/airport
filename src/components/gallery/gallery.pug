@@ -1,13 +1,7 @@
+block script append
+- const images = ['2.png', '1.png', '4.png', 'pexels-francesco-ungaro-97558.png', '1-1.png','3.png']
+
 .gallery   
-    .gallery__item
-        img(src="/2.png")
-    .gallery__item
-        img(src="/1.png")
-    .gallery__item
-        img(src="/4.png")
-    .gallery__item
-        img(src="/pexels-francesco-ungaro-97558.png")
-    .gallery__item
-        img(src="/1-1.png")
-    .gallery__item
-        img(src="/3.png")             
+    each image in images
+        a.gallery__item-wrapper 
+            img.gallery__item(src= image)

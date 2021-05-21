@@ -1,5 +1,5 @@
 .header{
-    padding: 40px;
+    padding: $template-offset;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -18,14 +18,14 @@
     width: 82px;
     @media(max-width:$breakpoint-tablet){
         position: absolute;
-        right: 40px;
+        right: $template-offset;
     }
 }
 .social{
     @include widget;
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: $template-offset;
+    right: $template-offset;
     width: 70px;
     z-index: $top-layout;
     &__item{

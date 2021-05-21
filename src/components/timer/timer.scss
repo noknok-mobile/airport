@@ -1,12 +1,22 @@
-.timer{
+.timer {
     display: flex;
     justify-content: space-between;
     font-size: 96px;
     font-weight: 200;
-    &__digit{
+
+    @media(max-width:$breakpoint-tablet) {
+        font-size: 72px;
+    }
+
+    @media(max-width:$breakpoint-phone) {
+        font-size: 36px;
+    }
+
+    &__digit {
         position: relative;
     }
-    &__digit::after{
+
+    &__digit::after {
         content: attr(data-text);
         position: absolute;
         vertical-align: bottom;
@@ -16,15 +26,35 @@
         transform: translateX(-50%);
         font-weight: 300;
     }
-    &__delimiter{
-        margin: 0px 30px;
+
+    &__delimiter {
+        margin: 0px 0.3em;
     }
-    &__subtitle{
-        padding-bottom: 75px;
-        margin-top: -5px;
+
+    &__sec {
+        width: 1.5em;
+
+        @media(max-width:$breakpoint-phone) {}
     }
-    &__sec{
-        width: 100px;
+}
+
+.timer-wrapper {
+    padding: 36px;
+}
+
+.timer-header {
+    
+    margin-bottom: 65px;
+    @media(max-width:$breakpoint-tablet) {
+        margin-bottom: 50px;
+    }
+    @media(max-width:$breakpoint-phone) {
+        margin-bottom: 34px;
+    }
+    &__title {
+        @media(max-width:$breakpoint-tablet) {
+            margin-bottom: 10px;
+        }
     }
 
 }

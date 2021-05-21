@@ -1,12 +1,14 @@
 .screen {
     position: relative;
-    height: max(100vh, 900px);
+    // height: max(100vh);
+    height: max(100vh, 900px); //@debug
+
     &_single {
-        // padding: $column;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        video{
+
+        video {
             cursor: url(/image11.svg), default;
         }
     }
@@ -23,17 +25,22 @@
 
     &__section {
         padding: $column;
-        padding-right: calc(2*var(--column));
-
         &-more {
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             transition: transform 0.5s ease-in;
-            background-image:linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75)), url('2.jpg');
+            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75)), url('2.jpg');
             background-size: cover;
             width: 50%;
+        }
+
+        &_text {
+            padding-right: calc(2*var(--column));
+            @media(max-width: $breakpoint-tablet) and (min-width: $breakpoint-phone) {
+                padding: 36px 90px;
+            }
         }
 
         &_img {

@@ -17,7 +17,7 @@ block content
                 </svg>
 
             video.video(muted="" height="100%")
-                source(src="/videoplayback.webm", type="video/webm") 
+                source(src="/videoplayback.webm" type="video/webm") 
 
     .screen.section.screen_split#about
         .screen__section.screen__section_img 
@@ -31,22 +31,27 @@ block content
         .title До ввода объекта в эксплуатацию
         .timer__subtitle.text по предварительной оценке экспертов (20 декабря 2023г.):
         include /components/timer/timer
-                
+
     .screen.section.screen_split#indexes
         .screen__section.screen__section_img 
             +sectionImg(src="/4.jpg")
         .screen__section.screen__section_text 
             +info('Новый <br>мультимодальный хаб <br>в цифрах')
-                .index-wrapper
-                    - for (let x = 0; x < 6; x++)
-                        +index(indexes[0])
+                .index-slider
+                    .glide__track(data-glide-el="track")
+                        .glide__slides
+                            - for(let i = 0; i<3; i++)
+                                .index-wrapper
+                                    - for (let x = 0; x < 6; x++)
+                                        +index(indexes[0])
+
 
     .screen.section.screen_split#gallery
         .screen__section.screen__section_img
             include /components/gallery/gallery
         .screen__section.screen__section_img
             +sectionImg(src="/5.jpg")
-    
+
     .screen.section#news 
         .screen__section
             .title Новости #[br] в ногу со временем
@@ -55,8 +60,9 @@ block content
                     +news({author: "Витя", photographer: 'Володя', title:"Онлайн-конференция", desc:"Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв."})(src="/5.jpg")
         .screen__section.screen__section-more.screen__section_text.js-more
             include /components/news/news-more
+            include /components/news/news.js
 
-    
+
     .screen.section.screen_split#contacts 
         .screen__section.screen__section_img
             +sectionImg(src="/map.jpg")
@@ -70,12 +76,12 @@ block content
                 |
                 | c 08:00 утра и до 20:00 вечера по Москве.
                 form.form(action="")
-                    input.input(name="name", type="text", placeholder="Ваше имя*")
-                    input.input(name="phone", type="tel", placeholder="Номер телефона*")
-                    input.input(name="work", type="text", placeholder="Название организации")
-                    input.input(name="email", type="email", placeholder="Адрес электронной почты*")
+                    input.input(name="name" type="text" placeholder="Ваше имя*")
+                    input.input(name="phone" type="tel" placeholder="Номер телефона*")
+                    input.input(name="work" type="text" placeholder="Название организации")
+                    input.input(name="email" type="email" placeholder="Адрес электронной почты*")
                     .form__wide
-                        textarea.input.input_textarea(name="message", rows="10" placeholder="Текст сообщения")
+                        textarea.input.input_textarea(name="message" rows="10" placeholder="Текст сообщения")
                         .form__footnote * Поля обязательны для заполнения
                     .form__footer.form__wide
                         button.button Отправить
@@ -83,13 +89,6 @@ block content
 
                 .copyright © 2021. АО «Международный аэропорт «Краснодар»
 block script
-    script(src="/index.js")
+    script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js") 
-    script 
-        include /components/news/news.js
-        .
-            //- var myFullpage = fullpage('#fullpage',{
-            //-     autoScrolling:true,
-            //-     scrollHorizontally: true,
-            //-     loopBottom: true
-            //- });
+    script(src="js/index.js")

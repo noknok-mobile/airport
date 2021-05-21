@@ -9,33 +9,23 @@ block vars
     - const phone = "8 800 301 19 91"
     - const mail = "hello@new.aer.com"
 block content 
-                
+
     .screen.section.screen_split#indexes
+        .screen__section.screen__section_img 
+            +sectionImg(src="/4.jpg")
+        .screen__section.screen__section_text 
             +info('Новый <br>мультимодальный хаб <br>в цифрах')
-                .swiper-container
-                    .swiper-wrapper.index-wrapper
-                        - for (let x = 0; x < 6; x++)
-                            +index(indexes[0])(class="swiper-slide")
-    
+               .index-slider
+                    .glide__track(data-glide-el="track")
+                        .glide__slides
+                            - for(let i = 0; i<3; i++)
+                                .index-wrapper
+                                    - for (let x = 0; x < 6; x++)
+                                        +index(indexes[0])
 
 block script
     //- script(src="/index.js")
-    style.
-        .info{
-            min-width:0;
-            min-height:0;
-        }
-    script(src="https://unpkg.com/swiper/swiper-bundle.min.js") 
-    script 
-        //- include /components/news/news.js
-        . 
-             var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 1,
-                //- slidesPerColumn: 2,
-                //- spaceBetween: 30,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
+    script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js") 
+    script(src="js/index.js")
+
 

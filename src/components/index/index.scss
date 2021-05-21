@@ -4,18 +4,23 @@
     @media(max-width: $breakpoint-tablet) {
         --number: 26px;
     }
-    @media(max-width: $breakpoint-phone ) {
-        --number: $text;
+    @media(max-width: $breakpoint-phone) {
+        --number: 16px;
     }
 
-
+    font-weight: 200;
     &__title {
         font-size: $text;
-        margin-bottom: 25px;
+        margin-bottom: $small;
+        @media(max-width: $breakpoint-phone) {
+            margin-bottom: 0;
+        }
     }
 
     &__number {
         font-size: var(--number);
+        line-height: 1.125;
+
     }
 
     &__unit {
@@ -29,13 +34,19 @@
 
 .index-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 90px);
-    gap: 45px 70px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: 3rem 0;
     @media(max-width:$breakpoint-phone) {
         grid-template-columns: 100%;
-        grid-template-rows: repeat(3, 90px);
         grid-auto-flow: column;
         overflow: hidden;
+    }
+}
+
+#indexes{
+    .info__content{
+        // cursor: url(/image12.svg), default;
     }
 }

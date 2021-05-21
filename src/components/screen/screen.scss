@@ -1,6 +1,6 @@
 .screen {
     position: relative;
-    height: 100vh;
+    height: max(100vh, 900px);
     &_single {
         // padding: $column;
         display: flex;
@@ -18,7 +18,7 @@
 
     &_split {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     &__section {
@@ -42,8 +42,9 @@
         }
     }
     @media(max-width:$breakpoint-tablet) {
-        display: block;
-        height: unset;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: 1fr 1fr;
+        // height: unset;
     }
 }
 

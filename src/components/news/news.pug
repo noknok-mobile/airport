@@ -1,10 +1,17 @@
 mixin news(props)
-    .news 
+    //- - let desc = props.desc.join(' ').slice(0, 27)
+    .news&attributes(attributes)
         .news__img-wrapper 
             img.news__img(src= attributes.src)
             .news__caption
+                .news__src-links 
+                    a(href="#") 
+                        svg.news__src-link #[use(xlink:href='icons.svg#fb')]
+                    a(href="#") 
+                        svg.news__src-link #[use(xlink:href='icons.svg#insta')]
+
                 p Автор: #[strong #{props.author}] 
                 p Фото: #[strong #{props.photographer}] 
         .news__title= props.title
-        .news__desc.text= props.desc
-        a.news__button.button.js-more-show(href="#") Подробнее
+        .news__desc.text= props.shortDesc
+        a.news__button.button.js-more-show(href= attributes.href) Подробнее

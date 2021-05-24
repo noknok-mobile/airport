@@ -1,20 +1,36 @@
-.news{
+$news-slide:transform 0.6s ease-out;
+
+.news {
     display: flex;
     flex-direction: column;
     align-items: start;
-    &__img{
+    direction: initial;
+
+    &__img {
         height: 100%;
         width: 100%;
         object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-    
-    &__img-wrapper{
+
+    &__img-wrapper {
         width: 100%;
-        aspect-ratio: 1 / 1;
         overflow: hidden;
         position: relative;
+        height: 0;
+        padding-bottom: 100%;
     }
-    &__caption{
+
+    &__desc {
+        white-space: normal;
+        line-height: 1.25;
+    }
+
+    &__caption {
         position: absolute;
         top: 0;
         left: 0;
@@ -27,36 +43,72 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 18px 1rem;
+        transform: translateY(100%);
+        transition: all 0.3s $easing;
     }
-    &__button{
+
+    &__button {
         margin-top: 20px;
         opacity: 0;
     }
-    &:hover &__caption, &:hover &__button{
+    & &__caption{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    &:hover &__caption{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    &:hover &__button {
         opacity: 1;
     }
-    &__title{
+
+    &__title {
         margin-bottom: 10px;
         margin-top: 34px;
         font-size: $subtitle;
         font-weight: 500;
     }
 }
-.news-wrapper{
-    margin-top: 42px;
+
+.news-wrapper {
+    margin: 42px calc(-1*var(--column));
+    padding: 0 $column;
     display: grid;
-    grid: 1fr / auto-flow ;
+    grid: 1fr / auto-flow;
     grid-auto-columns: calc(4*var(--column));
     gap: $column;
     overflow-x: hidden;
+    cursor: grab;
+    direction: rtl;
+    transition: $news-slide;
+
+
+    &_fold {
+        transform: translateX(-50vw);
+    }
 }
-.js-more{
+
+.news-more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: $news-slide;
+    background-size: cover;
+    width: 50%;
+    overflow: hidden;
+}
+
+.js-more {
     transform: translateX(100%);
+
     &_open {
         transform: translateX(0);
-    }  
+    }
 }
-.js-more-close{
+
+.js-more-close {
     @include round(133px);
     position: absolute;
     top: 165px;
@@ -69,9 +121,49 @@
     appearance: none;
     cursor: pointer;
     background-image: url(/image14.svg);
+    z-index: $top-layout;
 }
-#news{
-    .title{
+
+#news {
+    .title {
         cursor: url(/image12.svg), default;
+    }
+}
+
+.news-detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // display: none;
+    height: 100%;
+
+    &_hidden {}
+
+    transform: translateX(-100%);
+    animation: slideFrom 0.5s $easing;
+
+    &__img {
+        &-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75));
+        }
+
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+    }
+
+    &_current {
+        // display: block;
+        z-index: $top-layout / 2;
+        animation: slideTo 0.5s $easing;
+        transform: translateX(0);
     }
 }

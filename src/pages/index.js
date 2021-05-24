@@ -31,18 +31,20 @@ const indexSlider = new Glide(indexSliderContainer, {
 }).mount();
 
 //gallery
-const activeClass = "gallery__image_current";
 
-function showActiveImage(id) {
-  const elements = document.querySelectorAll(".gallery__image");
+function showActiveItem(id, className) {
+  const activeClass = `${className}_current`;
+  const elements = document.querySelectorAll(`.${className}`);
   for (elem of elements) {
     elem.classList.remove(activeClass);
   }
   document.querySelector(`[data-link=${id}]`).classList.add(activeClass);
 }
+
 window.addEventListener("hashchange", function () {
+  const galleryItemName = "gallery__image";
   let targetId = location.hash.replace(/#/, "");
 
   if (document.querySelector(`[data-link=${targetId}]`))
-    showActiveImage(targetId);
+    showActiveItem(targetId, galleryItemName);
 });

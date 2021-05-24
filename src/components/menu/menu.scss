@@ -3,7 +3,7 @@
     top: 50%;
     right: 27px;
     transform: translateY(-50%);
-    z-index: $top-layout/2;
+    z-index: $top-layout;
 
     @media(max-width:$breakpoint-tablet) {
         top: 0;
@@ -37,7 +37,7 @@
             text-transform: uppercase;
             opacity: 0;
             transition: all .2s ease-in-out;
-            animation: fade-tooltip 1.5s .4s cubic-bezier(0, 0, 0.58, 1);
+            animation: fade-tooltip 1.5s .4s $easing;
         }
         &-dot {
             @include round(10px);

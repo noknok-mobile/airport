@@ -53,11 +53,8 @@ block content
                                         +index(indexes[0])
 
 
-    .screen.section.screen_split#gallery
-        .screen__section.screen__section_img
-            include /components/gallery/gallery
-        .screen__section.screen__section_img
-            +sectionImg(src="/5.jpg")
+    .screen.section.screen_split#gallery.gallery
+        include /components/gallery/gallery
 
     .screen.section#news 
         .screen__section
@@ -99,3 +96,5 @@ block script
     script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js") 
     script(src="js/index.js")
+    script
+        include test.js

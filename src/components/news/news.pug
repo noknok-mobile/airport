@@ -3,13 +3,12 @@ mixin news(props)
     .news&attributes(attributes)
         .news__img-wrapper 
             img.news__img(src= attributes.src)
+            .news__link-wrapper 
+                a(href="#", target="_blank") 
+                    svg.news__link #[use(xlink:href='icons.svg#fb')]
+                a(href="#", target="_blank") 
+                    svg.news__link #[use(xlink:href='icons.svg#insta')]
             .news__caption
-                .news__src-links 
-                    a(href="#") 
-                        svg.news__src-link #[use(xlink:href='icons.svg#fb')]
-                    a(href="#") 
-                        svg.news__src-link #[use(xlink:href='icons.svg#insta')]
-
                 p Автор: #[strong #{props.author}] 
                 p Фото: #[strong #{props.photographer}] 
         .news__title= props.title

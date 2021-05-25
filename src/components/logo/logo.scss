@@ -4,7 +4,7 @@
 
 .logo-wrapper {
     @media(max-width:$breakpoint-tablet) {
-        margin-left: calc(3*var(--column));
+        margin-left: calc(2*var(--column));
         @media (min-width:$breakpoint-phone) {
             position: relative;
             max-width: 240px;

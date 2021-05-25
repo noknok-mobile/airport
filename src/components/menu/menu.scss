@@ -25,7 +25,7 @@
     transition: transform 0.3s ease-in;
     background: $accent;
     padding: 150px $column;
-    animation: slideFrom 0.4s ease-in reverse forwards;
+    animation: slideFrom 0.4s ease-in-out alternate-reverse 2;
     transform: translateX(-100%);
     &_closed{
         display: none;

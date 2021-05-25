@@ -1,14 +1,17 @@
 const menuToggle = document.querySelector('.js-menu-toggle');
-const mobileMenu = document.querySelector('.js-menu');
+const menuContainer = document.querySelector('.menu-wrapper');
+const mobileMenu = document.querySelector('.menu-mobile');
 menuToggle.addEventListener('click', function(){
-    if(mobileMenu.classList.contains('menu-mobile_closed')) openMenu();
-    else closeMenu();
+    menuContainer.classList.contains('js-menu_open')? closeMenu(): openMenu();
 })
 function openMenu(){
-    mobileMenu.classList.remove('menu-mobile_closed');
+    mobileMenu.style.animationPlayState = 'running';
+    menuContainer.classList.add('js-menu_open');
+
     // document.body.addEventListener('click',closeMenu);
 }
-function closeMenu(e){
+function closeMenu(){
+    console.log('clode');
     mobileMenu.style.animationPlayState = 'running';
     // console.log(e.target);
     // if(!mobileMenu.contains(e.target)) {
@@ -16,8 +19,12 @@ function closeMenu(e){
     // }
 }
 mobileMenu.onanimationend = function(e){
-    e.target.classList.add('menu-mobile_closed');
+    menuContainer.classList.remove('js-menu_open');
+    e.target.style.animationPlayState = 'paused';
+    console.log('end');
 }
 mobileMenu.onanimationiteration = function(e){
     e.target.style.animationPlayState = 'paused';
+    console.log('iteration');
+
 }

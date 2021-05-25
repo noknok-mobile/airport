@@ -3,15 +3,32 @@
     top: 50%;
     right: 27px;
     transform: translateY(-50%);
-    z-index: $top-layout;
+    z-index: $top-layout - 4;
+    @media(max-width:$breakpoint-tablet) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: unset;
+        display: none;
+    }
 
+}
+.js-menu_open{
+    @media(max-width:$breakpoint-tablet) {
+        display: block;
+    }
+
+}
+.menu-desktop{
     @media(max-width:$breakpoint-tablet) {
         display: none;
     }
 }
 .menu-mobile{
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -27,9 +44,6 @@
     padding: 150px $column;
     animation: slideFrom 0.4s ease-in-out alternate-reverse 2;
     transform: translateX(-100%);
-    &_closed{
-        display: none;
-    }
     &__item{
         display: block;
         margin-bottom: 1em;

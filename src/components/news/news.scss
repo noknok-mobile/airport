@@ -1,7 +1,9 @@
-$news-slide:transform 0.6s ease-out;
+$duration: 1.2s;
+$news-easing: ease-in;
+$news-slide: transform $duration $news-easing;
 
 .news {
-    $caption-padding:18px;
+    $caption-padding: 18px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -16,14 +18,21 @@ $news-slide:transform 0.6s ease-out;
         left: 0;
         right: 0;
         bottom: 0;
+
+        &-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+        }
     }
 
-    &__img-wrapper {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-        height: 0;
-        padding-bottom: 100%;
+    &__title {
+        margin-bottom: 10px;
+        margin-top: 34px;
+        font-size: $subtitle;
+        font-weight: 500;
     }
 
     &__desc {
@@ -47,66 +56,88 @@ $news-slide:transform 0.6s ease-out;
         transform: translateY(100%);
         transition: all 0.3s $easing;
     }
-    &__link{
-        &-wrapper{
-            position: absolute;
-            top: $caption-padding;
-            left: $caption-padding;
-            z-index: $top-layout*0.75; 
-            transform: translateX(-200%);  
-            transition: transform 0.2s $easing;     
-        }
+
+    &__link {
         max-width: $caption-padding;
         max-height: $caption-padding;
         display: block;
         margin-bottom: 20px;
         color: $inactive;
-        &:hover{
+
+        &:hover {
             color: white;
         }
+
+        &-wrapper {
+            position: absolute;
+            top: $caption-padding;
+            left: $caption-padding;
+            z-index: $top-layout*0.75;
+            transform: translateX(-200%);
+            transition: transform 0.2s $easing;
+        }
     }
+
     &__button {
         margin-top: 20px;
         opacity: 0;
     }
-    & &__caption{
+
+    & &__caption {
         opacity: 0;
         transform: translateY(100%);
     }
-    &:hover &__caption{
+
+    &:hover &__caption {
         opacity: 1;
         transform: translateY(0);
     }
+
     &:hover &__button {
         opacity: 1;
     }
-    &:hover &__link-wrapper{
+
+    &:hover &__link-wrapper {
         transform: translateX(0);
     }
 
-    &__title {
-        margin-bottom: 10px;
-        margin-top: 34px;
-        font-size: $subtitle;
-        font-weight: 500;
-    }
 }
 
 .news-wrapper {
-    margin: 42px calc(-1*var(--column));
-    padding: 0 $column;
     display: grid;
     grid: 1fr / auto-flow;
     grid-auto-columns: calc(4*var(--column));
     gap: $column;
+    margin: 42px calc(-1*var(--column));
+    padding: 0 $column;
     overflow-x: hidden;
     cursor: grab;
     direction: rtl;
-    transition: $news-slide;
-
+    // transition: $news-slide;
+    animation: unfold $duration $news-easing forwards;
 
     &_fold {
+        animation: fold $duration $news-easing forwards;
+    }
+}
+
+@keyframes fold {
+    0% {
+        width: 100vw;
+    }
+
+    100% {
+        width: 50vw;
+    }
+}
+
+@keyframes unfold {
+    0% {
         transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }
 
@@ -119,6 +150,40 @@ $news-slide:transform 0.6s ease-out;
     background-size: cover;
     width: 50%;
     overflow: hidden;
+}
+
+.news-detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    animation: slideFrom 0.5s $easing;
+
+    &_current {
+        z-index: $top-layout / 2;
+        animation: slideTo 0.5s $easing;
+        transform: translateX(0);
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+
+        &-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75));
+        }
+    }
+
 }
 
 .js-more {
@@ -148,43 +213,5 @@ $news-slide:transform 0.6s ease-out;
 #news {
     .title {
         cursor: url(/image12.svg), default;
-    }
-}
-
-.news-detail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    // display: none;
-    height: 100%;
-
-    &_hidden {}
-
-    transform: translateX(-100%);
-    animation: slideFrom 0.5s $easing;
-
-    &__img {
-        &-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75));
-        }
-
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        mix-blend-mode: multiply;
-    }
-
-    &_current {
-        // display: block;
-        z-index: $top-layout / 2;
-        animation: slideTo 0.5s $easing;
-        transform: translateX(0);
     }
 }

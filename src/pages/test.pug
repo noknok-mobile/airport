@@ -79,10 +79,13 @@ block content
             .news-wrapper.scrollMouse.dragscroll.js-detail
                 each newsItem in news
                     +news(newsItem)(src= newsItem.image, href= `#${newsItem.id}`)
-        .news-more.js-more
+        .screen__section.news-more.js-more
             button.js-more-close(onclick= 'closeDetail()')
             each newsItem in news 
                 +newsDetail(newsItem)(link= newsItem.id).screen__section.screen__section_text
+
+
+
 block script
     script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js") 

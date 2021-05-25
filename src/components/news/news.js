@@ -20,6 +20,7 @@ function closeDetail(){
     document.querySelector('.news-wrapper').classList.remove('news-wrapper_fold');
 }
 
+
 const maxTextLength = 87;
 const maxTitleLength = 27;
 

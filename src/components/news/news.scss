@@ -33,26 +33,6 @@ $news-slide: transform $duration $news-easing;
 
 }
 
-@keyframes fold {
-    0% {
-        width: 100vw;
-    }
-
-    100% {
-        width: 50vw;
-    }
-}
-
-@keyframes unfold {
-    0% {
-        transform: translateX(-50vw);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
 .news {
     $caption-padding: 18px;
     display: flex;

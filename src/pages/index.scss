@@ -51,15 +51,7 @@
     }
 }
 
-@keyframes fade {
-    0% {
-        opacity: 0;
-    }
 
-    100% {
-        opacity: 1;
-    }
-}
 
 .js-video-close {
     display: none;
@@ -137,28 +129,6 @@
         background-color: currentColor;
         border-radius: 10px;
         animation: animouse 1.5s linear infinite;
-    }
-}
-
-@keyframes animouse {
-    0% {
-        opacity: 1;
-        top: 10%;
-    }
-
-    15% {
-        opacity: 1;
-        top: 30%;
-    }
-
-    50% {
-        opacity: 0;
-        top: 30%;
-    }
-
-    100% {
-        opacity: 0;
-        top: 10%;
     }
 }
 

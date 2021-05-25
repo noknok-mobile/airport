@@ -16,7 +16,7 @@ html {
     }
     
     @media(max-width: $breakpoint-phone) {
-        --column: 20px;
+        --column: calc(100vw / 16);
         --title: 24px;
         --subtitle:16px;
         --text: 11px;
@@ -33,3 +33,4 @@ $top-layout:20; //z-index самого верхнего слоя
 $template-offset: 40px;
 $easing: cubic-bezier(0, 0, 0.58, 1);
 $bckg:#011936;
+$accent: #009840;

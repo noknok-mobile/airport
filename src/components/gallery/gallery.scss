@@ -76,23 +76,3 @@
 
     }
 }
-
-@keyframes slideTo {
-    0% {
-        transform: translateX(100%);
-    }
-
-    80% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideFrom {
-    0% {
-        transform: translateX(0);
-    }
-
-    80% {
-        transform: translateX(-100%);
-    }
-}

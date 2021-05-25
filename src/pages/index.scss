@@ -91,16 +91,19 @@
 
 .copyright {
     font-size: $small;
-    position: absolute;
-    bottom: -72px;
+    font-weight: 200;
+    &_footer{
+        position: absolute;
+        bottom: $template-offset;
+        padding-left: $column;
+    }
+    &_menu{
+        margin-top: 1.5rem;
+    }
 }
 
 .fp-tableCell {
     display: contents;
-}
-
-.intro {
-    margin: 0;
 }
 
 .mouse {
@@ -112,11 +115,11 @@
     margin: 0 auto -2px;
     border: 2px solid;
     border-radius: 23px;
-
+    
     @media(max-width:$breakpoint-tablet) {
         display: none;
     }
-
+    
     &::after {
         content: '';
         position: absolute;
@@ -134,14 +137,15 @@
 
 .intro {
     position: relative;
-
+    margin: 0;
+    
     &__footer {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         padding: 25px $template-offset;
-        z-index: $top-layout;
+        z-index: $top-layout / 2;
     }
 
     &__button {

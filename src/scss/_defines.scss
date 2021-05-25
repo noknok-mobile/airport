@@ -12,6 +12,7 @@ html {
         --column: calc(100vw / 24);
         --title: 48px;
         --subtitle: 18px;
+        --menu: 18px;
         --text: 14px;
     }
     
@@ -19,6 +20,7 @@ html {
         --column: calc(100vw / 16);
         --title: 24px;
         --subtitle:16px;
+        --menu:14px;
         --text: 11px;
     }
 }
@@ -29,6 +31,7 @@ $subtitle: var(--subtitle);
 $small: var(--small);
 $smallest: 9px;
 $text: var(--text);
+$menu: var(--menu);
 $top-layout:20; //z-index самого верхнего слоя
 $template-offset: 40px;
 $easing: cubic-bezier(0, 0, 0.58, 1);

@@ -5,3 +5,15 @@ nav.menu-wrapper
                 a.menu__item(href= item.href)
                     .menu__item-label= item.label
                     .menu__item-dot
+
+nav.menu-mobile.menu-mobile_closed.js-menu
+    ul.menu
+        each item in menu 
+            li
+                a.menu-mobile__item(href= item.href)= item.label
+    .menu-mobile__footer
+        a(href= airlink, target="_blank").button.menu-mobile__link Сайт аэропорта
+        +copyright.copyright_menu
+
+script 
+    include menu.js

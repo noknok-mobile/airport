@@ -1,5 +1,8 @@
 - const menu = [{href:"#main", label:"Главная"},{href:"#about", label:"О проекте"},{href:"#timer", label:"Таймер"},{href:"#indexes", label:"Показатели"},{href:"#gallery", label:"Галерея"},{href:"#news", label:"Новости"},{href:"#contacts", label:"Контакты"}]
 
+mixin copyright 
+    .copyright(class= attributes.class) © 2021. АО «Международный аэропорт «Краснодар»
+
 block vars
     - const title = 'Краснодарский аэропорт'
 
@@ -11,10 +14,11 @@ html(lang="en")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="main.css")
         title= title
-        link(rel="stylesheet", href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css")
+        link(rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css")
     body
         header.header 
-            img.menu-burger(src="/burger.svg", alt="")
+            button.menu-burger.js-menu-toggle
+                img(src="/burger.svg" alt="")
             .logo-wrapper
                 a(href="/") #[img.logo(src="/logo.svg")]
             .lang
@@ -29,3 +33,4 @@ html(lang="en")
         .container#fullpage   
             block content
         block script
+

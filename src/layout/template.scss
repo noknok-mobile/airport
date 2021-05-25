@@ -11,15 +11,15 @@
     right: 0;
     z-index: $top-layout;
     @media(max-width:$breakpoint-tablet){
-        justify-content: start;
-        padding: 2rem $column;
+        // justify-content: start;
+        padding: 2rem $column 0;
     }
 }
 .lang{
     @include widget;
     width: 82px;
     @media(max-width:$breakpoint-tablet){
-        position: absolute;
+        // position: absolute;
         right: $template-offset;
     }
 }

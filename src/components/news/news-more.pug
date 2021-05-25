@@ -1,9 +1,10 @@
 mixin newsDetail(props)
     - let caption = `Автор: ${props.author} | Фото: ${props.photographer}`
-    .news-detail(data-link= attributes.link, class= attributes.class)
-        figure.news-detail__img-wrapper 
+    .news-detail(data-link= attributes.link, class= attributes.class, class= attributes.current? 'news-detail_current':'')
+        figure.news-detail__img-wrapper.screen__section_img 
             img.news-detail__img(src= props.image)
-        +info(props.title, caption, 'Скачать материал')
-            if props.desc
-                each descPart in props.desc 
-                    p= descPart
+        .screen__section.screen__section_text
+            +info(props.title, caption, 'Скачать материал')
+                if props.desc
+                    each descPart in props.desc 
+                        p= descPart

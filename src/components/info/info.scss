@@ -18,6 +18,9 @@
         bottom: 0;
         width: 100%;
         z-index: $top-layout;
+        @media (max-width: $breakpoint-tablet) {
+            display: none;
+        }
     }
     p:not(:first-of-type){
         margin-top: 30px;

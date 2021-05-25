@@ -1,6 +1,57 @@
-$duration: 1.2s;
+$duration: 0.8s;
 $news-easing: ease-in;
 $news-slide: transform $duration $news-easing;
+
+.news-list {
+    display: grid;
+    grid: 1fr / auto-flow;
+    grid-auto-columns: calc(4*var(--column));
+    gap: $column;
+    margin: calc(var(--column)*0.6) calc(-1*var(--column));
+    padding: 0 $column;
+    overflow-x: hidden;
+    cursor: grab;
+    direction: rtl;
+
+
+    @media (max-width: $breakpoint-tablet) {
+        grid-auto-columns: calc(10*var(--column));
+        animation: unset;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scroll-margin-left: 20px;
+    }
+
+
+}
+.js-news-list {
+    animation: unfold $duration $news-easing forwards;
+
+    &_fold {
+        animation: fold $duration $news-easing forwards;
+    }
+
+}
+
+@keyframes fold {
+    0% {
+        width: 100vw;
+    }
+
+    100% {
+        width: 50vw;
+    }
+}
+
+@keyframes unfold {
+    0% {
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
 
 .news {
     $caption-padding: 18px;
@@ -8,6 +59,7 @@ $news-slide: transform $duration $news-easing;
     flex-direction: column;
     align-items: start;
     direction: initial;
+    scroll-snap-align: center;
 
     &__img {
         height: 100%;
@@ -41,20 +93,20 @@ $news-slide: transform $duration $news-easing;
     }
 
     &__caption {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: $caption-padding 1rem;
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        opacity: 0;
-        transition: opacity 0.2s ease-in;
         background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: $caption-padding 1rem;
         transform: translateY(100%);
+        opacity: 0;
         transition: all 0.3s $easing;
+
     }
 
     &__link {
@@ -103,55 +155,6 @@ $news-slide: transform $duration $news-easing;
 
 }
 
-.news-wrapper {
-    display: grid;
-    grid: 1fr / auto-flow;
-    grid-auto-columns: calc(4*var(--column));
-    gap: $column;
-    margin: 42px calc(-1*var(--column));
-    padding: 0 $column;
-    overflow-x: hidden;
-    cursor: grab;
-    direction: rtl;
-    // transition: $news-slide;
-    animation: unfold $duration $news-easing forwards;
-
-    &_fold {
-        animation: fold $duration $news-easing forwards;
-    }
-}
-
-@keyframes fold {
-    0% {
-        width: 100vw;
-    }
-
-    100% {
-        width: 50vw;
-    }
-}
-
-@keyframes unfold {
-    0% {
-        transform: translateX(-50vw);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.news-more {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    transition: $news-slide;
-    background-size: cover;
-    width: 50%;
-    overflow: hidden;
-}
-
 .news-detail {
     position: absolute;
     top: 0;
@@ -160,58 +163,123 @@ $news-slide: transform $duration $news-easing;
     bottom: 0;
     height: 100%;
     transform: translateX(-100%);
-    animation: slideFrom 0.5s $easing;
-
+    @media(max-width: $breakpoint-tablet) {
+        display: none;
+        transform: translateY(-100%);
+        background-image: none;
+        background-color: $bckg;
+    }
+    
     &_current {
         z-index: $top-layout / 2;
-        animation: slideTo 0.5s $easing;
+        animation: slideTo $duration $news-easing;
         transform: translateX(0);
-    }
+        
+        @media(max-width: $breakpoint-tablet) {
+            display: grid;
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            transform: translateY(0);
+            animation: unset;
 
+        }
+        
+    }
+    
+    &-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transition: $news-slide;
+        background-size: cover;
+        width: 50%;
+        overflow: hidden;
+        z-index: $top-layout*0.75;
+        @media(max-width: $breakpoint-tablet) {
+            width: 100%;
+            
+        }
+    }
+    
     &__img {
         height: 100%;
         width: 100%;
         object-fit: cover;
-        mix-blend-mode: multiply;
-
+        mix-blend-mode: soft-light;
+        @media(max-width: $breakpoint-tablet) {
+            mix-blend-mode:unset;
+        }
         &-wrapper {
             position: absolute;
             top: 0;
             left: 0;
             bottom: 0;
             right: 0;
-            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75));
+            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), $bckg);
+            
+
+            @media(max-width: $breakpoint-tablet) {
+                position: relative;
+                overflow: hidden;
+            }
         }
+
+        // animation: slideFrom 0.5s $easing;
     }
 
 }
 
-.js-more {
+.js-news-detail {
     transform: translateX(100%);
 
     &_open {
         transform: translateX(0);
     }
-}
 
-.js-more-close {
-    @include round(133px);
-    position: absolute;
-    top: 165px;
-    right: 62px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border: none;
-    appearance: none;
-    cursor: pointer;
-    background-image: url(/image14.svg);
-    z-index: $top-layout;
-}
+    @media(max-width: $breakpoint-tablet) {
+        transform: translateY(-100%);
 
-#news {
-    .title {
-        cursor: url(/image12.svg), default;
+        &_open {
+            transform: translateY(0);
+        }
+
+    }
+
+
+    &__close {
+        $size: 133px;
+        @include round($size);
+        position: absolute;
+        top: 165px;
+        right: 62px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: none;
+        appearance: none;
+        cursor: pointer;
+        background-image: url(/image14.svg);
+        background-position: center;
+        background-size: contain;
+        z-index: $top-layout;
+
+
+        @media(max-width: $breakpoint-tablet) {
+            @include round(82px);
+            top: 50%;
+            transform: translateY(-50%);
+            right: $column;  
+        }
+        @media(max-width: $breakpoint-phone) {
+            @include round(70px);  
+        }
     }
 }
+
+
+// #news {
+//     .title {
+//         cursor: url(/image12.svg), default;
+//     }
+// }

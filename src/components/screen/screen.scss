@@ -4,6 +4,12 @@
     height: max(100vh, 900px); //@debug
     overflow-x: hidden;
 
+    @media (max-width: $breakpoint-tablet) {
+        height: 100vh;
+        overflow: auto;
+
+    }
+
     &_single {
         display: flex;
         flex-direction: column;
@@ -26,19 +32,29 @@
 
     &__section {
         padding: $column;
-
+        height: 100%;
         &_text {
             padding-right: calc(2*var(--column));
-            @media(max-width: $breakpoint-tablet) and (min-width: $breakpoint-phone) {
-                padding: 36px 90px;
+            padding-top: auto;
+            @media(max-width: $breakpoint-tablet) {
+                @media (min-width: $breakpoint-phone) {
+                    padding: 36px calc(2*var(--column));
+                }
             }
         }
-
+        
         &_img {
             padding: 0;
             overflow: hidden;
         }
+        &_news{
+            padding-top: 120px;//header height
+            @media (max-width: $breakpoint-phone) {
+                padding-top: 100px;
+            }
+        }
     }
+
     @media(max-width:$breakpoint-tablet) {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: 1fr 1fr;

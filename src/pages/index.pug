@@ -59,7 +59,7 @@ block content
     .screen.section#news 
         .screen__section
             .title Новости #[br] в ногу со временем
-            .news-wrapper 
+            .news-list 
                 - for(let i =0; i<7; i++)
                     +news({author: "Витя", photographer: 'Володя', title:"Онлайн-конференция", desc:"Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв."})(src="/5.jpg")
         .screen__section.screen__section-more.screen__section_text.js-more

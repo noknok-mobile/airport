@@ -74,15 +74,16 @@ block vars
 block content 
 
     .screen.section#news 
-        .screen__section
-            .title Новости #[br] в ногу со временем
-            .news-wrapper.scrollMouse.dragscroll.js-detail
+        .screen__section.screen__section_news
+            .news-title.title Новости #[br] в ногу со временем
+            .news-list.scrollMouse.dragscroll.js-news-list.js-news-list_fold
                 each newsItem in news
                     +news(newsItem)(src= newsItem.image, href= `#${newsItem.id}`)
-        .screen__section.news-more.js-more
-            button.js-more-close(onclick= 'closeDetail()')
-            each newsItem in news 
-                +newsDetail(newsItem)(link= newsItem.id).screen__section.screen__section_text
+        .news-detail-container.js-news-detail.js-news-detail_open
+            button.js-news-detail__close
+            each newsItem, index in news 
+                - let first = index == 0;
+                +newsDetail(newsItem)(link= newsItem.id, current= first)
 
 
 

@@ -1,26 +1,28 @@
-for(let elem of document.querySelectorAll('.js-more-show')){
+const newsItemDetailClass = 'news-detail';
+const detailContainerClass = 'js-news-detail';
+const triggerClass = `js-news-detail-show`;
+const listWrapperClass = 'js-news-list';
+const detailContainer = document.querySelector(`.${detailContainerClass}`);
+const newsListWrapper = document.querySelector(`.${listWrapperClass}`);
+
+for(let elem of document.querySelectorAll(`.${triggerClass}`)){
     elem.addEventListener('click', openDetail);
 }
-document.querySelector('.js-more-close').addEventListener('click', closeDetail);
-const newsItemDetailClass = 'news-detail';
+document.querySelector('.js-news-detail__close').addEventListener('click', closeDetail);
 
 function openDetail(e){
     // e.preventDefault();
-    if(!document.querySelector('.js-more_open')){
-        document.querySelector('.js-more').classList.add('js-more_open');
-        document.querySelector('.news-wrapper').classList.add('news-wrapper_fold');
+    if(!detailContainer.classList.contains(`.${detailContainerClass}_open`)){
+        detailContainer.classList.add(`${detailContainerClass}_open`);
+        newsListWrapper.classList.add(`${listWrapperClass}_fold`);
     }
-    console.log(e.target.href);
-    id = e.target.getAttribute('href').replace(/#/, "");
+    id = e.currentTarget.getAttribute('href').replace(/#/, "");
     showActiveItem(id, newsItemDetailClass);
 
 }
 function closeDetail(){
-    document.querySelector('.js-more').classList.remove('js-more_open');
-    document.querySelector('.news-wrapper').classList.remove('news-wrapper_fold');
+    detailContainer.classList.remove(`${detailContainerClass}_open`);
+    newsListWrapper.classList.remove(`${listWrapperClass}_fold`);
 }
 
-
-const maxTextLength = 87;
-const maxTitleLength = 27;
 

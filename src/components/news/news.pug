@@ -15,3 +15,16 @@ mixin news(props)
             h3.news__title= props.title
             p.news__desc.text= props.shortDesc
         a.news__button.button.js-news-detail-show(href= attributes.href) Подробнее
+
+
+
+mixin newsDetail(props)
+    - let caption = `Автор: ${props.author} | Фото: ${props.photographer}`
+    .news-detail(data-link= attributes.link, class= attributes.class, class= attributes.current? 'news-detail_current':'')
+        figure.news-detail__img-wrapper.screen__section_img 
+            img.news-detail__img(src= props.image)
+        .screen__section.screen__section_text
+            +info(props.title, caption, 'Скачать материал')
+                if props.desc
+                    each descPart in props.desc 
+                        p= descPart

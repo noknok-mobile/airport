@@ -10,16 +10,18 @@
         left: 0;
         right: 0;
         bottom: 0;
-        transform: unset;
-        display: none;
+        transition: transform 0.4s ease-in-out;
+        transform: translateX(-100%);
     }
 
 }
-.js-menu_open{
-    @media(max-width:$breakpoint-tablet) {
-        display: block;
+.js-menu{
+    &_open{
+        @media(max-width:$breakpoint-tablet) {
+            transform: translateX(0);
+            display: block;
+        }
     }
-
 }
 .menu-desktop{
     @media(max-width:$breakpoint-tablet) {
@@ -27,23 +29,26 @@
     }
 }
 .menu-mobile{
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: unset;
     width: calc(12*var(--column));
+    
+    @media(max-width:$breakpoint-tablet) {
+        display: block;
+    }
+
     @media(max-width:$breakpoint-phone) {
         width: calc(10*var(--column));
     }
     z-index: $top-layout*0.75;
-    // transform: translateX(0);
     transition: transform 0.3s ease-in;
     background: $accent;
     padding: 150px $column;
-    animation: slideFrom 0.4s ease-in-out alternate-reverse 2;
-    transform: translateX(-100%);
+    
     &__item{
         display: block;
         margin-bottom: 1em;

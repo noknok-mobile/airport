@@ -239,7 +239,7 @@ $news-slide: transform $duration $news-easing;
         border: none;
         appearance: none;
         cursor: pointer;
-        background-image: url(/image14.svg);
+        background-image: url(image14.svg);
         background-position: center;
         background-size: contain;
         z-index: $top-layout;
@@ -260,6 +260,6 @@ $news-slide: transform $duration $news-easing;
 
 // #news {
 //     .title {
-//         cursor: url(/image12.svg), default;
+//         cursor: url(image12.svg), default;
 //     }
 // }

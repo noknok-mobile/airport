@@ -1,19 +1,20 @@
-@keyframes slideTo {
+@keyframes slideBack {
     0% {
         transform: translateX(100%);
     }
 
     100% {
         transform: translateX(0);
+        display: none;
     }
 }
 
-@keyframes slideFrom {
+@keyframes slideOut {
     0% {
         transform: translateX(0);
     }
 
-    80% {
+    100% {
         transform: translateX(-100%);
     }
 }

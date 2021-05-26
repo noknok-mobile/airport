@@ -152,7 +152,7 @@ $news-slide: transform $duration $news-easing;
     
     &_current {
         z-index: $top-layout / 2;
-        animation: slideTo $duration $news-easing;
+        animation: slideBack $duration $news-easing;
         transform: translateX(0);
         
         @media(max-width: $breakpoint-tablet) {
@@ -204,7 +204,7 @@ $news-slide: transform $duration $news-easing;
             }
         }
 
-        // animation: slideFrom 0.5s $easing;
+        // animation: slideOut 0.5s $easing;
     }
 
 }

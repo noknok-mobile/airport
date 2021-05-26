@@ -34,20 +34,24 @@ const indexSlider = new Glide(indexSliderContainer, {
 
 function showActiveItem(id, className) {
   const activeClass = `${className}_current`;
-  const elements = document.querySelectorAll(`.${className}`);
-  for (elem of elements) {
-    elem.classList.remove(activeClass);
-  }
+  let lastCurrentElem = document.querySelector(`.${activeClass}`)?? null;
+  if(lastCurrentElem) lastCurrentElem.classList.remove(activeClass);
+  
   document.querySelector(`[data-link=${id}]`).classList.add(activeClass);
 }
-
-window.addEventListener("hashchange", function () {
+const galleryThumbs = document.querySelectorAll('.gallery__thumb-wrapper');
+for(let thumb of galleryThumbs){
+  thumb.addEventListener('click', showImage)
+}
+function showImage(e){
   const galleryItemName = "gallery__image";
-  let targetId = location.hash.replace(/#/, "");
-
+  let targetId = e.currentTarget.getAttribute('href').replace(/#/, "");
+  
   if (document.querySelector(`[data-link=${targetId}]`))
     showActiveItem(targetId, galleryItemName);
-});
+
+}
+
 
 const myFullpage = new fullpage('#fullpage', {
   anchors: ['main', 'about', 'timer', 'indexes', 'gallery','news','contacts'],

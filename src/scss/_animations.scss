@@ -86,3 +86,15 @@
         top: 10%;
     }
 }
+
+@mixin animatedSlide ($easing, $duration){
+    transform: translateX(100%);
+    z-index: $top-layout / 4;
+    animation: slideOut $duration $easing;
+    &_current{
+        z-index: $top-layout / 2;
+        animation: slideBack $duration $easing;
+        transform: translateX(0);
+
+    }
+}

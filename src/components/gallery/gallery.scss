@@ -63,16 +63,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s $easing;
-        z-index: $top-layout / 4;
-        animation: slideOut 0.4s $easing;
-
-        &_current {
-            z-index: $top-layout / 2;
-            animation: slideBack 0.4s $easing;
-            transform: translateX(0);
-        }
-
+        @include animatedSlide($easing, 0.4s);                
     }
 }
+

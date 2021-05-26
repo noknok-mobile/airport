@@ -48,3 +48,12 @@ window.addEventListener("hashchange", function () {
   if (document.querySelector(`[data-link=${targetId}]`))
     showActiveItem(targetId, galleryItemName);
 });
+
+const myFullpage = new fullpage('#fullpage', {
+  anchors: ['main', 'about', 'timer', 'indexes', 'gallery','news','contacts'],
+  menu: '#menu',
+  // autoScrolling: true,
+  normalScrollElements:'.scrollMouse',
+  scrollHorizontally: false,
+  loopBottom: true
+});

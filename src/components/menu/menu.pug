@@ -1,9 +1,9 @@
 nav.menu-wrapper.js-menu
     .menu-desktop
-        ul.menu
+        ul.menu#menu
             each item in menu 
                 li
-                    a.menu__item(href= item.href)
+                    a.menu__item(href= `#${item.href}`, data-menuanchor= item.href)
                         .menu__item-label= item.label
                         .menu__item-dot
 
@@ -11,7 +11,7 @@ nav.menu-wrapper.js-menu
         ul.menu
             each item in menu 
                 li
-                    a.menu-mobile__item(href= item.href)= item.label
+                    a.menu-mobile__item(href= `#${item.href}`)= item.label
         .menu-mobile__footer
             a(href= airlink, target="_blank").button.menu-mobile__link Сайт аэропорта
             +copyright.copyright_menu

@@ -4,6 +4,7 @@
     right: 27px;
     transform: translateY(-50%);
     z-index: $top-layout - 4;
+
     @media(max-width:$breakpoint-tablet) {
         position: fixed;
         top: 0;
@@ -15,20 +16,23 @@
     }
 
 }
-.js-menu{
-    &_open{
+
+.js-menu {
+    &_open {
         @media(max-width:$breakpoint-tablet) {
             transform: translateX(0);
             display: block;
         }
     }
 }
-.menu-desktop{
+
+.menu-desktop {
     @media(max-width:$breakpoint-tablet) {
         display: none;
     }
 }
-.menu-mobile{
+
+.menu-mobile {
     display: none;
     position: absolute;
     top: 0;
@@ -36,7 +40,7 @@
     bottom: 0;
     right: unset;
     width: calc(12*var(--column));
-    
+
     @media(max-width:$breakpoint-tablet) {
         display: block;
     }
@@ -44,38 +48,44 @@
     @media(max-width:$breakpoint-phone) {
         width: calc(10*var(--column));
     }
+
     z-index: $top-layout*0.75;
     transition: transform 0.3s ease-in;
     background: $accent;
     padding: 150px $column;
-    
-    &__item{
+
+    &__item {
         display: block;
         margin-bottom: 1em;
         text-transform: uppercase;
         font-size: $menu;
     }
-    &__footer{
+
+    &__footer {
         position: absolute;
         bottom: $template-offset;
         width: calc(8*var(--column));
     }
-    &__link{
+
+    &__link {
         width: 100%;
     }
 }
+
 .menu {
     display: flex;
     flex-direction: column;
     padding: 0;
     list-style-type: none;
     font-weight: 300;
+
     &__item {
         display: flex;
         align-items: center;
         position: relative;
         height: 2rem;
-        &-label{
+
+        &-label {
             width: 76px;
             transform: translateY(100%);
             background: $inactive;
@@ -87,8 +97,8 @@
             text-transform: uppercase;
             opacity: 0;
             transition: all .2s ease-in-out;
-            animation: fade-tooltip 1.5s .4s $easing;
         }
+        
         &-dot {
             @include round(10px);
             content: '';
@@ -98,24 +108,34 @@
             transition: transform 0.2s ease-in-out;
             margin-left: 20px;
         }
-        &:hover &-label{
+        
+        &:hover &-label {
             background-color: white;
             opacity: 1;
             transform: translateY(0);
         }
-        &_current &-dot, &:hover &-dot{
+        &.active &-label{
             background-color: white;
-            transform: scale(1.2);
+            animation: fade-tooltip 0.7s $easing;
+        }
+        &.active,
+        &:hover {
+            .menu__item-dot {
+                background-color: white;
+                transform: scale(1.2);
+            }
         }
     }
 }
 
-.menu-burger{
-    display: none;    
+.menu-burger {
+    display: none;
+
     @media(max-width:$breakpoint-tablet) {
         display: block;
         position: absolute;
     }
+
     @media(max-width: $breakpoint-phone) {
         height: 20px;
     }

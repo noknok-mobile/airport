@@ -74,7 +74,7 @@ block vars
             },  
         ]  
 block content 
-    .screen.section.screen_single.intro 
+    .screen.screen_single.intro 
         //- .intro__preview-wrapper 
         //-     img.intro__preview(src="1.png", alt="", srcset="")
 
@@ -88,7 +88,7 @@ block content
             a(href= airlink).intro__button.button Сайт аэропорта
             a(href="#about").mouse
             
-    .screen.section.screen_split
+    .screen.screen_split
         .screen__section.screen__section_img 
             +sectionImg(src="2.jpg")
         .screen__section.screen__section_text 
@@ -96,14 +96,14 @@ block content
                 p Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.
                 p Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.
 
-    .screen.section.screen_single.screen_center.timer-container
+    .screen.screen_single.screen_center.timer-container
         .timer-wrapper
             .timer-header
                 .timer-header__title.title До ввода объекта в эксплуатацию
                 .timer-header__subtitle.text по предварительной оценке экспертов (20 декабря 2023г.):
             include /components/timer/timer
 
-    .screen.section.screen_split
+    .screen.screen_split
         .screen__section.screen__section_img 
             +sectionImg(src="4.jpg")
         .screen__section.screen__section_text 
@@ -117,10 +117,10 @@ block content
                                         +index(indexes[0])
 
 
-    .screen.section.screen_split.gallery
+    .screen.screen_split.gallery
         include /components/gallery/gallery
 
-    .screen.section
+    .screen
         .screen__section.screen__section_news
             .news-title.title Новости #[br] в ногу со временем
             .news-list.scrollMouse.dragscroll.js-news-list
@@ -136,7 +136,7 @@ block content
                
 
 
-    .screen.section.screen_split
+    .screen.screen_split.screen_map
         .screen__section.screen__section_img
             +sectionImg(src="map.jpg")
         .screen__section.screen__section_text 

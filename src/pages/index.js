@@ -52,6 +52,7 @@ window.addEventListener("hashchange", function () {
 const myFullpage = new fullpage('#fullpage', {
   anchors: ['main', 'about', 'timer', 'indexes', 'gallery','news','contacts'],
   menu: '#menu',
+  sectionSelector:'.screen',
   // autoScrolling: true,
   normalScrollElements:'.scrollMouse',
   scrollHorizontally: false,

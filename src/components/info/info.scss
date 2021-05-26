@@ -1,4 +1,11 @@
 .info{
+    --top: 30px;
+    @media (max-width: $breakpoint-tablet) {
+        --top: 24px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+        --top: 10px;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,6 +30,6 @@
         }
     }
     p:not(:first-of-type){
-        margin-top: 30px;
+        margin-top: var(--top);
     }
 }

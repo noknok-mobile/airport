@@ -44,6 +44,9 @@
                     // opacity: 0;
                     opacity: 1;
                     transition: opacity 0.2s $easing;
+                    @media(max-width: $breakpoint-tablet) {
+                        background-size: 50% 50%;
+                    }
                 }
                 &:hover::after{
                     opacity: 1;
@@ -64,6 +67,12 @@
         right: 0;
         bottom: 0;
         @include animatedSlide($easing, 0.4s);                
+    }
+    &__video{
+        display: none;
+        &_open{
+            display: block;
+        }
     }
 }
 

@@ -1,13 +1,18 @@
 block script append
-- const images = [{src:'2.png', link:'link1' }, {src:'1.png', link:'link2'}, {src:'4.png', link:'link3'}, {src:'pexels-francesco-ungaro-97558.png', type:'video'}, {src:'1-1.png', link:'link4'},{src:'3.png', link:'link5'}]
+- const images = [{src:'2.png', link:'link1' }, {src:'1.png', link:'link2'}, {src:'4.png', link:'link3'}, {video:'videoplayback.webm', src:'pexels-francesco-ungaro-97558.png', type:'video', link:"link0"}, {src:'1-1.png', link:'link4'},{src:'3.png', link:'link5'}]
+
 
 .screen__section.screen__section_img.gallery__thumbs
         each image in images
             - let isVideo = image.type == 'video';
-            a.gallery__thumb-wrapper(href= image.link? `#${image.link}`:  '#', class= isVideo? 'gallery__thumb-wrapper_video':'', onclick=isVideo?'return false;':'')
-                img.gallery__thumb(src= image.src)
+            a.gallery__thumb-wrapper(href= `#${image.link}`, class= isVideo? 'js-video-thumb gallery__thumb-wrapper_video':'js-image-thumb')
+                    img.gallery__thumb(src= image.src)
+
 .screen__section.screen__section_img.gallery__images
         each image, index in images
                 - let first = index == 0
-                if image.link
+                - let isVideo = image.type == 'video';
+                if !isVideo
                     +sectionImg(src= image.src, data-link= `${image.link}`, class= first? 'gallery__image_current':'').gallery__image
+                else
+                    +video({poster: image.src, video: image.video})(data-link= `${image.link}`, src= image.video).gallery__video

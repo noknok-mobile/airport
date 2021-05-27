@@ -4,52 +4,15 @@ include /components/screen/screen__section_img
 include /components/info/info
 include /components/index/index
 include /components/news/news
+include /components/video/video
+
 block vars 
     - const phone = "8 800 301 19 91"
     - const mail = "hello@new.aer.com"
 block content 
-    .screen.section.screen_split.screen_map
-        .screen__section.screen__section_img.map-wrapper#map
-            +sectionImg(src="map.jpg")
-            //- <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abf18f3a8a6795f0ef60b69ac7a8b5c152bcfca74022dc1144cf4bdc879debfc0&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script>
-        .screen__section.screen__section_text 
-            +info("Оставайтесь на связи")
-                p Мы готовы ответить на ваши вопросы и предложения по телефону:
-                    |
-                    a(class="link" href="tel:+"+phone)= phone 
-                    |
-                    | или на адрес электронной почты: 
-                    a(class="link" href="mailto:"+mail)= mail
-                    |
-                    | c 08:00 утра и до 20:00 вечера по Москве.
-                - let formSubmit = false
-                - let formFold = false  
-                if !formSubmit
-                    .form-wrapper(class= formFold? 'form-wrapper_fold':'').js-form-wrapper
-                        form.form(action="")
-                            input.input(name="name" type="text" placeholder="Ваше имя*")
-                            input.input(name="phone" type="tel" placeholder="Номер телефона*")
-                            input.input(name="work" type="text" placeholder="Название организации")
-                            input.input(name="email" type="email" placeholder="Адрес электронной почты*")
-                            .form__wide
-                                textarea.input.input_textarea(name="message" rows="10" placeholder="Текст сообщения")
-                                .form__footnote * Поля обязательны для заполнения
-                            .form__footer.form__wide
-                                button.button Отправить
-                                .form__message Номер телефона указан некорректно
-                        button.button.form-wrapper__btn-expand.js-form-expand Напишите нам
-                else
-                    p Спасибо!
-            +copyright.copyright_footer
-   
-
-
+    +video({type:'embed', video:'https://www.youtube.com/embed/ZQO6EKVA62E'}) 
 
 block script
-    //- script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js")
-    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js") 
-    //- script(src="js/index.js") 
-
     script
         include test.js
 

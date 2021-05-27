@@ -16,6 +16,12 @@
     @media (max-width:$breakpoint-tablet) {
         min-height: unset;
     }
+    &:invalid{
+        color: red;
+    }
+    &:focus:invalid{
+        color: inherit;
+    }
     &_textarea{
         resize: none;
     }

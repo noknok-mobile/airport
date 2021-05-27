@@ -149,12 +149,12 @@ block content
                 - let formFold = false  
                 .form-wrapper(class= formFold? 'form-wrapper_fold':'', class= formSubmit? 'form-wrapper_submitted':'').js-form-wrapper
                     form.form(action="")
-                        input.input(name="name" type="text" placeholder="Ваше имя*")
-                        input.input(name="phone" type="tel" placeholder="Номер телефона*")
-                        input.input(name="work" type="text" placeholder="Название организации")
-                        input.input(name="email" type="email" placeholder="Адрес электронной почты*")
+                        input.input(name="name" type="text" required placeholder="Ваше имя*")
+                        input.input(name="phone" type="text" inputmode="tel" required placeholder="Номер телефона*")
+                        input.input(name="work" type="text" required placeholder="Название организации")
+                        input.input(name="email" type="email" inputmode="email" required placeholder="Адрес электронной почты*")
                         .form__wide
-                            textarea.input.input_textarea(name="message" rows="10" placeholder="Текст сообщения")
+                            textarea.input.input_textarea(name="message" rows="10" required placeholder="Текст сообщения")
                             .form__footnote * Поля обязательны для заполнения
                         .form__footer.form__wide
                             button.button Отправить
@@ -172,6 +172,8 @@ block script
     script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js") 
+    
     script
         include /components/video/video.js
     script(src="js/index.js")
+    script(src="js/contacts.js")

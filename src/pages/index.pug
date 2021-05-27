@@ -4,6 +4,7 @@ include /components/screen/screen__section_img
 include /components/info/info
 include /components/index/index
 include /components/news/news
+include /components/video/video
 
 block vars 
     - const indexes = [{title: "С 2023 году прогнозируется:", number: "6 500 000", unit:"пассажиров в год"}]
@@ -76,14 +77,7 @@ block vars
 block content 
     //- intro
     .screen.screen_single.intro 
-        //- .intro__preview-wrapper 
-        //-     img.intro__preview(src="1.png", alt="", srcset="")
-        .video-wrapper
-            button.js-video-close 
-                svg(width="26" height="26" viewBox="0 0 26 26" fill="none"     xmlns="http://www.w3.org/2000/svg")
-                    path(d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
-            video.video(muted="" height="100%")
-                source(src="videoplayback.webm" type="video/webm") 
+        +video({poster:'', video: "videoplayback.webm"}).js-intro
         .intro__footer 
             a(href= airlink).intro__button.button Сайт аэропорта
             a(href="#about").mouse
@@ -178,6 +172,6 @@ block script
     script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js") 
-    script(src="js/index.js")
     script
-        include test.js
+        include /components/video/video.js
+    script(src="js/index.js")

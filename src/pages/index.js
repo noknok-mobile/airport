@@ -1,20 +1,6 @@
-const videoWrapper = document.querySelector(".video-wrapper");
-const video = document.querySelector("video");
-video.onclick = function () {
-  if (!document.fullscreen) {
-    videoWrapper.requestFullscreen();
-    video.controls = true;
-  }
-};
-document
-  .querySelector(".js-video-close")
-  .addEventListener("click", function () {
-    document.exitFullscreen();
-  });
-document.addEventListener("fullscreenchange", function (e) {
-  if (!document.fullscreen) video.controls = false;
-});
-
+const introWrapper = document.querySelector(".js-intro");
+const intro = introWrapper.querySelector("video");
+intro.addEventListener('click', ()=>showFullscreenVideo(introWrapper));
 // index slider
 const indexSliderContainer = document.querySelector(".index-slider");
 const sizes = indexSliderContainer.getBoundingClientRect();
@@ -31,24 +17,35 @@ const indexSlider = new Glide(indexSliderContainer, {
 }).mount();
 
 //gallery
-
 function showActiveItem(id, className) {
   const activeClass = `${className}_current`;
-  let lastCurrentElem = document.querySelector(`.${activeClass}`)?? null;
-  if(lastCurrentElem) lastCurrentElem.classList.remove(activeClass);
-  
+  let lastCurrentElem = document.querySelector(`.${activeClass}`) ?? null;
+  if (lastCurrentElem) lastCurrentElem.classList.remove(activeClass);
+
   document.querySelector(`[data-link=${id}]`).classList.add(activeClass);
 }
-const galleryThumbs = document.querySelectorAll('.gallery__thumb-wrapper');
-for(let thumb of galleryThumbs){
-  thumb.addEventListener('click', showImage)
+const imageThumbs = document.querySelectorAll(".js-image-thumb");
+for (let thumb of imageThumbs) {
+  thumb.addEventListener("click", showImage);
 }
-function showImage(e){
+function showImage(e) {
   const galleryItemName = "gallery__image";
-  let targetId = e.currentTarget.getAttribute('href').replace(/#/, "");
-  
+  let targetId = e.currentTarget.getAttribute("href").replace(/#/, "");
+
   if (document.querySelector(`[data-link=${targetId}]`))
     showActiveItem(targetId, galleryItemName);
+}
+
+const videoThumbs = document.querySelectorAll(".js-video-thumb");
+for (let thumb of videoThumbs) {
+  thumb.addEventListener("click", openVideo);
+}
+function openVideo(e){
+    let targetId = e.currentTarget.getAttribute("href").replace(/#/, "");
+    const videoWrapper = document.querySelector(`.gallery__video[data-link=${targetId}] `);
+    console.log(videoWrapper);
+    videoWrapper.classList.add('gallery__video_open');
+    videoWrapper.requestFullscreen();
 
 }
 

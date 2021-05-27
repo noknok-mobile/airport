@@ -12,7 +12,8 @@
     z-index: $top-layout;
     @media(max-width:$breakpoint-tablet){
         // justify-content: start;
-        padding: 2rem $column 0;
+        padding: 2rem $column;
+        background-image: linear-gradient(to bottom, $bckg 0%, transparent 100%);
     }
 }
 .lang{

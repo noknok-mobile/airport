@@ -130,13 +130,16 @@
 
 .menu-burger {
     display: none;
+    z-index: $top-layout*1.25;
+    &__icon{
+        @media(max-width: $breakpoint-phone) {
+            height: 20px;
+        }
+    }
 
     @media(max-width:$breakpoint-tablet) {
         display: block;
         position: absolute;
     }
 
-    @media(max-width: $breakpoint-phone) {
-        height: 20px;
-    }
 }

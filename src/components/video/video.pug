@@ -1,9 +1,13 @@
 mixin video(props)
-    figure.video-wrapper&attributes(attributes)
+    - let srcType = props.type;
+    .video-wrapper&attributes(attributes)
         button.js-video-close(onclick= 'closeFullscreen()')
             svg(width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg")
                 path(d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
-        video.video(muted="", poster= props.poster)
-            source(src= props.video, type="video/webm")
+        if srcType != 'embed'
+            video.video(muted="", poster= props.poster)
+                source(src= props.video, type="video/webm")
+        else 
+            iframe.video(src= props.video, frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
             
             

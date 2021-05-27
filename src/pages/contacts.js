@@ -58,17 +58,17 @@ Inputmask({ mask: "+7 (999) 999-99-99" }).mask('.input[name="phone"]');
 const rules = [
   {
     name: "name",
-    rules: "required|alpha",
+    rules: "required|!callback_word",
     display: "Имя",
   },
   {
     name: "org",
-    rules: "alpha_numeric",
+    rules: "alpha_numeric|!callback_word",
     display: "Организация",
   },
   {
     name: "phone",
-    rules: "required",
+    rules: "required|!callback_phone",
     display: "Телефон",
   },
   {
@@ -76,6 +76,7 @@ const rules = [
     rules: "valid_email|required",
     display: "E-mail",
   },
+  
 ];
 const form = document.forms.feedback;
 const formMessage = document.querySelector(".form__message");
@@ -84,12 +85,23 @@ form.addEventListener("input", function () {
   hideErrorMessage(formMessage);
 });
 const validator = new FormValidator("feedback", rules, (errors, event) => {
-  errors.forEach((elem, arr) => showErrorMessage(elem.message, formMessage));
-  console.log(event);
+  event.preventDefault();
+  errors.forEach((elem) => showErrorMessage(elem.message, formMessage));
+  if(!errors.length) formSubmit(event);
+  console.log(errors);
 });
 validator.setMessage("required", "Поле %s обязательно для заполнения");
 validator.setMessage("valid_email", "Введите корректный %s");
-validator.setMessage("alpha", "Поле %s может содержать только буквы");
+
+validator.registerCallback('word', function(value) {
+  const regexp = /^[а-яёa-z\s]*$/gi;
+  return regexp.test(value);
+}).setMessage("word", "Поле %s может содержать только буквы");
+
+validator.registerCallback('phone', function(value){
+  const regexp = /[^_]$/gi;
+  return regexp.test(value);
+}).setMessage('phone', "Некорректный номер телефона");
 
 function showErrorMessage(msg, formMessage) {
   formMessage.classList.add("form__message_active");

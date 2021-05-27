@@ -14,7 +14,7 @@ const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
 
 function compileHtml() {
-    return src('src/pages/*.pug')
+    return src('src/pages/index.pug')
         .pipe(pug({
             pretty: true,
             basedir: './src/'

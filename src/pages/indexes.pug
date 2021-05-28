@@ -1,0 +1,12 @@
+.screen.screen_split
+        .screen__section.screen__section_img 
+            +sectionImg(src="4.jpg")
+        .screen__section.screen__section_text 
+            +info('Новый <br>мультимодальный хаб <br>в цифрах')
+                .index-slider
+                    .glide__track(data-glide-el="track")
+                        .glide__slides
+                            - for(let i = 0; i<3; i++)
+                                .index-wrapper
+                                    - for (let x = 0; x < 6; x++)
+                                        +index(indexes[0])

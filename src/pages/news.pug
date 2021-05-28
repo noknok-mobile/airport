@@ -73,7 +73,7 @@
         button.js-news-detail__close
         each newsItem, index in news 
             +newsDetail(newsItem)(link= newsItem.id)
-    script 
-        include /components/news/news.js
-block append script
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js")
+
+script 
+    include /components/news/news.js
+script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js")

@@ -21,8 +21,8 @@
         object-fit: cover;
         transition: transform 0.4s $easing;
 
-       
-        &-wrapper:hover &{
+
+        &-wrapper:hover & {
             transform: scale(1.2);
         }
 
@@ -44,11 +44,13 @@
                     // opacity: 0;
                     opacity: 1;
                     transition: opacity 0.2s $easing;
+
                     @media(max-width: $breakpoint-tablet) {
                         background-size: 50% 50%;
                     }
                 }
-                &:hover::after{
+
+                &:hover::after {
                     opacity: 1;
                 }
             }
@@ -58,6 +60,12 @@
     &__images {
         position: relative;
         grid-area: images;
+
+        @media(max-width: $breakpoint-tablet) {
+            display: flex;
+            overflow: scroll;
+            scroll-snap-type: x mandatory;
+        }
     }
 
     &__image {
@@ -66,13 +74,21 @@
         left: 0;
         right: 0;
         bottom: 0;
-        @include animatedSlide($easing, 0.4s);                
+        @include animatedSlide($easing, 0.4s);
+
+        @media(max-width: $breakpoint-tablet) {
+            position: relative;
+            flex-shrink: 0;
+            transform: none;
+            scroll-snap-align: start;
+        }
     }
-    &__video{
+
+    &__video {
         display: none;
-        &_open{
+
+        &_open {
             display: block;
         }
     }
 }
-

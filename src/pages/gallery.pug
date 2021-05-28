@@ -16,3 +16,5 @@
                         +sectionImg(src= image.src, data-link= `${image.link}`, class= first? 'gallery__image_current':'').gallery__image
                     else
                         +video({poster: image.src, video: image.video})(data-link= `${image.link}`, src= image.video).gallery__video
+block append script 
+    script(src="js/gallery.js")

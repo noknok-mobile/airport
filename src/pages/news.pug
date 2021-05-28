@@ -65,7 +65,7 @@
 
 .screen
     .screen__section.screen__section_news
-        .news-title.title Новости #[br] в ногу со временем
+        .news-title.title.js-cursor-trigger(data-cursor="arrows") Новости #[br] в ногу со временем
         .news-list.scrollMouse.dragscroll.js-news-list
             each newsItem in news
                 +news(newsItem)(src= newsItem.image, href= `#${newsItem.id}`)

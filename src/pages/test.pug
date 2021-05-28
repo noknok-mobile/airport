@@ -1,19 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet", href="main.css")
+    body 
+        .cursor
 
-extends /layout/template
-include /components/screen/screen__section_img
-include /components/info/info
-include /components/index/index
-include /components/news/news
-include /components/video/video
-
-block vars 
-    - const phone = "8 800 301 19 91"
-    - const mail = "hello@new.aer.com"
-block content 
-    include /pages/gallery
+        .trigger(data-cursor="play")
+        .trigger.trigger_bottom(data-cursor="pointer")
+        script(src="js/sursor.js") 
  
     
-
 
 
 

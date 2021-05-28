@@ -2,7 +2,7 @@
 
 
 .screen.screen_split.gallery
-    .screen__section.screen__section_img.gallery__thumbs
+    .screen__section.screen__section_img.gallery__thumbs.js-cursor-trigger(data-cursor="pointer")
             each image in images
                 - let isVideo = image.type == 'video';
                 a.gallery__thumb-wrapper(href= `#${image.link}`, class= isVideo? 'js-video-thumb gallery__thumb-wrapper_video':'js-image-thumb')

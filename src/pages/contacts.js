@@ -79,6 +79,7 @@ const rules = [
   
 ];
 const form = document.forms.feedback;
+form.setAttribute('novalidate', '');
 const formMessage = document.querySelector(".form__message");
 // form.addEventListener("submit", formSubmit);
 form.addEventListener("input", function () {

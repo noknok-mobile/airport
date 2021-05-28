@@ -16,8 +16,7 @@ function openDetail(e){
         detailContainer.classList.add(`${detailContainerClass}_open`);
         newsListWrapper.classList.add(`${listWrapperClass}_fold`);
     }
-    id = e.currentTarget.getAttribute('href').replace(/#/, "");
-    showActiveItem(id, newsItemDetailClass);
+    slideImage(e, newsItemDetailClass);
     if(window.innerWidth < 960 ) fullpage_api.setAllowScrolling(false);
 
 }

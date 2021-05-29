@@ -90,38 +90,6 @@
 
 
 
-.js-video-close {
-    display: none;
-}
-
-.video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-
-    &-wrapper {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    &-wrapper:fullscreen .js-video-close {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        appearance: none;
-        color: white;
-        @include round(128px);
-        background-color: transparent;
-        border: 2px solid currentColor;
-        top: 20px;
-        right: 20px;
-        z-index: 1;
-
-    }
-}
-
 .link {
     font-weight: 400;
 }

@@ -1,3 +1,4 @@
+include /components/video/video
 doctype html
 html(lang="en")
     head
@@ -6,14 +7,12 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
         link(rel="stylesheet", href="main.css")
-    body 
-        .cursor
-
-        .trigger(data-cursor="play")
-        .trigger.trigger_bottom(data-cursor="pointer")
-        script(src="js/sursor.js") 
- 
+    body
     
-
+        +video({video:"video.mp4"}).js-intro 
+        script.
+            const introWrapper = document.querySelector(".js-intro");
+            const intro = introWrapper.querySelector("video");
+            intro.addEventListener('click', ()=>showFullscreenVideo(introWrapper));
 
 

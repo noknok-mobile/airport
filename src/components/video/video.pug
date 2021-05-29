@@ -1,14 +1,22 @@
 mixin video(props)
     - let srcType = props.type;
-    .video-wrapper&attributes(attributes)
-        button.js-video-close(onclick= 'closeFullscreen()')
-            svg(width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg")
-                path(d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
-        if srcType != 'embed'
+    .video-container
+        .video-wrapper.video-wrapper_desktop&attributes(attributes)
+            button.js-video-close(onclick= 'closeFullscreen()')
+                svg(width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg")
+                    path(d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
+            if srcType != 'embed'
+                video.video(muted="", poster= props.poster)
+                    source(src= props.video, type="video/mp4")
+            else 
+                iframe.video(src= props.video, frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
+        .video-wrapper.video-wrapper_mobile
+            if props.mobilePoster == true
+                button.video__play-button.js-mobile-play(onclick="playVideo(this)") 
+                picture.video-poster-wrapper
+                    img.video-poster(src= props.poster, alt="")
             video.video(muted="", poster= props.poster)
-                source(src= props.video, type="video/webm")
-        else 
-            iframe.video(src= props.video, frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
+                    source(src= props.video, type="video/mp4")
 
 block append script
     script 

@@ -45,7 +45,7 @@ function openVideo(e) {
   );
   console.log(videoWrapper);
   videoWrapper.classList.add("gallery__video_open");
-  videoWrapper.requestFullscreen();
+  window.innerWidth > 960? showFullscreenVideo(videoWrapper): playVideo(videoWrapper);
+
 }
 
-// const gallery = new Glide('.gallery-slider',{}).mount();

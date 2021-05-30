@@ -1,21 +1,17 @@
-function globalCursorHandler(e){
-    // console.log({
-    //     left: e.clientX,
-    //     top: e.clientY
-    // });
-    globalCursor.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+function globalCursorHandler(e, cursor){
+    cursor.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
 }
 
-const globalCursor = document.querySelector('.cursor');
-document.addEventListener('mousemove', globalCursorHandler);
+const cursor = document.querySelector('.cursor');
+window.addEventListener('mousemove', (e)=>globalCursorHandler(e, cursor));
+window.addEventListener('mouseleave', (e)=>hideCursor(e, cursor));
 
 for(trigger of document.querySelectorAll('.js-cursor-trigger')){
-    trigger.addEventListener('mouseenter', (e)=>highlightCursor(e, globalCursor));
-    trigger.addEventListener('mouseleave', (e)=>hideCursor(e, globalCursor));
+    trigger.addEventListener('mouseenter', (e)=>highlightCursor(e, cursor));
+    trigger.addEventListener('mouseleave', (e)=>hideCursor(e, cursor));
 
 }
 function highlightCursor(e, cursor){
-    console.log('asd');
     cursor.classList.add(`cursor_${e.target.dataset.cursor}`);
     cursor.classList.add('cursor_triggered');
     cursor.classList.remove('cursor_hidden');

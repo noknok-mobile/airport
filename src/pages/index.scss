@@ -154,16 +154,23 @@
         right: 0;
         padding: 25px $template-offset;
         z-index: $top-layout / 2;
+        @media(max-width:$breakpoint-tablet) {
+            padding: 25px $column;
+        }
     }
 
     &__button {
         position: absolute;
         bottom: 25px;
         left: $template-offset;
-        width: 253px;
+        width: 250px;
+        // padding: 0 70px;
 
         @media(max-width:$breakpoint-phone) {
             max-width: max-content;
+            position: relative;
+            left: unset;
+            bottom: unset;
         }
     }
 

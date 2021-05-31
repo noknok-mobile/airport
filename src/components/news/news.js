@@ -1,3 +1,4 @@
+// news
 const newsItemDetailClass = 'news-detail';
 const detailContainerClass = 'js-news-detail';
 const triggerClass = `js-news-detail-show`;

@@ -62,18 +62,24 @@
             image: '3.png'  
         },  
     ]  
+// news section start
 
 .screen
+    // news list start
     .screen__section.screen__section_news
         .news-title.title.js-cursor-trigger(data-cursor="arrows") Новости #[br] в ногу со временем
         .news-list.scrollMouse.dragscroll.js-news-list
             each newsItem in news
                 +news(newsItem)(src= newsItem.image, href= `#${newsItem.id}`)
+    // news detail container
     .news-detail-container.js-news-detail
         button.js-news-detail__close
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M25 1L1 25M1 1L25 25" stroke="#009840" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         each newsItem, index in news 
             +newsDetail(newsItem)(link= newsItem.id)
 
-script 
-    include /components/news/news.js
+//- script 
+    //- include /components/news/news.js
 script(src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js")

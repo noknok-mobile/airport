@@ -1,3 +1,4 @@
+//intro
 const introWrapper = document.querySelector(".js-intro");
 const intro = introWrapper.querySelector("video");
 intro.addEventListener('click', ()=>showFullscreenVideo(introWrapper));

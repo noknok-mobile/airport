@@ -1,3 +1,4 @@
+// custom cursor
 function globalCursorHandler(e, cursor){
     cursor.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
 }

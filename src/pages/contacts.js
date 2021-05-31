@@ -81,7 +81,6 @@ const rules = [
 const form = document.forms.feedback;
 form.setAttribute('novalidate', '');
 const formMessage = document.querySelector(".form__message");
-// form.addEventListener("submit", formSubmit);
 form.addEventListener("input", function () {
   hideErrorMessage(formMessage);
 });
@@ -122,7 +121,8 @@ async function formSubmit(e) {
   if (response.ok) {
     let result = await response.text();
     console.log(result);
+    // document.querySelector(".js-form-wrapper").classList.add("form-wrapper_submitted"); //включить на рабочем и удалить ниже
   }
-    // anyway, but in production only if ok
+    // на готовом вырезать
   document.querySelector(".js-form-wrapper").classList.add("form-wrapper_submitted");
 }

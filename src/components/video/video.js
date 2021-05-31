@@ -1,3 +1,4 @@
+// video 
 document.addEventListener("fullscreenchange", updateFullscreenSettings);
 
 function showFullscreenVideo(videoWrapper) {

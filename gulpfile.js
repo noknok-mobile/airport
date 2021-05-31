@@ -12,9 +12,10 @@ const bulkSass = require('gulp-sass-bulk-import');
 const svgSprite = require('gulp-svg-sprite');
 const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
+const concat = require('gulp-concat');
 
 function compileHtml() {
-    return src(['src/pages/index.pug','src/pages/test.pug'])
+    return src(['src/pages/index.pug'])
         .pipe(pug({
             pretty: true,
             basedir: './src/'
@@ -34,7 +35,7 @@ function server() {
 
 function assets() {
     return src('assets/**/*')
-        .pipe(dest('build/'));
+        .pipe(dest('build/img'));
 }
 
 function styles() {
@@ -52,7 +53,8 @@ function styles() {
 }
 
 function scripts(){
-    return src('src/pages/*.js')
+    return src('src/**/*.js')
+    .pipe(concat('script.js'))
     .pipe(dest('build/js'));
 }
 

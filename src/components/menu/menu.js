@@ -1,3 +1,4 @@
+// menu
 const menuToggle = document.querySelector(".js-menu-toggle");
 const menuContainer = document.querySelector(".menu-wrapper");
 const mobileMenu = document.querySelector(".menu-mobile");

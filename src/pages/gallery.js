@@ -1,3 +1,4 @@
+//gallery
 const imageThumbs = document.querySelectorAll(".js-image-thumb");
 const gallery = document.querySelector('.gallery__images');
 const galleryItemName = "gallery__image";

@@ -20,17 +20,17 @@ html(lang="en")
             .cursor__inner
         header.header 
             button.menu-burger.js-menu-toggle
-                img(src="burger.svg" alt="")
+                img(src="assets/burger.svg" alt="")
             .logo-wrapper
-                a(href="") #[img.logo(src="logo.svg")]
+                a(href="") #[img.logo(src="assets/logo.svg")]
             .lang
                 a.lang__item(href="ru") RU 
                 a.lang__item(href="en") ENG
         .social
             a(href="#") 
-                svg.social__item #[use(xlink:href='icons.svg#fb')]
+                svg.social__item #[use(xlink:href='assets/icons.svg#fb')]
             a(href="#") 
-                svg.social__item #[use(xlink:href='icons.svg#insta')]
+                svg.social__item #[use(xlink:href='assets/icons.svg#insta')]
         include /components/menu/menu
         .container#fullpage   
             block content

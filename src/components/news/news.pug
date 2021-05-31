@@ -2,7 +2,7 @@ mixin news(props)
     //- - let desc = props.desc.join(' ').slice(0, 27)
     .news&attributes(attributes)
         .news__img-wrapper 
-            img.news__img(src= attributes.src)
+            img.news__img(src= `assets/${attributes.src}`)
             .news__link-wrapper 
                 a(href="#", target="_blank") 
                     svg.news__link #[use(xlink:href='icons.svg#fb')]
@@ -22,7 +22,7 @@ mixin newsDetail(props)
     - let caption = `Автор: ${props.author} | Фото: ${props.photographer}`
     .news-detail(data-link= attributes.link, class= attributes.class, class= attributes.current? 'news-detail_current':'')
         figure.news-detail__img-wrapper.screen__section_img 
-            img.news-detail__img(src= props.image)
+            img.news-detail__img(src= `assets/${props.image}`)
         .screen__section.screen__section_text
             +info(props.title, caption, 'Скачать материал')
                 if props.desc

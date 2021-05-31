@@ -6,14 +6,14 @@
             each image in images
                 - let isVideo = image.type == 'video';
                 a.gallery__thumb-wrapper(href= `#${image.link}`, class= isVideo? 'js-video-thumb gallery__thumb-wrapper_video':'js-image-thumb')
-                        img.gallery__thumb(src= image.src)
+                        img.gallery__thumb(src= `assets/${image.src}`)
 
     .screen__section.screen__section_img.gallery__images
             each image, index in images
                     - let first = index == 0
                     - let isVideo = image.type == 'video';
                     if !isVideo
-                        +sectionImg(src= image.src, data-link= `${image.link}`, class= first? 'gallery__image_current':'').gallery__image
+                        +sectionImg(src= `assets/${image.src}`, data-link= `${image.link}`, class= first? 'gallery__image_current':'').gallery__image
                     else
                         +video({poster: image.src, video: image.video})(data-link= `${image.link}`, src= image.video).gallery__video
 

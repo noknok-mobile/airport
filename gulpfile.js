@@ -34,8 +34,12 @@ function server() {
 }
 
 function assets() {
-    return src('assets/**/*')
-        .pipe(dest('build/img'));
+    return src('assets/*')
+        .pipe(dest('build/assets/'));
+}
+function fonts() {
+    return src('assets/fonts/*')
+        .pipe(dest('build/fonts/'));
 }
 
 function styles() {
@@ -86,6 +90,7 @@ function svg() {
         .pipe(dest('build/'));
 }
 exports.server = parallel(server, watcher);
-exports.build = parallel(compileHtml, styles, assets, scripts);
+
+exports.build = parallel(compileHtml, styles, assets, fonts, scripts);
 exports.styles = series(styles);
 exports.svg = series(svg);

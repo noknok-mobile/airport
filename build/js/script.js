@@ -240,22 +240,6 @@ function hideCursor(e, cursor){
     cursor.classList.add('cursor_hidden');
 
 }
-// menu
-const menuToggle = document.querySelector(".js-menu-toggle");
-const menuContainer = document.querySelector(".menu-wrapper");
-const mobileMenu = document.querySelector(".menu-mobile");
-menuToggle.addEventListener("click", toggleMenu);
-menuContainer.addEventListener("click", function (e) {
-  if (
-    !mobileMenu.contains(e.target) ||
-    e.target.classList.contains("menu-mobile__item")
-  )
-    toggleMenu();
-});
-function toggleMenu(e) {
-  menuContainer.classList.toggle("js-menu_open");
-}
-
 // news
 const newsItemDetailClass = 'news-detail';
 const detailContainerClass = 'js-news-detail';
@@ -271,15 +255,18 @@ document.querySelector('.js-news-detail__close').addEventListener('click', close
 
 function openDetail(e){
     // e.preventDefault();
-    if(!detailContainer.classList.contains(`.${detailContainerClass}_open`)){
+    if(!detailContainer.classList.contains(`${detailContainerClass}_open`)){
         detailContainer.classList.add(`${detailContainerClass}_open`);
         newsListWrapper.classList.add(`${listWrapperClass}_fold`);
+        
     }
+    else detailContainer.classList.remove(`${detailContainerClass}_idle`);
     slideImage(e, newsItemDetailClass);
     if(window.innerWidth < 960 ) fullpage_api.setAllowScrolling(false);
 
 }
 function closeDetail(){
+    detailContainer.classList.add(`${detailContainerClass}_idle`);
     detailContainer.classList.remove(`${detailContainerClass}_open`);
     newsListWrapper.classList.remove(`${listWrapperClass}_fold`);
     if(window.innerWidth < 960 ) fullpage_api.setAllowScrolling(true);
@@ -297,6 +284,43 @@ target.addEventListener('wheel', function(e){
      e.currentTarget.scrollBy(offset*40, 0);
   }
 })
+
+// menu
+const menuToggle = document.querySelector(".js-menu-toggle");
+const menuContainer = document.querySelector(".menu-wrapper");
+const mobileMenu = document.querySelector(".menu-mobile");
+menuToggle.addEventListener("click", toggleMenu);
+menuContainer.addEventListener("click", function (e) {
+  if (
+    !mobileMenu.contains(e.target) ||
+    e.target.classList.contains("menu-mobile__item")
+  )
+    toggleMenu();
+});
+function toggleMenu(e) {
+  menuContainer.classList.toggle("js-menu_open");
+}
+
+// video 
+document.addEventListener("fullscreenchange", updateFullscreenSettings);
+
+function showFullscreenVideo(videoWrapper) {
+  if (!document.fullscreen) {
+    videoWrapper.requestFullscreen();
+  }
+}
+function updateFullscreenSettings(e) {
+  console.log(e.target);
+  const video = e.target.querySelector("video");
+  if (video) video.controls = document.fullscreen;
+}
+function closeFullscreen() {
+  document.exitFullscreen();
+}
+function playVideo(elem) {
+  const video = elem.querySelector(".video")|| elem.parentNode.querySelector(".video");
+  video.play();
+}
 
 // timer start
 const phrases = {
@@ -354,24 +378,3 @@ function getCountdownTime() {
 let timerInterval = setInterval(getCountdownTime, 1000);
 
 getCountdownTime();
-
-// video 
-document.addEventListener("fullscreenchange", updateFullscreenSettings);
-
-function showFullscreenVideo(videoWrapper) {
-  if (!document.fullscreen) {
-    videoWrapper.requestFullscreen();
-  }
-}
-function updateFullscreenSettings(e) {
-  console.log(e.target);
-  const video = e.target.querySelector("video");
-  if (video) video.controls = document.fullscreen;
-}
-function closeFullscreen() {
-  document.exitFullscreen();
-}
-function playVideo(elem) {
-  const video = elem.querySelector(".video")|| elem.parentNode.querySelector(".video");
-  video.play();
-}

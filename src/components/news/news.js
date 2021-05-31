@@ -13,15 +13,18 @@ document.querySelector('.js-news-detail__close').addEventListener('click', close
 
 function openDetail(e){
     // e.preventDefault();
-    if(!detailContainer.classList.contains(`.${detailContainerClass}_open`)){
+    if(!detailContainer.classList.contains(`${detailContainerClass}_open`)){
         detailContainer.classList.add(`${detailContainerClass}_open`);
         newsListWrapper.classList.add(`${listWrapperClass}_fold`);
+        
     }
+    else detailContainer.classList.remove(`${detailContainerClass}_idle`);
     slideImage(e, newsItemDetailClass);
     if(window.innerWidth < 960 ) fullpage_api.setAllowScrolling(false);
 
 }
 function closeDetail(){
+    detailContainer.classList.add(`${detailContainerClass}_idle`);
     detailContainer.classList.remove(`${detailContainerClass}_open`);
     newsListWrapper.classList.remove(`${listWrapperClass}_fold`);
     if(window.innerWidth < 960 ) fullpage_api.setAllowScrolling(true);

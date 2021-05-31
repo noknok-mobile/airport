@@ -66,7 +66,7 @@ function scripts(){
 function watcher() {
     watch(['src/**/*.pug','src/**/*.js'], compileHtml);
     watch('src/**/*.scss', styles);
-    watch('src/pages/*.js', scripts);
+    watch('src/**/*.js', scripts);
     
 }
 

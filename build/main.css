@@ -649,6 +649,9 @@ button {
 .js-news-detail_open {
   transform: translateX(0);
 }
+.js-news-detail_idle > .news-detail {
+  animation: none;
+}
 .js-news-detail__close {
   width: 133px;
   height: 133px;

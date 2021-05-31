@@ -211,7 +211,9 @@ $news-slide: transform $duration $news-easing;
     &_open {
         transform: translateX(0);
     }
-
+    &_idle > .news-detail{
+        animation: none;
+    }
     @media(max-width: $breakpoint-tablet) {
         transform: translateY(-100%);
 

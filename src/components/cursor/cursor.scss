@@ -39,8 +39,12 @@
 
 }
 .js-cursor-trigger{
-    @media(min-width: $breakpoint-tablet) {
+    cursor: none;
+    & > * {
         cursor: none;
+    }
+    @media(max-width: $breakpoint-tablet) {
+        cursor: default;
         & > * {
             cursor: none;
         }

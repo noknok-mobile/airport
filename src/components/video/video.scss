@@ -30,6 +30,9 @@
         overflow: hidden;
         &_desktop:fullscreen {
             cursor: default;
+            & > * {
+                cursor: default;
+            }
             .js-video-close {
                 display: flex;
             }

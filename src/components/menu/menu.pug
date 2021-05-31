@@ -1,5 +1,21 @@
-nav.menu-wrapper
-    ul.menu
-        each item in menu 
-            li.menu__item
-                a(href= item.href)= item.label 
+nav.menu-wrapper.js-menu
+    .menu-desktop
+        ul.menu#menu
+            each item in menu 
+                li
+                    a.menu__item(href= `#${item.href}`, data-menuanchor= item.href)
+                        span.menu__item-label= item.label
+                        span.menu__item-dot
+
+    .menu-mobile
+        ul.menu
+            each item in menu 
+                li
+                    a.menu-mobile__item(href= `#${item.href}`)= item.label
+        .menu-mobile__footer
+            a(href= airlink, target="_blank").button.menu-mobile__link Сайт аэропорта
+            +copyright.copyright_menu
+
+//- block append script
+//-     script 
+//-         include menu.js

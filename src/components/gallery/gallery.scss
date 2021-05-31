@@ -1,10 +1,93 @@
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    height: 100%;
-    width: 100%;
-    &__item{
-        border: 1px solid $inactive;
+.gallery {
+    grid-template-areas: 'thumbs images';
+
+    &__thumbs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 100%;
+        width: 100%;
+        grid-area: thumbs;
+    }
+
+    @media(max-width: $breakpoint-tablet) {
+        grid-template-areas: 'images''thumbs';
+    }
+
+    &__thumb {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.4s $easing;
+
+
+        &-wrapper:hover & {
+            transform: scale(1.2);
+        }
+
+        &-wrapper {
+            overflow: hidden;
+            position: relative;
+
+            &_video {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background-image: url("data:image/svg+xml,%3Csvg width='109' height='119' viewBox='0 0 109 119' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100.803 45.7684L26.2688 2.44375C20.8763 -0.686745 14.3568 -0.816901 8.82856 2.09558C3.30033 5.0076 0 10.3117 0 16.2829V102.538C0 111.566 7.71473 118.951 17.1967 119C17.2226 119 17.2485 119 17.2738 119C20.237 119 23.3248 118.124 26.2089 116.465C28.529 115.13 29.2622 112.274 27.8467 110.087C26.4312 107.899 23.4025 107.207 21.0831 108.542C19.7342 109.318 18.4168 109.719 17.2497 109.719C13.6721 109.701 9.84157 106.811 9.84157 102.538V16.2831C9.84157 13.7216 11.2573 11.4469 13.6284 10.1976C15.9998 8.94832 18.7961 9.0041 21.1063 10.3454L95.6412 53.6701C97.8814 54.9707 99.1633 57.1394 99.1579 59.6203C99.1525 62.101 97.8612 64.2648 95.6086 65.561L41.7197 96.6749C39.4018 98.0132 38.6732 100.87 40.0924 103.055C41.5114 105.241 44.5408 105.928 46.8587 104.59L100.741 73.4796C105.9 70.5118 108.988 65.3381 109 59.6389C109.012 53.9404 105.947 48.7546 100.803 45.7684Z' fill='white'/%3E%3C/svg%3E%0A");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    // opacity: 0;
+                    opacity: 1;
+                    transition: opacity 0.2s $easing;
+
+                    @media(max-width: $breakpoint-tablet) {
+                        background-size: 50% 50%;
+                    }
+                }
+
+                &:hover::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__images {
+        position: relative;
+        grid-area: images;
+
+        @media(max-width: $breakpoint-tablet) {
+            display: flex;
+            overflow: scroll;
+            scroll-snap-type: x mandatory;
+        }
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        @include animatedSlide($easing, 0.4s);
+
+        @media(max-width: $breakpoint-tablet) {
+            position: relative;
+            flex-shrink: 0;
+            transform: none;
+            scroll-snap-align: start;
+        }
+    }
+
+    &__video {
+        display: none;
+
+        &_open {
+            display: block;
+        }
     }
 }

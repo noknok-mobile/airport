@@ -1,74 +1,251 @@
-.news{
+$duration: 0.8s;
+$news-easing: ease-in;
+$news-slide: transform $duration $news-easing;
+
+.news-list {
+    display: grid;
+    grid: 1fr / auto-flow;
+    grid-auto-columns: calc(4*var(--column));
+    gap: $column;
+    margin: calc(var(--column)*0.6) calc(-1*var(--column));
+    padding: 0 $column;
+    overflow-x: hidden;
+    cursor: grab;
+    direction: rtl;
+
+
+    @media (max-width: $breakpoint-tablet) {
+        grid-auto-columns: calc(10*var(--column));
+        animation: unset;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scroll-margin-left: 20px;
+    }
+
+
+}
+.js-news-list {
+    animation: unfold $duration $news-easing forwards;
+
+    &_fold {
+        animation: fold $duration $news-easing forwards;
+    }
+
+}
+
+.news {
+    $caption-padding: 18px;
     display: flex;
     flex-direction: column;
     align-items: start;
-    &__img{
+    direction: initial;
+    scroll-snap-align: center;
+
+    &__img {
         height: 100%;
         width: 100%;
         object-fit: cover;
-    }
-    
-    &__img-wrapper{
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
-        position: relative;
-    }
-    &__caption{
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        opacity: 0;
-        transition: opacity 0.2s ease-in;
-        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        padding: 18px 16px;
+
+        &-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+        }
     }
-    &__button{
-        margin-top: 20px;
-        background-color: #009840;
-        border: none;
-        opacity: 0;
-        transition: opacity 0.2s ease-in-out;
-    }
-    &:hover &__caption, &:hover &__button{
-        opacity: 1;
-    }
-    &__title{
+
+    &__title {
         margin-bottom: 10px;
         margin-top: 34px;
-        font-size: 24px;
+        font-size: $subtitle;
         font-weight: 500;
     }
+
+    &__desc {
+        white-space: normal;
+        line-height: 1.25;
+    }
+
+    &__caption {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: $caption-padding 1rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+        transform: translateY(100%);
+        opacity: 0;
+        transition: all 0.3s $easing;
+
+    }
+
+    &__link {
+        max-width: $caption-padding;
+        max-height: $caption-padding;
+        display: block;
+        margin-bottom: 20px;
+        color: $inactive;
+
+        &:hover {
+            color: white;
+        }
+
+        &-wrapper {
+            position: absolute;
+            top: $caption-padding;
+            left: $caption-padding;
+            z-index: $top-layout*0.75;
+            transform: translateX(-200%);
+            transition: transform 0.2s $easing;
+        }
+    }
+
+    &__button {
+        margin-top: 20px;
+        opacity: 0;
+    }
+
+    & &__caption {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &:hover &__button {
+        opacity: 1;
+    }
+
+    &:hover &__link-wrapper {
+        transform: translateX(0);
+    }
+
 }
-.news-wrapper{
-    margin-top: 42px;
-    display: grid;
-    grid: 1fr / auto-flow ;
-    grid-auto-columns: calc(4*var(--column));
-    gap: $column;
-    overflow-x: hidden;
+
+.news-detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    @include animatedSlide($news-easing, $duration);
+
+    @media(max-width: $breakpoint-tablet) {
+        display: none;
+        transform: translateY(-100%);
+        background-image: none;
+        background-color: $bckg;
+    }   
+    &_current {
+        @media(max-width: $breakpoint-tablet) {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            transform: translateY(0);
+            animation: unset;
+
+        }
+        
+    }
+    
+    &-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transition: $news-slide;
+        background-size: cover;
+        width: 50%;
+        overflow: hidden;
+        z-index: $top-layout*0.75;
+        @media(max-width: $breakpoint-tablet) {
+            width: 100%;
+            
+        }
+    }
+    
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        mix-blend-mode: soft-light;
+        @media(max-width: $breakpoint-tablet) {
+            mix-blend-mode:unset;
+        }
+        &-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(to bottom, rgba(0, 181, 77, 0.75), $bckg);
+            
+
+            @media(max-width: $breakpoint-tablet) {
+                position: relative;
+                overflow: hidden;
+            }
+        }
+
+        // animation: slideOut 0.5s $easing;
+    }
+
 }
-.js-more{
+
+.js-news-detail {
     transform: translateX(100%);
+
     &_open {
         transform: translateX(0);
-    }  
-}
-.js-more-close{
-    @include round(133px);
-    position: absolute;
-    top: 165px;
-    right: 62px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border: none;
-    appearance: none;
-    cursor: pointer;
+    }
+
+    @media(max-width: $breakpoint-tablet) {
+        transform: translateY(-100%);
+
+        &_open {
+            transform: translateY(0);
+        }
+
+    }
+
+
+    &__close {
+        $size: 133px;
+        @include round($size);
+        position: absolute;
+        top: 165px;
+        right: 62px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: none;
+        appearance: none;
+        cursor: pointer;
+        z-index: $top-layout;
+
+
+        @media(max-width: $breakpoint-tablet) {
+            @include round(82px);
+            top: 50%;
+            transform: translateY(-50%);
+            right: $column;  
+        }
+        @media(max-width: $breakpoint-phone) {
+            @include round(70px);  
+        }
+    }
 }

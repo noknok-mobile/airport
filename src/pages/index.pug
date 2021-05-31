@@ -1,0 +1,33 @@
+
+extends /layout/template
+include /components/screen/screen__section_img
+include /components/info/info
+include /components/index/index
+include /components/news/news
+include /components/video/video
+block styles 
+    link(rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css")
+    //- link(rel="stylesheet", href="fullpage.css")
+
+block vars 
+    - const indexes = [{title: "С 2023 году прогнозируется:", number: "6 500 000", unit:"пассажиров в год"}]
+    - const phone = "8 800 301 19 91"
+    - const mail = "hello@new.aer.com"
+    - const airlink = '';
+
+block content 
+    include /pages/intro
+    include /pages/about
+    include /pages/timer
+    include /pages/indexes
+    include /pages/gallery
+    include /pages/news
+    include /pages/contacts
+
+
+block append script
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js")
+    script(src="js/script.js")
+    //- script(src="js/cursor.js") 
+
+    

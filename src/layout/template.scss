@@ -1,5 +1,6 @@
 .header{
-    padding: 40px;
+    padding: $template-offset;
+    padding-bottom: 0;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -10,22 +11,24 @@
     right: 0;
     z-index: $top-layout;
     @media(max-width:$breakpoint-tablet){
-        justify-content: start;
+        // justify-content: start;
+        padding: 2rem $column;
+        background-image: linear-gradient(to bottom, $bckg 0%, transparent 100%);
     }
 }
 .lang{
     @include widget;
     width: 82px;
     @media(max-width:$breakpoint-tablet){
-        position: absolute;
-        right: 40px;
+        // position: absolute;
+        right: $template-offset;
     }
 }
 .social{
     @include widget;
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: $template-offset;
+    right: $template-offset;
     width: 70px;
     z-index: $top-layout;
     &__item{

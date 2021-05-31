@@ -6,8 +6,26 @@
     background-color: #0A2D58;
     border: none;
     min-height: 50px;
-    padding-left: 19px;
+    padding: 0.75rem var(--padding);
     color: inherit;
     border-radius: 6px;
     font-family: inherit;
+    font-weight: inherit;
+    font-size: $text;
+    width: 100%;
+    @media (max-width:$breakpoint-tablet) {
+        min-height: unset;
+    }
+    &:invalid{
+        color: red;
+    }
+    &:focus:invalid{
+        color: inherit;
+    }
+    &_textarea{
+        resize: none;
+    }
+}
+::placeholder{
+    color: $inactive;
 }

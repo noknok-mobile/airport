@@ -1,23 +1,26 @@
-$breakpoint-tablet: 780px;
-$breakpoint-phone: 480px;
+$breakpoint-tablet: 960px;
+$breakpoint-phone: 560px;
 
 html {
-    --column: 90px;
+    --column: calc(100vw / 20);
     --title: 62px;
     --subtitle: 24px;
     --text: 16px;
+    --small: 12px;
     --color-inactive: #C6C6C6;
     @media(max-width: $breakpoint-tablet) {
-        --column: 30px;
+        --column: calc(100vw / 24);
         --title: 48px;
         --subtitle: 18px;
+        --menu: 18px;
         --text: 14px;
     }
     
     @media(max-width: $breakpoint-phone) {
-        --column: 20px;
+        --column: calc(100vw / 16);
         --title: 24px;
         --subtitle:16px;
+        --menu:14px;
         --text: 11px;
     }
 }
@@ -25,5 +28,12 @@ $inactive: var(--color-inactive);
 $column: var(--column);
 $title: var(--title);
 $subtitle: var(--subtitle);
+$small: var(--small);
+$smallest: 9px;
 $text: var(--text);
+$menu: var(--menu);
 $top-layout:20; //z-index самого верхнего слоя
+$template-offset: 40px;
+$easing: cubic-bezier(0, 0, 0.58, 1);
+$bckg:#011936;
+$accent: #009840;

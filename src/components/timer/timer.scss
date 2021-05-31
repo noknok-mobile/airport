@@ -1,21 +1,66 @@
-.timer{
+.timer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 96px;
-    // &__digit:not(:last-of-type)::after{
-        //     content:'\2022';
-        // }
-    &__digit{
+    font-weight: 200;
+
+    @media(max-width:$breakpoint-tablet) {
+        font-size: 72px;
+    }
+
+    @media(max-width:$breakpoint-phone) {
+        font-size: 36px;
+    }
+
+    &__digit {
         position: relative;
     }
-    &__digit::after{
+
+    &__digit::after {
         content: attr(data-text);
         position: absolute;
         vertical-align: bottom;
-        font-size: 16px;
+        font-size: $text;
         bottom: -20px;
         left: 50%;
         transform: translateX(-50%);
+        font-weight: 300;
     }
 
+    &__delimiter {
+        margin: 0px 0.3em;
+    }
+
+    &__sec {
+        width: 1.5em;
+
+        @media(max-width:$breakpoint-phone) {}
+    }
+}
+
+.timer-wrapper {
+    padding: 36px;
+}
+
+.timer-header {
+    
+    margin-bottom: 65px;
+    @media(max-width:$breakpoint-tablet) {
+        margin-bottom: 50px;
+    }
+    @media(max-width:$breakpoint-phone) {
+        margin-bottom: 34px;
+    }
+    &__title {
+        @media(max-width:$breakpoint-tablet) {
+            margin-bottom: 10px;
+        }
+    }
+
+}
+
+.timer-container {
+    background-image: url('assets/3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -1,17 +1,20 @@
+@import './defines.scss';
+@import './mixin.scss';
+@import './reset.scss';
+@import './font.scss';
+@import './animations.scss';
+@import './text.scss';
+@import '../layout/template.scss';
+@import '../components/*';
+@import '../pages/*';
 html{
     line-height: 1.25;
     font-family: Geometria, sans-serif;
     color: white;
     scroll-behavior: smooth;
+    font-size: $text;
+    overflow: hidden;
 }
 body{
-    background-color: #011936;
+    background-color: $bckg;
 }
-@import './defines.scss';
-@import './mixin.scss';
-@import './reset.scss';
-@import './font.scss';
-@import './text.scss';
-@import '../layout/template.scss';
-@import '../components/*';
-@import '../index.scss';

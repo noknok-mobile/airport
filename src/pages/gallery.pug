@@ -1,0 +1,20 @@
+- const images = [{src:'2.png', link:'link1' }, {src:'1.png', link:'link2'}, {src:'4.png', link:'link3'}, {video:'videoplayback.webm', src:'pexels-francesco-ungaro-97558.png', type:'video', link:"link0"}, {src:'1-1.png', link:'link4'},{src:'3.png', link:'link5'}]
+
+// gallery section start
+.screen.screen_split.gallery
+    .screen__section.screen__section_img.gallery__thumbs.js-cursor-trigger(data-cursor="pointer")
+            each image in images
+                - let isVideo = image.type == 'video';
+                a.gallery__thumb-wrapper(href= `#${image.link}`, class= isVideo? 'js-video-thumb gallery__thumb-wrapper_video':'js-image-thumb')
+                        img.gallery__thumb(src= `assets/${image.src}`)
+
+    .screen__section.screen__section_img.gallery__images
+            each image, index in images
+                    - let first = index == 0
+                    - let isVideo = image.type == 'video';
+                    if !isVideo
+                        +sectionImg(src= `assets/${image.src}`, data-link= `${image.link}`, class= first? 'gallery__image_current':'').gallery__image
+                    else
+                        +video({poster: image.src, video: image.video})(data-link= `${image.link}`, src= image.video).gallery__video
+
+//- script(src="js/gallery.js")

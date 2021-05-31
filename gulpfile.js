@@ -12,9 +12,10 @@ const bulkSass = require('gulp-sass-bulk-import');
 const svgSprite = require('gulp-svg-sprite');
 const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
+const concat = require('gulp-concat');
 
 function compileHtml() {
-    return src('src/index.pug')
+    return src(['src/pages/index.pug'])
         .pipe(pug({
             pretty: true,
             basedir: './src/'
@@ -35,7 +36,11 @@ function server() {
 
 function assets() {
     return src('assets/*')
-        .pipe(dest('build/'));
+        .pipe(dest('build/assets/'));
+}
+function fonts() {
+    return src('assets/fonts/*')
+        .pipe(dest('build/fonts/'));
 }
 
 function styles() {
@@ -52,9 +57,17 @@ function styles() {
         .pipe(dest('build/'));
 }
 
+function scripts(){
+    return src('src/**/*.js')
+    .pipe(concat('script.js'))
+    .pipe(dest('build/js'));
+}
+
 function watcher() {
-    watch('src/**/*.pug', compileHtml);
+    watch(['src/**/*.pug','src/**/*.js'], compileHtml);
     watch('src/**/*.scss', styles);
+    watch('src/pages/*.js', scripts);
+    
 }
 
 function svg() {
@@ -78,6 +91,7 @@ function svg() {
         .pipe(dest('build/'));
 }
 exports.server = parallel(server, watcher);
-exports.build = parallel(compileHtml, styles, assets);
+
+exports.build = parallel(compileHtml, styles, assets, fonts, scripts);
 exports.styles = series(styles);
 exports.svg = series(svg);

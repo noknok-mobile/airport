@@ -1,4 +1,11 @@
 .info{
+    --top: 30px;
+    @media (max-width: $breakpoint-tablet) {
+        --top: 24px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+        --top: 10px;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,6 +14,8 @@
     &__content{
         padding-left: $column;
         margin-top: calc(var(--column)*0.6);
+        text-align: justify;
+        flex-shrink: 0;
     }
     &__footer{
         display: flex;
@@ -16,5 +25,11 @@
         bottom: 0;
         width: 100%;
         z-index: $top-layout;
+        @media (max-width: $breakpoint-tablet) {
+            display: none;
+        }
+    }
+    p:not(:first-of-type){
+        margin-top: var(--top);
     }
 }

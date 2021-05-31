@@ -3,12 +3,16 @@
 }
 
 .logo-wrapper {
-    @media(max-width:$breakpoint-tablet) and (min-width:$breakpoint-phone){
-        position: relative;
-        max-width: 240px;
-        top: -8px;
+    @media(max-width:$breakpoint-tablet) {
+        margin-left: calc(2*var(--column));
+        @media (min-width:$breakpoint-phone) {
+            position: relative;
+            max-width: 240px;
+            top: -8px;
+        }
     }
-    @media(max-width:$breakpoint-phone){
+
+    @media(max-width:$breakpoint-phone) {
         max-width: 130px;
     }
 }

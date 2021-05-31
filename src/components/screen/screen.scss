@@ -1,8 +1,16 @@
 .screen {
     position: relative;
-    height: 100vh;
+    // height: max(100vh);
+    height: max(100vh, 900px); //@debug
+    overflow-x: hidden;
+
+    @media (max-width: $breakpoint-tablet) {
+        height: 100vh;
+        overflow: auto;
+
+    }
+
     &_single {
-        padding: $column;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -15,32 +23,38 @@
 
     &_split {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     &__section {
         padding: $column;
-        padding-right: calc(2*var(--column));
-
-        &-more {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            transition: transform 0.5s ease-in;
-            background-image:linear-gradient(to bottom, rgba(0, 181, 77, 0.75), rgba(0, 48, 100, 0.75)), url('2.jpg');
-            background-size: cover;
-            width: 50%;
+        height: 100%;
+        &_text {
+            padding-right: calc(2*var(--column));
+            padding-top: auto;
+            @media(max-width: $breakpoint-tablet) {
+                @media (min-width: $breakpoint-phone) {
+                    padding: 36px calc(2*var(--column));
+                }
+            }
         }
-
+        
         &_img {
             padding: 0;
             overflow: hidden;
         }
+        &_news{
+            padding-top: 120px;//header height
+            @media (max-width: $breakpoint-phone) {
+                padding-top: 100px;
+            }
+        }
     }
+
     @media(max-width:$breakpoint-tablet) {
-        display: block;
-        height: unset;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: 1fr 1fr;
+        // height: unset;
     }
 }
 

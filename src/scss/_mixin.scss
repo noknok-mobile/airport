@@ -3,6 +3,7 @@
     justify-content: space-between;
     color: $inactive;
     &__item{
+        transition: color 0.2s ease-in-out;
         &:hover{
             color: white;
         } 

@@ -7,13 +7,14 @@ html {
     --subtitle: 24px;
     --text: 16px;
     --small: 12px;
-    --color-inactive: #C6C6C6;
+    --color-inactive: #ABA8B2;
     @media(max-width: $breakpoint-tablet) {
         --column: calc(100vw / 24);
         --title: 48px;
         --subtitle: 18px;
         --menu: 18px;
         --text: 14px;
+        --small: 10px;
     }
     
     @media(max-width: $breakpoint-phone) {
@@ -32,8 +33,8 @@ $small: var(--small);
 $smallest: 9px;
 $text: var(--text);
 $menu: var(--menu);
-$top-layout:20; //z-index самого верхнего слоя
-$template-offset: 40px;
+$top-layout:40; //z-index самого верхнего слоя
+$template-offset: 2rem;
 $easing: cubic-bezier(0, 0, 0.58, 1);
 $bckg:#011936;
 $accent: #009840;

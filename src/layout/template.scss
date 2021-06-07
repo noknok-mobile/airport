@@ -1,4 +1,4 @@
-.header{
+.header {
     padding: $template-offset;
     padding-bottom: 0;
     display: flex;
@@ -10,28 +10,41 @@
     left: 0;
     right: 0;
     z-index: $top-layout;
-    @media(max-width:$breakpoint-tablet){
+    
+    @media(max-width:$breakpoint-tablet) {
         // justify-content: start;
         padding: 2rem $column;
         background-image: linear-gradient(to bottom, $bckg 0%, transparent 100%);
     }
 }
-.lang{
+
+.lang {
     @include widget;
     width: 82px;
-    @media(max-width:$breakpoint-tablet){
-        // position: absolute;
-        right: $template-offset;
+    font-weight: 300;
+
+    @media(max-width:$breakpoint-phone) {
+        width: 64px;
+    }
+    &__item {
+        &_active {
+            font-weight: 400;
+            color: white;
+        }
     }
 }
-.social{
+
+.social {
     @include widget;
     position: fixed;
-    bottom: $template-offset;
-    right: $template-offset;
+    bottom: 2rem;
     width: 70px;
+    right: $template-offset;
     z-index: $top-layout;
-    &__item{
+    @media(max-width:$breakpoint-tablet) {
+        right: $column;
+    }
+    &__item {
         max-width: 18px;
         max-height: 18px;
     }

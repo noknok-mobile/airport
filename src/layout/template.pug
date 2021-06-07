@@ -22,9 +22,10 @@ html(lang="en")
             button.menu-burger.js-menu-toggle
                 img(src="assets/burger.svg" alt="")
             .logo-wrapper
-                a(href="") #[img.logo(src="assets/logo.svg")]
+                a(href="") 
+                    include logo.svg
             .lang
-                a.lang__item(href="ru") RU 
+                a.lang__item.lang__item_active(href="/") RU 
                 a.lang__item(href="en") ENG
         .social
             a(href="#") 

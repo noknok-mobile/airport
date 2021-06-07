@@ -46,7 +46,7 @@
     @media(max-width: $breakpoint-tablet) {
         cursor: default;
         & > * {
-            cursor: none;
+            cursor: default;
         }
     }
 }

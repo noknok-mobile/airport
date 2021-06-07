@@ -1,14 +1,8 @@
 .screen {
     position: relative;
-    // height: max(100vh);
-    height: max(100vh, 900px); //@debug
+    height: 100vh;
     overflow-x: hidden;
 
-    @media (max-width: $breakpoint-tablet) {
-        height: 100vh;
-        overflow: auto;
-
-    }
 
     &_single {
         display: flex;
@@ -20,42 +14,52 @@
         align-items: center;
         text-align: center;
     }
-
     &_split {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        @media(max-width:$breakpoint-tablet) {
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+        }
+    }
+    
+    &_map{
+        @media(max-width:$breakpoint-tablet) {
+            grid-template-rows: repeat(2, 1fr);
+            
+        }
     }
 
     &__section {
         padding: $column;
         height: 100%;
+
         &_text {
             padding-right: calc(2*var(--column));
             padding-top: auto;
+
             @media(max-width: $breakpoint-tablet) {
                 @media (min-width: $breakpoint-phone) {
                     padding: 36px calc(2*var(--column));
                 }
             }
         }
-        
+
         &_img {
             padding: 0;
             overflow: hidden;
         }
-        &_news{
-            padding-top: 120px;//header height
+
+        &_news {
+            padding-top: 120px; //header height
+
             @media (max-width: $breakpoint-phone) {
                 padding-top: 100px;
             }
         }
     }
 
-    @media(max-width:$breakpoint-tablet) {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: 1fr 1fr;
-        // height: unset;
-    }
 }
 
 .section-img {

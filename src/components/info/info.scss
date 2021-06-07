@@ -11,11 +11,32 @@
     justify-content: center;
     height: 100%;
     position: relative;
+    @media (max-width: $breakpoint-tablet) {
+        justify-content: flex-start;
+    }
     &__content{
         padding-left: $column;
         margin-top: calc(var(--column)*0.6);
         text-align: justify;
         flex-shrink: 0;
+
+        &-inner{
+            &_mobile{
+                display: none;
+            }
+            &_desktop{
+                display: block;
+            }
+            @media (max-width: $breakpoint-phone) {
+                &_mobile{
+                    display: block;
+                }
+                &_desktop{
+                    display: none;
+                }
+            }
+
+        }
     }
     &__footer{
         display: flex;

@@ -1,13 +1,12 @@
 mixin news(props)
-    //- - let desc = props.desc.join(' ').slice(0, 27)
     .news&attributes(attributes)
         .news__img-wrapper 
             img.news__img(src= `assets/${attributes.src}`)
             .news__link-wrapper 
-                a(href="#", target="_blank") 
-                    svg.news__link #[use(xlink:href='icons.svg#fb')]
-                a(href="#", target="_blank") 
-                    svg.news__link #[use(xlink:href='icons.svg#insta')]
+                a(href="#" target="_blank") 
+                    svg.news__link #[use(xlink:href='assets/icons.svg#fb')]
+                a(href="#" target="_blank") 
+                    svg.news__link #[use(xlink:href='assets/icons.svg#insta')]
             a.news__caption.js-news-detail-show(href = attributes.href)
                 p Автор: #[strong #{props.author}] 
                 p Фото: #[strong #{props.photographer}] 
@@ -26,5 +25,8 @@ mixin newsDetail(props)
         .screen__section.screen__section_text
             +info(props.title, caption, 'Скачать материал')
                 if props.desc
-                    each descPart in props.desc 
-                        p= descPart
+                    .info__content-inner.info__content-inner_desktop
+                        each descPart in props.desc 
+                            p= descPart
+                    .info__content-inner.info__content-inner_mobile
+                        p= props.desc[0]

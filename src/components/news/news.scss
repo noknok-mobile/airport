@@ -8,9 +8,8 @@ $news-slide: transform $duration $news-easing;
     grid-auto-columns: calc(4*var(--column));
     gap: $column;
     margin: calc(var(--column)*0.6) calc(-1*var(--column));
-    padding: 0 $column;
+    padding: 0 calc(2*var(--column));
     overflow-x: hidden;
-    cursor: grab;
     direction: rtl;
 
 
@@ -113,6 +112,9 @@ $news-slide: transform $duration $news-easing;
     &__button {
         margin-top: 20px;
         opacity: 0;
+        @media(max-width: $breakpoint-tablet) {
+            display: none;
+        }
     }
 
     & &__caption {
@@ -153,7 +155,7 @@ $news-slide: transform $duration $news-easing;
     &_current {
         @media(max-width: $breakpoint-tablet) {
             display: grid;
-            grid-template-rows: repeat(2, 1fr);
+            grid-template-rows: repeat(2, minmax(0, 1fr));
             transform: translateY(0);
             animation: unset;
 
@@ -200,9 +202,46 @@ $news-slide: transform $duration $news-easing;
             }
         }
 
-        // animation: slideOut 0.5s $easing;
     }
+    &__close {
+        $size: 133px;
+        @include round($size);
+        position: absolute;
+        top: 165px;
+        right: 62px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: none;
+        appearance: none;
+        cursor: pointer;
+        z-index: $top-layout;
 
+
+        &-icon{
+            height: var(--size);
+            width: var(--size);
+        }
+        
+        @media(max-width: $breakpoint-tablet) {
+            --size:14px;
+            @include round(82px);
+            top: 50%;
+            transform: translateY(-50%);
+            right: $column;
+            &-icon{
+               path{
+                   stroke-width: 3;
+               }
+            }
+        }
+        
+        @media(max-width: $breakpoint-phone) {
+            --size:12px;
+            @include round(70px);  
+        }
+    }
 }
 
 .js-news-detail {
@@ -224,30 +263,5 @@ $news-slide: transform $duration $news-easing;
     }
 
 
-    &__close {
-        $size: 133px;
-        @include round($size);
-        position: absolute;
-        top: 165px;
-        right: 62px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        border: none;
-        appearance: none;
-        cursor: pointer;
-        z-index: $top-layout;
-
-
-        @media(max-width: $breakpoint-tablet) {
-            @include round(82px);
-            top: 50%;
-            transform: translateY(-50%);
-            right: $column;  
-        }
-        @media(max-width: $breakpoint-phone) {
-            @include round(70px);  
-        }
-    }
+    
 }

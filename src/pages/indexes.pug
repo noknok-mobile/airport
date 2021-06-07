@@ -6,6 +6,7 @@
         .screen__section.screen__section_text 
             +info('Новый <br>мультимодальный хаб <br>в цифрах')
                 .index-slider.js-cursor-trigger(data-cursor="arrows")
+                    img(src="assets/controls.svg", alt="").slider-controls.slider-controls_indexes
                     .glide__track(data-glide-el="track")
                         .glide__slides
                             - for(let i = 0; i<3; i++)

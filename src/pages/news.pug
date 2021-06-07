@@ -67,14 +67,15 @@
 .screen
     // news list start
     .screen__section.screen__section_news
-        .news-title.title.js-cursor-trigger(data-cursor="arrows") Новости #[br] в ногу со временем
-        .news-list.scrollMouse.dragscroll.js-news-list
+        img(src="assets/controls.svg", alt="").slider-controls.slider-controls_news
+        .news-title.title Новости #[br] в ногу со временем
+        .news-list.scrollMouse.js-news-list
             each newsItem in news
                 +news(newsItem)(src= newsItem.image, href= `#${newsItem.id}`)
     // news detail container
     .news-detail-container.js-news-detail.js-news-detail_idle
-        button.js-news-detail__close
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        button.news-detail__close.js-news-detail__close
+            <svg class="news-detail__close-icon" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M25 1L1 25M1 1L25 25" stroke="#009840" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         each newsItem, index in news 

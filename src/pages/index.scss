@@ -116,7 +116,9 @@
 
 .mouse {
     display: block;
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     width: 20px;
     height: 33px;
     color: white;
@@ -152,20 +154,16 @@
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 25px $template-offset;
+        display: flex;
+        padding: $template-offset;
         z-index: $top-layout / 2;
         @media(max-width:$breakpoint-tablet) {
-            padding: 25px $column;
+            padding: 2rem $column;
         }
     }
 
     &__button {
-        position: absolute;
-        bottom: 25px;
-        left: $template-offset;
         width: 250px;
-        // padding: 0 70px;
-
         @media(max-width:$breakpoint-phone) {
             max-width: max-content;
             position: relative;
@@ -175,6 +173,10 @@
     }
 
     &__preview {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
         &-wrapper {
             display: none;
             position: absolute;
@@ -188,12 +190,23 @@
                 display: block;
             }
         }
-
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-
-
     }
 
 }
+.slider-controls{
+    display: none;
+    position: absolute;
+    @media(max-width:$breakpoint-tablet) {
+        display: block;
+    }
+    &_indexes{
+        right: calc(-1 * var(--column));
+    }
+    &_news{
+        bottom: $template-offset;
+    }
+}
+
+// .map-wrapper{
+//     min-height: 120px;
+// }

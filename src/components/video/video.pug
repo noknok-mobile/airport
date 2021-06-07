@@ -6,17 +6,19 @@ mixin video(props)
                 svg(width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg")
                     path(d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round")
             if srcType != 'embed'
-                video.video(muted="", poster= `assets/${props.poster}`)
-                    source(src= `assets/${props.video}`, type="video/mp4")
+                video.video(muted="", autoplay= props.autoplay, poster= `assets/${props.poster}`)
+                    source(src= `assets/${props.video}.mp4`, type="video/mp4")
+                    source(src= `assets/${props.video}.webm`, type="video/webm")
             else 
                 iframe.video(src= props.video, frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
         .video-wrapper.video-wrapper_mobile
-            if props.mobilePoster == true
+            if props.mobileSkin == true
                 button.video__play-button.js-mobile-play(onclick="playVideo(this)") 
                 picture.video-poster-wrapper
-                    img.video-poster(src= props.poster, alt="")
+                    img.video-poster(src= `assets/${props.mobilePoster}`, alt="")
             video.video(muted="", poster= props.poster)
-                    source(src= `assets/${props.video}`, type="video/mp4")
+                    source(src= `assets/${props.video}.mp4`, type="video/mp4")
+                    source(src= `assets/${props.video}.webm`, type="video/webm")
 
 //- block append script
 //-     script 

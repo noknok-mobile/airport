@@ -3,13 +3,16 @@ document.addEventListener("fullscreenchange", updateFullscreenSettings);
 
 function showFullscreenVideo(videoWrapper) {
   if (!document.fullscreen) {
+    const video = videoWrapper.querySelector('video');
+    video.currentTime = 0;
+    if(video.paused) video.play();
     videoWrapper.requestFullscreen();
   }
 }
 function updateFullscreenSettings(e) {
-  console.log(e.target);
   const video = e.target.querySelector("video");
   if (video) video.controls = document.fullscreen;
+  console.log("last time:" + video.currentTime);
 }
 function closeFullscreen() {
   document.exitFullscreen();

@@ -13,6 +13,7 @@ const svgSprite = require('gulp-svg-sprite');
 const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
 const concat = require('gulp-concat');
+const devip = require('dev-ip');
 
 function compileHtml() {
     return src(['src/pages/index.pug'])
@@ -29,7 +30,8 @@ function server() {
         server: {
             baseDir: "./build/",
             ghostMode: false
-        }
+        },
+        host: devip()
     });
     watch("build/").on('change', browserSync.reload);
 }

@@ -36,7 +36,7 @@ $news-slide: transform $duration $news-easing;
     $caption-padding: 18px;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     direction: initial;
     scroll-snap-align: center;
 

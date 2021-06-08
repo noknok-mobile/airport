@@ -1,7 +1,6 @@
 //intro
 const introWrapper = document.querySelector(".js-intro");
-const intro = introWrapper.querySelector("video");
-intro.addEventListener('click', ()=>showFullscreenVideo(introWrapper));
+introWrapper.addEventListener('click', ()=>showFullscreenVideo(introWrapper));
 // index slider
 const indexSliderContainer = document.querySelector(".index-slider");
 const sizes = indexSliderContainer.getBoundingClientRect();

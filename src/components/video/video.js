@@ -1,21 +1,22 @@
 // video 
-document.addEventListener("fullscreenchange", updateFullscreenSettings);
+screenfull.on('change', function(e){
+  console.log(e);
+  const video = e.target.querySelector('video'); 
+  if (video) video.controls = screenfull.isFullscreen;
+});
 
 function showFullscreenVideo(videoWrapper) {
-  if (!document.fullscreen) {
-    const video = videoWrapper.querySelector('video');
-    video.currentTime = 0;
-    if(video.paused) video.play();
-    videoWrapper.requestFullscreen();
+  const video = videoWrapper.querySelector('video');
+  video.currentTime = 0;
+  if(video.paused) video.play();
+
+  if (screenfull.isEnabled && !screenfull.isFullscreen) {
+    screenfull.request(videoWrapper);
   }
 }
-function updateFullscreenSettings(e) {
-  const video = e.target.querySelector("video");
-  if (video) video.controls = document.fullscreen;
-  console.log("last time:" + video.currentTime);
-}
+
 function closeFullscreen() {
-  document.exitFullscreen();
+  screenfull.exit();
 }
 function playVideo(elem) {
   const video = elem.querySelector(".video")|| elem.parentNode.querySelector(".video");

@@ -14,9 +14,12 @@ const postcss = require('gulp-postcss');
 const mqpacker = require('css-mquery-packer');
 const concat = require('gulp-concat');
 const devip = require('dev-ip');
+const autoprefixer = require('autoprefixer');
+const terser = require('gulp-terser');
+const sourcemaps = require('gulp-sourcemaps');
 
 function compileHtml() {
-    return src(['src/pages/index.pug'])
+    return src(['src/pages/index.pug','src/pages/test.pug'])
         .pipe(pug({
             pretty: true,
             basedir: './src/'
@@ -47,12 +50,14 @@ function fonts() {
 
 function styles() {
     const plugins = [
-        mqpacker()
+        mqpacker(),
+        autoprefixer()
     ];
     return src('src/scss/main.scss')
         .pipe(bulkSass())
         .pipe(sass({
             outputStyle: "expanded",
+            // outputStyle: "compressed",
             allowEmpty: true
         }).on('error', sass.logError))
         .pipe(postcss(plugins))
@@ -62,6 +67,9 @@ function styles() {
 function scripts(){
     return src('src/**/*.js')
     .pipe(concat('script.js'))
+    // .pipe(sourcemaps.init())
+    // .pipe(terser())
+    // .pipe(sourcemaps.write('../'))
     .pipe(dest('build/js'));
 }
 

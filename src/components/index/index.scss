@@ -38,6 +38,7 @@
     grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
     gap: 50px 0;
+    user-select: none;
     @media(max-width:$breakpoint-tablet) {
         gap: 30px 0;
     }

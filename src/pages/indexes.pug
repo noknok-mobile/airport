@@ -9,9 +9,9 @@
                     img(src="assets/controls.svg", alt="").slider-controls.slider-controls_indexes
                     .glide__track(data-glide-el="track")
                         .glide__slides
-                            - for(let i = 0; i<3; i++)
+                            - for(let i = 0; i<6; i++)
                                 .index-wrapper
-                                    - for (let x = 0; x < 6; x++)
+                                    - for (let x = 0; x < 3; x++)
                                         +index(indexes[0])
 script(src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js") 
 

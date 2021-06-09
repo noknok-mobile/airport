@@ -40,13 +40,12 @@
 }
 .js-cursor-trigger{
     cursor: none;
-    & > * {
-        cursor: none;
-    }
-    @media(max-width: $breakpoint-tablet) {
-        cursor: default;
-        & > * {
-            cursor: default;
+    @at-root{
+        :-webkit-full-screen &{
+            cursor: inherit;
         }
+    }
+    @media(max-width: $breakpoint-tablet), (display-mode:fullscreen) {
+        cursor: inherit;
     }
 }

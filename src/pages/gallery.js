@@ -46,7 +46,7 @@ function openVideo(e) {
   );
   console.log(videoWrapper);
   videoWrapper.classList.add("gallery__video_open");
-  window.innerWidth > 960? showFullscreenVideo(videoWrapper): playVideo(videoWrapper);
+  showFullscreenVideo(videoWrapper);
 
 }
 

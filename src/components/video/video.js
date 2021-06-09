@@ -1,24 +1,25 @@
-// video 
-screenfull.on('change', function(e){
-  console.log(e);
-  const video = e.target.querySelector('video'); 
-  if (video) video.controls = screenfull.isFullscreen;
+// video
+screenfull.on("change", function (e) {
+  const videoWrapper = e.target;
+  const video = videoWrapper.querySelector("video");
+  if (video) {
+    video.controls = screenfull.isFullscreen;
+    video.paused = !screenfull.isFullscreen;
+  }
+  fullpage_api.setAllowScrolling(!screenfull.isFullscreen);
 });
 
 function showFullscreenVideo(videoWrapper) {
-  const video = videoWrapper.querySelector('video');
-  video.currentTime = 0;
-  if(video.paused) video.play();
-
+  const video = videoWrapper.querySelector("video");
   if (screenfull.isEnabled && !screenfull.isFullscreen) {
     screenfull.request(videoWrapper);
+  }
+  if(video.autoplay) video.load();
+  else {
+    video.play();
   }
 }
 
 function closeFullscreen() {
   screenfull.exit();
-}
-function playVideo(elem) {
-  const video = elem.querySelector(".video")|| elem.parentNode.querySelector(".video");
-  video.play();
 }

@@ -12,6 +12,7 @@ const indexSlider = new Glide(indexSliderContainer, {
   rewind: false,
   autoplay: 20000,
   perView:2,
+  bound:true,
   breakpoints:{
     768: {
       perView:1,

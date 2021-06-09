@@ -11,6 +11,7 @@ $news-slide: transform $duration $news-easing;
     padding: 0 calc(2*var(--column));
     overflow-x: hidden;
     direction: rtl;
+    -webkit-overflow-scrolling: touch;
 
 
     @media (max-width: $breakpoint-tablet) {

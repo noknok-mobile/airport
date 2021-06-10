@@ -28,6 +28,7 @@
         &-wrapper {
             overflow: hidden;
             position: relative;
+            cursor: inherit;
 
             &_video {
                 &::after {

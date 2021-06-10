@@ -67,7 +67,9 @@
         width: calc(8*var(--column));
     }
 
-    &__link {
+    .button {
+        color: white;
+        border: 2px solid;
         width: 100%;
     }
 }

@@ -4,9 +4,10 @@
     +video({poster:'videoplayback.jpg', video: "videoplayback"})(data-cursor="play").js-intro.js-cursor-trigger.intro__inner
         //-mobile cover
         .intro__cover
-            button.intro__play-button.js-mobile-play() 
+            button.intro__play-button.js-mobile-play 
             picture.intro__poster
-                img(src="assets/preview_mobile.png")
+                source(media="(min-width: 560px)", srcset="assets/videoplayback.jpg")
+                img(srcset="assets/preview_mobile.png 2x" src="assets/2.jpg")
 
     .intro__footer 
         a(href= airlink).intro__button.button Сайт аэропорта

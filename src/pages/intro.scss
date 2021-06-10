@@ -18,8 +18,11 @@
                 content: none;
             }
             @at-root{
-                :-webkit-full-screen &{
-                    content: none;
+                :-webkit-full-screen{
+                    cursor: inherit;
+                    &::after{
+                        content: none;
+                    }
                 }
             }
         }

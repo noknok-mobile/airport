@@ -21,9 +21,8 @@ html(lang="en")
         header.header 
             button.menu-burger.js-menu-toggle
                 img(src="assets/burger.svg" alt="")
-            .logo-wrapper
-                a(href="") 
-                    include logo.svg
+            a.logo-wrapper(href="/") 
+                svg.logo(width="253", height="60") #[use(xlink:href='assets/logo.svg#logo')]
             .lang
                 a.lang__item.lang__item_active(href="/") RU 
                 a.lang__item(href="en") ENG

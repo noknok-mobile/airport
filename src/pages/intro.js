@@ -1,7 +1,7 @@
 //intro
 const introWrapper = document.querySelector(".js-intro");
 const introVideo = introWrapper.querySelector("video");
-if(window.innerWidth > 960) introVideo.autoplay = true;
+if(window.innerWidth > 1200) introVideo.autoplay = true;
 introWrapper.addEventListener('click', (e)=>{
     console.log(navigator.userAgent);
     showFullscreenVideo(introWrapper);

@@ -8,8 +8,8 @@ mixin news(props)
                 a(href="#" target="_blank") 
                     svg.news__link #[use(xlink:href='assets/icons.svg#insta')]
             a.news__caption.js-news-detail-show(href = attributes.href)
-                p Автор: #[strong #{props.author}] 
-                p Фото: #[strong #{props.photographer}] 
+                p #[span.news__caption-label Автор:] #[span.news__caption-author #{props.author}] 
+                p #[span.news__caption-label Фото:] #[span.news__caption-author #{props.photographer}] 
         a.news__text.js-news-detail-show(href= attributes.href)
             h3.news__title= props.title
             p.news__desc.text= props.shortDesc

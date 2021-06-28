@@ -3,7 +3,7 @@ const imageThumbs = document.querySelectorAll(".js-image-thumb");
 const gallery = document.querySelector('.gallery__images');
 const galleryItemName = "gallery__image";
 for (let thumb of imageThumbs) {
-    if (window.innerWidth > 960) {
+    if (window.innerWidth > 1200) {
         thumb.addEventListener("click", (e)=>slideImage(e, galleryItemName));
     } else {
         thumb.addEventListener("click", (e)=>scrollToImage(e,gallery));

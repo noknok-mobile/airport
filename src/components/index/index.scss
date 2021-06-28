@@ -12,6 +12,8 @@
     &__title {
         font-size: $text;
         margin-bottom: $small;
+        white-space: break-spaces;
+        text-align: initial;
         @media(max-width: $breakpoint-phone) {
             margin-bottom: 0;
         }
@@ -20,7 +22,9 @@
     &__number {
         font-size: var(--number);
         line-height: 1.125;
-
+        @media(min-width:$breakpoint-tablet) {
+            font-size: clamp(30px, calc(var(--column)/2), var(--number));
+        }
     }
 
     &__unit {
@@ -34,8 +38,8 @@
 
 .index-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-auto-flow: column;
     gap: 50px 0;
     user-select: none;

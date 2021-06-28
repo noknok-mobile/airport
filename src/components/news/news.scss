@@ -82,11 +82,17 @@ $news-slide: transform $duration $news-easing;
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+        background-image: linear-gradient(to bottom, transparent 25%, #000 100%);
         transform: translateY(100%);
         opacity: 0;
         transition: all 0.3s $easing;
 
+        &-label{
+            font-weight: 300;
+        }
+        &-author{
+            font-weight: 600;
+        }
     }
 
     &__link {

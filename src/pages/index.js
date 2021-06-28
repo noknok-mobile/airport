@@ -5,7 +5,7 @@ new fullpage('#fullpage', {
   sectionSelector:'.screen',
   autoScrolling: true,
   licenseKey:'E76E6B00-ADE4458F-A92E04CA-F5831DFE',
-  normalScrollElements: ".js-news-list",
+  normalScrollElements: ".js-news-list, .map-wrapper",
   scrollHorizontally: false,
   loopBottom: true,
   loopTop: true,

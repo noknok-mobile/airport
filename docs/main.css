@@ -273,7 +273,8 @@ a {
   text-transform: uppercase;
   opacity: 0;
   transition: all 0.2s ease-in-out;
-  animation: fade-tooltip 1.5s 0.4s cubic-bezier(0, 0, 0.58, 1);
+  -webkit-animation: fade-tooltip 1.5s 0.4s cubic-bezier(0, 0, 0.58, 1);
+          animation: fade-tooltip 1.5s 0.4s cubic-bezier(0, 0, 0.58, 1);
 }
 .menu__item-dot {
   width: 10px;
@@ -294,6 +295,23 @@ a {
 .menu__item_current .menu__item-dot, .menu__item:hover .menu__item-dot {
   background-color: white;
   transform: scale(1.2);
+}
+
+@-webkit-keyframes fade-tooltip {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0.2rem);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-tooltip {
@@ -325,7 +343,8 @@ a {
 .news__img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .news__img-wrapper {
   width: 100%;
@@ -394,7 +413,9 @@ a {
   align-items: center;
   background-color: white;
   border: none;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   cursor: pointer;
   background-image: url(image14.svg);
 }
@@ -445,8 +466,10 @@ a {
 .section-img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .timer {
@@ -504,19 +527,55 @@ a {
 .video {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .video-wrapper {
   max-height: 100%;
   max-width: 100%;
   overflow: hidden;
 }
-.video-wrapper:fullscreen .js-video-close {
+.video-wrapper:-webkit-full-screen .js-video-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  -webkit-appearance: none;
+          appearance: none;
+  color: white;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+.video-wrapper:-ms-fullscreen .js-video-close {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   appearance: none;
+  color: white;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+.video-wrapper:fullscreen .js-video-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   color: white;
   width: 128px;
   height: 128px;

@@ -1,333 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
   </head>
   <body>
-    <header class="header"> <img class="menu-burger" src="burger.svg" alt="">
-      <div class="logo-wrapper"><a href="/"><img class="logo" src="logo.svg"></a></div>
-      <div class="lang"><a class="lang__item" href="/ru">RU </a><a class="lang__item" href="/en">ENG</a></div>
+    <div class="cursor cursor_hidden">
+      <div class="cursor__inner"></div>
+    </div>
+    <header class="header"> 
+      <button class="menu-burger js-menu-toggle"><img src="assets/burger.svg" alt=""></button><a class="logo-wrapper" href="/"> 
+        <svg class="logo" width="253" height="60">
+          <use href="assets/logo.svg#ru"></use>
+        </svg></a>
+      <div class="lang"><a class="lang__item lang__item_active" href="/">RU </a><a class="lang__item" href="en">ENG</a></div>
     </header>
     <div class="social"><a href="#"> 
         <svg class="social__item">
-          <use xlink:href="icons.svg#fb"></use>
+          <use href="assets/icons.svg#fb"></use>
         </svg></a><a href="#"> 
         <svg class="social__item">
-          <use xlink:href="icons.svg#insta"></use>
+          <use href="assets/icons.svg#insta"></use>
         </svg></a></div>
-    <nav class="menu-wrapper">
-      <ul class="menu">
-        <li><a class="menu__item" href="#main">
-            <div class="menu__item-label">Главная</div>
-            <div class="menu__item-dot"></div></a></li>
-        <li><a class="menu__item" href="#about">
-            <div class="menu__item-label">О проекте</div>
-            <div class="menu__item-dot"></div></a></li>
-        <li><a class="menu__item" href="#timer">
-            <div class="menu__item-label">Таймер</div>
-            <div class="menu__item-dot"></div></a></li>
-        <li><a class="menu__item" href="#indexes">
-            <div class="menu__item-label">Показатели</div>
-            <div class="menu__item-dot"></div></a></li>
-        <li><a class="menu__item" href="#gallery">
-            <div class="menu__item-label">Галерея</div>
-            <div class="menu__item-dot"></div></a></li>
-        <li><a class="menu__item" href="#news">
-            <div class="menu__item-label">Новости</div>
-            <div class="menu__item-dot"></div></a></li>
-        <li><a class="menu__item" href="#contacts">
-            <div class="menu__item-label">Контакты</div>
-            <div class="menu__item-dot"></div></a></li>
-      </ul>
+    <nav class="menu-wrapper js-menu">
+      <div class="menu-desktop">
+        <ul class="menu" id="menu">
+          <li><a class="menu__item" href="#main" data-menuanchor="main"><span class="menu__item-label">Главная</span><span class="menu__item-dot"></span></a></li>
+          <li><a class="menu__item" href="#about" data-menuanchor="about"><span class="menu__item-label">О проекте</span><span class="menu__item-dot"></span></a></li>
+          <li><a class="menu__item" href="#timer" data-menuanchor="timer"><span class="menu__item-label">Таймер</span><span class="menu__item-dot"></span></a></li>
+          <li><a class="menu__item" href="#indexes" data-menuanchor="indexes"><span class="menu__item-label">Показатели</span><span class="menu__item-dot"></span></a></li>
+          <li><a class="menu__item" href="#gallery" data-menuanchor="gallery"><span class="menu__item-label">Галерея</span><span class="menu__item-dot"></span></a></li>
+          <li><a class="menu__item" href="#news" data-menuanchor="news"><span class="menu__item-label">Новости</span><span class="menu__item-dot"></span></a></li>
+          <li><a class="menu__item" href="#contacts" data-menuanchor="contacts"><span class="menu__item-label">Контакты</span><span class="menu__item-dot"></span></a></li>
+        </ul>
+      </div>
+      <div class="menu-mobile">
+        <ul class="menu">
+          <li><a class="menu-mobile__item" href="#main">Главная</a></li>
+          <li><a class="menu-mobile__item" href="#about">О проекте</a></li>
+          <li><a class="menu-mobile__item" href="#timer">Таймер</a></li>
+          <li><a class="menu-mobile__item" href="#indexes">Показатели</a></li>
+          <li><a class="menu-mobile__item" href="#gallery">Галерея</a></li>
+          <li><a class="menu-mobile__item" href="#news">Новости</a></li>
+          <li><a class="menu-mobile__item" href="#contacts">Контакты</a></li>
+        </ul>
+        <div class="menu-mobile__footer"><a class="button menu-mobile__link" href="" target="_blank">Сайт аэропорта</a>
+          <div class="copyright copyright_menu">© 2021. АО «Международный аэропорт «Краснодар»</div>
+        </div>
+      </div>
     </nav>
-    <div class="screen screen_single" id="main"> 
-      <div class="video-wrapper">
-        <button class="js-video-close">
-           <svg width="26" height="26" viewBox="0 0 26 26" fill="none"     xmlns="http://www.w3.org/2000/svg">
-<path d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="container" id="fullpage">  
+      <!-- intro section start-->
+      <div class="screen screen_single intro"> 
+        <div class="video-container">
+          <div class="intro__cover">
+            <button class="intro__play-button js-mobile-play"> </button>
+            <picture class="intro__poster">
+              <source media="(min-width: 560px)" srcset="assets/videoplayback.jpg"><img srcset="assets/preview_mobile.png 2x" src="assets/2.jpg">
+            </picture>
+          </div>
+          <div class="video-wrapper js-intro js-cursor-trigger intro__inner" data-cursor="play">
+            <button class="video-close js-video-close" onclick="closeFullscreen()">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <video class="video" muted="" preload="none" poster="assets/videoplayback.jpg">
+              <source src="assets/videoplayback.mp4" type="video/mp4"/>
+              <source src="assets/videoplayback.webm" type="video/webm"/>
+            </video>
+          </div>
+        </div>
+        <div class="intro__footer"> <a class="intro__button button" href="">Сайт аэропорта</a><a class="mouse" href="#about"></a></div>
+      </div>
+      <!-- about section start-->
+      <div class="screen screen_split">
+        <div class="screen__section screen__section_img"> <img class="section-img" src="assets/2.jpg"/>
+        </div>
+        <div class="screen__section screen__section_text"> 
+          <div class="info">
+            <div class="info__title title">Будущее <br> уже наступило</div>
+            <div class="info__content text"> 
+              <div class="info__content-inner info__content-inner_desktop">
+                <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+              </div>
+              <div class="info__content-inner info__content-inner_mobile">
+                <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- timer section start-->
+      <div class="screen screen_single screen_center timer-container">
+        <div class="timer-wrapper">
+          <div class="timer-header">
+            <div class="timer-header__title title">До ввода объекта в эксплуатацию</div>
+            <div class="timer-header__subtitle text">по предварительной оценке экспертов (20 декабря 2023г.):</div>
+          </div>
+          <div class="timer" data-end="2023-12-20"> <span class="timer__digit" data-type="day" data-text="дня">0</span><span class="timer__delimiter">&bull;</span><span class="timer__digit" data-type="hour" data-text="часов">0</span><span class="timer__delimiter">&bull;</span><span class="timer__digit" data-type="min" data-text="минут">0</span><span class="timer__delimiter">&bull;</span><span class="timer__digit timer__sec" data-type="sec" data-text="секунд">0</span></div>
+        </div>
+      </div>
+      <!-- indexes section start-->
+      <div class="screen screen_split">
+        <div class="screen__section screen__section_img"> <img class="section-img" src="assets/4.jpg"/>
+        </div>
+        <div class="screen__section screen__section_text"> 
+          <div class="info">
+            <div class="info__title title">Новый <br>мультимодальный хаб <br>в цифрах</div>
+            <div class="info__content text"> 
+              <div class="index-slider js-cursor-trigger" data-cursor="arrows"><img class="slider-controls slider-controls_indexes" src="assets/controls.svg" alt="">
+                <div class="glide__track" data-glide-el="track">
+                  <div class="glide__slides">
+                    <div class="index-wrapper">
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                    </div>
+                    <div class="index-wrapper">
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                    </div>
+                    <div class="index-wrapper">
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                    </div>
+                    <div class="index-wrapper">
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                    </div>
+                    <div class="index-wrapper">
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                    </div>
+                    <div class="index-wrapper">
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                      <div class="index">
+                        <div class="index__title">С 2023 году прогнозируется:</div>
+                        <div class="index__number">6 500 000</div>
+                        <div class="index__unit">пассажиров в год</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"> </script>
+      <!-- gallery section start-->
+      <div class="screen screen_split gallery">
+        <div class="screen__section screen__section_img gallery__thumbs js-cursor-trigger" data-cursor="pointer"><a class="gallery__thumb-wrapper js-image-thumb" href="#link1"><img class="gallery__thumb" src="assets/2.png"></a><a class="gallery__thumb-wrapper js-image-thumb" href="#link2"><img class="gallery__thumb" src="assets/1.png"></a><a class="gallery__thumb-wrapper js-image-thumb" href="#link3"><img class="gallery__thumb" src="assets/4.png"></a><a class="gallery__thumb-wrapper js-video-thumb gallery__thumb-wrapper_video" href="#link0"><img class="gallery__thumb" src="assets/pexels-francesco-ungaro-97558.png"></a><a class="gallery__thumb-wrapper js-image-thumb" href="#link4"><img class="gallery__thumb" src="assets/1-1.png"></a><a class="gallery__thumb-wrapper js-image-thumb" href="#link5"><img class="gallery__thumb" src="assets/3.png"></a>
+        </div>
+        <div class="screen__section screen__section_img gallery__images"><img class="section-img gallery__image_current gallery__image" src="assets/2.png" data-link="link1"/><img class="section-img gallery__image" src="assets/1.png" data-link="link2"/><img class="section-img gallery__image" src="assets/4.png" data-link="link3"/>
+          <div class="video-container">
+            <div class="video-wrapper gallery__video" data-link="link0" src="videoplayback">
+              <button class="video-close js-video-close" onclick="closeFullscreen()">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <video class="video" muted="" preload="none" poster="assets/pexels-francesco-ungaro-97558.png">
+                <source src="assets/videoplayback.mp4" type="video/mp4"/>
+                <source src="assets/videoplayback.webm" type="video/webm"/>
+              </video>
+            </div>
+          </div><img class="section-img gallery__image" src="assets/1-1.png" data-link="link4"/><img class="section-img gallery__image" src="assets/3.png" data-link="link5"/>
+        </div>
+      </div>
+      <!-- news section start-->
+      <div class="screen">
+        <!-- news list start-->
+        <div class="screen__section screen__section_news"><img class="slider-controls slider-controls_news" src="assets/controls.svg" alt="">
+          <div class="news-title title">Новости <br> в ногу со временем</div>
+          <div class="news-list scrollMouse js-news-list">
+            <div class="news" src="/5.jpg" href="#xlkco2309">
+              <div class="news__img-wrapper"> <img class="news__img" src="assets//5.jpg"/>
+                <div class="news__link-wrapper"> <a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#fb"></use>
+                    </svg></a><a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#insta"></use>
+                    </svg></a></div><a class="news__caption js-news-detail-show" href="#xlkco2309">
+                  <p><span class="news__caption-label">Автор:</span> <span class="news__caption-author">Витя</span> </p>
+                  <p><span class="news__caption-label">Фото:</span> <span class="news__caption-author">Володя</span> </p></a>
+              </div><a class="news__text js-news-detail-show" href="#xlkco2309">
+                <h3 class="news__title">Онлайн-конференция</h3>
+                <p class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</p></a><a class="news__button button js-news-detail-show" href="#xlkco2309">Подробнее</a>
+            </div>
+            <div class="news" src="3.png" href="#asxkjho340r5">
+              <div class="news__img-wrapper"> <img class="news__img" src="assets/3.png"/>
+                <div class="news__link-wrapper"> <a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#fb"></use>
+                    </svg></a><a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#insta"></use>
+                    </svg></a></div><a class="news__caption js-news-detail-show" href="#asxkjho340r5">
+                  <p><span class="news__caption-label">Автор:</span> <span class="news__caption-author">Витя</span> </p>
+                  <p><span class="news__caption-label">Фото:</span> <span class="news__caption-author">Володя</span> </p></a>
+              </div><a class="news__text js-news-detail-show" href="#asxkjho340r5">
+                <h3 class="news__title">Построенные объекты</h3>
+                <p class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</p></a><a class="news__button button js-news-detail-show" href="#asxkjho340r5">Подробнее</a>
+            </div>
+            <div class="news" src="1.png" href="#plpl423">
+              <div class="news__img-wrapper"> <img class="news__img" src="assets/1.png"/>
+                <div class="news__link-wrapper"> <a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#fb"></use>
+                    </svg></a><a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#insta"></use>
+                    </svg></a></div><a class="news__caption js-news-detail-show" href="#plpl423">
+                  <p><span class="news__caption-label">Автор:</span> <span class="news__caption-author">Витя</span> </p>
+                  <p><span class="news__caption-label">Фото:</span> <span class="news__caption-author">Володя</span> </p></a>
+              </div><a class="news__text js-news-detail-show" href="#plpl423">
+                <h3 class="news__title">Значимые события 2020</h3>
+                <p class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</p></a><a class="news__button button js-news-detail-show" href="#plpl423">Подробнее</a>
+            </div>
+            <div class="news" src="3.png" href="#asbnkmn1239">
+              <div class="news__img-wrapper"> <img class="news__img" src="assets/3.png"/>
+                <div class="news__link-wrapper"> <a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#fb"></use>
+                    </svg></a><a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#insta"></use>
+                    </svg></a></div><a class="news__caption js-news-detail-show" href="#asbnkmn1239">
+                  <p><span class="news__caption-label">Автор:</span> <span class="news__caption-author">Витя</span> </p>
+                  <p><span class="news__caption-label">Фото:</span> <span class="news__caption-author">Володя</span> </p></a>
+              </div><a class="news__text js-news-detail-show" href="#asbnkmn1239">
+                <h3 class="news__title">Влияние COVID-19</h3>
+                <p class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</p></a><a class="news__button button js-news-detail-show" href="#asbnkmn1239">Подробнее</a>
+            </div>
+            <div class="news" src="3.png" href="#mvnbkjas32">
+              <div class="news__img-wrapper"> <img class="news__img" src="assets/3.png"/>
+                <div class="news__link-wrapper"> <a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#fb"></use>
+                    </svg></a><a href="#" target="_blank"> 
+                    <svg class="news__link">
+                      <use xlink:href="assets/icons.svg#insta"></use>
+                    </svg></a></div><a class="news__caption js-news-detail-show" href="#mvnbkjas32">
+                  <p><span class="news__caption-label">Автор:</span> <span class="news__caption-author">Витя</span> </p>
+                  <p><span class="news__caption-label">Фото:</span> <span class="news__caption-author">Володя</span> </p></a>
+              </div><a class="news__text js-news-detail-show" href="#mvnbkjas32">
+                <h3 class="news__title">Оставайтесь на связи</h3>
+                <p class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</p></a><a class="news__button button js-news-detail-show" href="#mvnbkjas32">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <!-- news detail container-->
+        <div class="news-detail-container js-news-detail js-news-detail_idle">
+          <button class="news-detail__close js-news-detail__close"><svg class="news-detail__close-icon" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M25 1L1 25M1 1L25 25" stroke="#009840" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-        </button>
-        <video class="video" muted="" height="100%">
-          <source src="videoplayback.webm" type="video/webm">
-        </video>
-      </div>
-    </div>
-    <div class="screen screen_split" id="about">
-      <div class="screen__section screen__section_img"> <img class="section-img" src="2.jpg"/>
-      </div>
-      <div class="screen__section screen__section_text"> 
-        <div class="info">
-          <div class="info__title title">Будущее <br> уже наступило</div>
-          <div class="info__content text"> 
-            <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
-            <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+          </button>
+          <div class="news-detail" data-link="xlkco2309">
+            <figure class="news-detail__img-wrapper screen__section_img"> <img class="news-detail__img" src="assets//5.jpg"/></figure>
+            <div class="screen__section screen__section_text">
+              <div class="info">
+                <div class="info__title title">Онлайн-конференция</div>
+                <div class="info__content text"> 
+                  <div class="info__content-inner info__content-inner_desktop">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+                  </div>
+                  <div class="info__content-inner info__content-inner_mobile">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                  </div>
+                </div>
+                <div class="info__footer"> 
+                  <div class="info__caption text">Автор: Витя | Фото: Володя</div>
+                  <div class="info__action"><a class="button download_button" href="#">Скачать материал</a></div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="screen screen_single screen_center" id="timer">
-      <div class="title">До ввода объекта в эксплуатацию</div>
-      <div class="timer__subtitle text">по предварительной оценке экспертов (20 декабря 2023г.):</div>
-      <div class="timer" data-end="2023-12-20"> <span class="timer__digit" data-type="day" data-text="дня">0</span><span class="timer__delimiter">&bull;</span><span class="timer__digit" data-type="hour" data-text="часов">0</span><span class="timer__delimiter">&bull;</span><span class="timer__digit" data-type="min" data-text="минут">0</span><span class="timer__delimiter">&bull;</span><span class="timer__digit timer__sec" data-type="sec" data-text="секунд">0</span></div>
-      <script>
-         const phrases = {
-    sec: ['секунда','секунды','секунд'],
-    min: ['минута','минуты','минут'],
-    hour: ['час','часа','часов'],
-    day: ['день','дня','дней']
-}
-const cases = {
-    nominative: 0,
-    accusative: 1,
-    genitive: 2
-}
-function isTeen(dozensCount){//если число -дцать
-    return Boolean(dozensCount >= 1 && dozensCount <= 2);
-}
-function getCase(count){
-    let dozensCount = count / 10 % 10;
-    let lastDigit = count % 10;
-    if (isTeen(dozensCount) || lastDigit >= 5 || lastDigit == 0) return cases.genitive;
-    if (lastDigit == 1) return cases.nominative;
-    if (lastDigit > 1 && lastDigit < 5) return cases.accusative;
-}
-function getCasePhrase(count, valueType){
-    const phraseCase = getCase(count);
-    return phrases[valueType][phraseCase];
-}
-
-let dateAttr = document.querySelector('.timer').dataset.end;
-let date = new Date(dateAttr);
-
-function getCountdownTime() {
-    let now = new Date();
-    gap = date - now;
-    if (gap < 0) {
-        clearInterval(timerInterval);
-    } else {
-
-        let days = Math.floor(gap / 1000 / 60 / 60 / 24);
-        let hours = Math.floor(gap / 1000 / 60 / 60) % 24;
-        let minutes = Math.floor(gap / 1000 / 60) % 60;
-        let seconds = Math.floor(gap / 1000) % 60;
-
-        document.querySelector('span[data-type="day"]').innerText = days;
-        document.querySelector('span[data-type="hour"]').innerText = hours;
-        document.querySelector('span[data-type="min"]').innerText = minutes;
-        document.querySelector('span[data-type="sec"]').innerText = seconds;
-        document.querySelector('[data-type="day"]').dataset.text = getCasePhrase(days, 'day');
-        document.querySelector('[data-type="hour"]').dataset.text = getCasePhrase(hours, 'hour');
-        document.querySelector('[data-type="min"]').dataset.text = getCasePhrase(minutes, 'min');
-        document.querySelector('[data-type="sec"]').dataset.text = getCasePhrase(seconds, 'sec');
-    }
-}
-
-let timerInterval = setInterval(getCountdownTime, 1000);
-
-getCountdownTime();
-      </script>
-    </div>
-    <div class="screen screen_split" id="indexes">
-      <div class="screen__section screen__section_img"> <img class="section-img" src="4.jpg"/>
-      </div>
-      <div class="screen__section screen__section_text"> 
-        <div class="info">
-          <div class="info__title title">Новый <br>мультимодальный хаб <br>в цифрах</div>
-          <div class="info__content text"> 
-            <div class="index-wrapper">
-              <div class="index"> 
-                <div class="index__title">С 2023 году прогнозируется:</div>
-                <div class="index__number">6 500 000</div>
-                <div class="index__unit">пассажиров в год</div>
+          <div class="news-detail" data-link="asxkjho340r5">
+            <figure class="news-detail__img-wrapper screen__section_img"> <img class="news-detail__img" src="assets/3.png"/></figure>
+            <div class="screen__section screen__section_text">
+              <div class="info">
+                <div class="info__title title">Построенные объекты</div>
+                <div class="info__content text"> 
+                  <div class="info__content-inner info__content-inner_desktop">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+                  </div>
+                  <div class="info__content-inner info__content-inner_mobile">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                  </div>
+                </div>
+                <div class="info__footer"> 
+                  <div class="info__caption text">Автор: Витя | Фото: Володя</div>
+                  <div class="info__action"><a class="button download_button" href="#">Скачать материал</a></div>
+                </div>
               </div>
-              <div class="index"> 
-                <div class="index__title">С 2023 году прогнозируется:</div>
-                <div class="index__number">6 500 000</div>
-                <div class="index__unit">пассажиров в год</div>
+            </div>
+          </div>
+          <div class="news-detail" data-link="plpl423">
+            <figure class="news-detail__img-wrapper screen__section_img"> <img class="news-detail__img" src="assets/1.png"/></figure>
+            <div class="screen__section screen__section_text">
+              <div class="info">
+                <div class="info__title title">Значимые события 2020</div>
+                <div class="info__content text"> 
+                  <div class="info__content-inner info__content-inner_desktop">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+                  </div>
+                  <div class="info__content-inner info__content-inner_mobile">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                  </div>
+                </div>
+                <div class="info__footer"> 
+                  <div class="info__caption text">Автор: Витя | Фото: Володя</div>
+                  <div class="info__action"><a class="button download_button" href="#">Скачать материал</a></div>
+                </div>
               </div>
-              <div class="index"> 
-                <div class="index__title">С 2023 году прогнозируется:</div>
-                <div class="index__number">6 500 000</div>
-                <div class="index__unit">пассажиров в год</div>
+            </div>
+          </div>
+          <div class="news-detail" data-link="asbnkmn1239">
+            <figure class="news-detail__img-wrapper screen__section_img"> <img class="news-detail__img" src="assets/3.png"/></figure>
+            <div class="screen__section screen__section_text">
+              <div class="info">
+                <div class="info__title title">Влияние COVID-19</div>
+                <div class="info__content text"> 
+                  <div class="info__content-inner info__content-inner_desktop">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+                  </div>
+                  <div class="info__content-inner info__content-inner_mobile">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                  </div>
+                </div>
+                <div class="info__footer"> 
+                  <div class="info__caption text">Автор: Витя | Фото: Володя</div>
+                  <div class="info__action"><a class="button download_button" href="#">Скачать материал</a></div>
+                </div>
               </div>
-              <div class="index"> 
-                <div class="index__title">С 2023 году прогнозируется:</div>
-                <div class="index__number">6 500 000</div>
-                <div class="index__unit">пассажиров в год</div>
-              </div>
-              <div class="index"> 
-                <div class="index__title">С 2023 году прогнозируется:</div>
-                <div class="index__number">6 500 000</div>
-                <div class="index__unit">пассажиров в год</div>
-              </div>
-              <div class="index"> 
-                <div class="index__title">С 2023 году прогнозируется:</div>
-                <div class="index__number">6 500 000</div>
-                <div class="index__unit">пассажиров в год</div>
+            </div>
+          </div>
+          <div class="news-detail" data-link="mvnbkjas32">
+            <figure class="news-detail__img-wrapper screen__section_img"> <img class="news-detail__img" src="assets/3.png"/></figure>
+            <div class="screen__section screen__section_text">
+              <div class="info">
+                <div class="info__title title">Оставайтесь на связи</div>
+                <div class="info__content text"> 
+                  <div class="info__content-inner info__content-inner_desktop">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
+                  </div>
+                  <div class="info__content-inner info__content-inner_mobile">
+                    <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
+                  </div>
+                </div>
+                <div class="info__footer"> 
+                  <div class="info__caption text">Автор: Витя | Фото: Володя</div>
+                  <div class="info__action"><a class="button download_button" href="#">Скачать материал</a></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="screen screen_split" id="gallery">
-      <div class="screen__section screen__section_img">
-        <div class="gallery">  
-          <div class="gallery__item"><img src="2.png"></div>
-          <div class="gallery__item"><img src="1.png"></div>
-          <div class="gallery__item"><img src="4.png"></div>
-          <div class="gallery__item"><img src="pexels-francesco-ungaro-97558.png"></div>
-          <div class="gallery__item"><img src="1-1.png"></div>
-          <div class="gallery__item"><img src="3.png"></div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js"></script>
+      <!-- contacts section start-->
+      <div class="screen screen_split screen_map">
+        <div class="screen__section screen__section_img map-wrapper js-map"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abf18f3a8a6795f0ef60b69ac7a8b5c152bcfca74022dc1144cf4bdc879debfc0&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script></div>
+        <div class="screen__section screen__section_text"> 
+          <div class="info">
+            <div class="info__title title">Оставайтесь на связи</div>
+            <div class="info__content text"> 
+              <p>
+                Мы готовы ответить на ваши вопросы и предложения по телефону:<a class="link" href="tel:+8 800 301 19 91">8 800 301 19 91</a>
+                или на адрес электронной почты: <a class="link" href="mailto:hello@new.aer.com">hello@new.aer.com</a>
+                c 08:00 утра и до 20:00 вечера по Москве.
+              </p>
+              <div class="form-wrapper js-form-wrapper">
+                <form class="form" name="feedback" action="test.html">
+                  <input class="input" name="name" type="text" placeholder="Ваше имя*" required>
+                  <input class="input" name="phone" type="text" inputmode="tel" placeholder="Номер телефона*" required>
+                  <input class="input" name="org" type="text" placeholder="Название организации">
+                  <input class="input" name="email" type="email" inputmode="email" placeholder="Адрес электронной почты*" required>
+                  <div class="form__wide">
+                    <textarea class="input input_textarea" name="message" rows="10" placeholder="Текст сообщения"></textarea>
+                    <div class="form__footnote">* Поля обязательны для заполнения</div>
+                  </div>
+                  <div class="form__footer form__wide">
+                    <button class="button">Отправить</button>
+                    <div class="form__message">Номер телефона указан некорректно</div>
+                  </div>
+                </form>
+                <button class="button form-wrapper__btn-expand js-form-expand">Напишите нам</button>
+                <div class="form__submit-msg form__submit-msg_success">
+                  <p class="form__submit-msg-title">Спасибо!</p>
+                  <p>Ваше обращение получено.<br> Мы свяжемся с вами в ближайшее время.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="copyright copyright_footer">© 2021. АО «Международный аэропорт «Краснодар»</div>
         </div>
       </div>
-      <div class="screen__section screen__section_img"><img class="section-img" src="5.jpg"/>
-      </div>
+      <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.5/dist/inputmask.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/validate-js/2.0.1/validate.min.js"></script>
     </div>
-    <div class="screen" id="news"> 
-      <div class="screen__section">
-        <div class="title">Новости <br> в ногу со временем</div>
-        <div class="news-wrapper"> 
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-          <div class="news"> 
-            <div class="news__img-wrapper"> <img class="news__img" src="5.jpg"/>
-              <div class="news__caption">
-                <p>Автор: <strong>Витя</strong> </p>
-                <p>Фото: <strong>Володя</strong> </p>
-              </div>
-            </div>
-            <div class="news__title">Онлайн-конференция</div>
-            <div class="news__desc text">Значимость этих проблем настолько очевидна, что сложившаяся структура организации смвв.</div><a class="news__button button js-more-show" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="screen__section screen__section-more screen__section_text js-more">
-        <button class="js-more-close"></button>
-        <div class="info">
-          <div class="info__title title">Построенные <br>объекты</div>
-          <div class="info__content text"> 
-            <p>Равным образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании модели развития. Таким образом начало повседневной работы по формированию позиции требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.</p>
-            <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же сложившаяся структура организации позволяет выполнять важные задания по разработке систем массового участия. Таким образом сложившаяся структура организации требуют определения и уточнения соответствующий условий активизации.</p>
-          </div>
-          <div class="info__footer"> 
-            <div class="info__caption text">Автор: Иван Иванов | Фото: Сидоров Иван</div>
-            <div class="info__action"><a class="button download_button" href="#">Скачать материал</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="screen screen_split" id="contacts"> 
-      <div class="screen__section screen__section_img"><img class="section-img" src="map.jpg"/>
-      </div>
-      <div class="screen__section screen__section_text"> 
-        <div class="info">
-          <div class="info__title title">Оставайтесь на связи</div>
-          <div class="info__content text"> 
-            <p>Мы готовы ответить на ваши вопросы и предложения по телефону:</p><a class="contacts-link" href="tel:+8 800 301 19 91">8 800 301 19 91</a>
-            или на адрес электронной почты: <a class="contacts-link" href="mailto:hello@new.aer.com">hello@new.aer.com</a>
-            c 08:00 утра и до 20:00 вечера по Москве.
-            <form class="feedback" action="">
-              <input class="input" name="name" type="text" placeholder="Ваше имя*">
-              <input class="input" name="phone" type="tel" placeholder="Номер телефона*">
-              <input class="input" name="work" type="text" placeholder="Название организации">
-              <input class="input" name="email" type="email" placeholder="Адрес электронной почты*">
-              <textarea class="input feedback__wide" name="message" rows="10" placeholder="Текст сообщения"></textarea>
-              <div class="footnote">* Поля обязательны для заполнения</div>
-              <button class="button contact_btn">Отправить</button>
-            </form>
-            <div class="copyright">© 2021. АО «Международный аэропорт «Краснодар»</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-       for(let elem of document.querySelectorAll('.js-more-show')){
-    elem.addEventListener('click', (e)=>{
-        e.preventDefault();
-        document.querySelector('.js-more').classList.add('js-more_open');
-    })
-}
-document.querySelector('.js-more-close').addEventListener('click', (e)=>{
-    document.querySelector('.js-more').classList.remove('js-more_open');
-});
-      const videoWrapper = document.querySelector('.video-wrapper');
-const video = document.querySelector('video');
-video.onclick = function () {
-    if (!document.fullscreen) {
-        videoWrapper.requestFullscreen();
-        video.controls = true;
-    }
-}
-document.querySelector('.js-video-close').addEventListener('click', function () {
-    document.exitFullscreen();
-})
-document.addEventListener('fullscreenchange', function (e) {
-    if (!document.fullscreen)
-        video.controls = false;
-})
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"> </script>
+    <script src="js/script.js"></script>
   </body>
 </html>

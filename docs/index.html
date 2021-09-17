@@ -15,16 +15,16 @@
     <header class="header"> 
       <button class="menu-burger js-menu-toggle"><img src="assets/burger.svg" alt=""></button><a class="logo-wrapper" href="/"> 
         <svg class="logo" width="253" height="60">
-          <use href="assets/logo.svg#ru"></use>
+          <use xlink:href="assets/logo.svg#ru"></use>
         </svg></a>
       <div class="lang"><a class="lang__item lang__item_active" href="/">RU </a><a class="lang__item" href="en">ENG</a></div>
     </header>
     <div class="social"><a href="#"> 
         <svg class="social__item">
-          <use href="assets/icons.svg#fb"></use>
+          <use xlink:href="assets/icons.svg#fb"></use>
         </svg></a><a href="#"> 
         <svg class="social__item">
-          <use href="assets/icons.svg#insta"></use>
+          <use xlink:href="assets/icons.svg#insta"></use>
         </svg></a></div>
     <nav class="menu-wrapper js-menu">
       <div class="menu-desktop">
@@ -69,7 +69,7 @@
                 <path d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
-            <video class="video" muted="" preload="none" poster="assets/videoplayback.jpg">
+            <video class="video" muted="" preload="none" data-autoplay="data-autoplay" poster="assets/videoplayback.jpg">
               <source src="assets/videoplayback.mp4" type="video/mp4"/>
               <source src="assets/videoplayback.webm" type="video/webm"/>
             </video>
@@ -240,7 +240,7 @@
                   <path d="M25 1L1 25M1 1L25 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </button>
-              <video class="video" muted="" preload="none" poster="assets/pexels-francesco-ungaro-97558.png">
+              <video class="video" muted="" preload="none" data-autoplay="data-autoplay" poster="assets/pexels-francesco-ungaro-97558.png">
                 <source src="assets/videoplayback.mp4" type="video/mp4"/>
                 <source src="assets/videoplayback.webm" type="video/webm"/>
               </video>
